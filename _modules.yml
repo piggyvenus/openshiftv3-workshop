@@ -1,4 +1,3 @@
-name: OpenShift Container Platform Workshop
 config:
   vars:
     - name: PROJECT_NAME
