@@ -1,5 +1,4 @@
-id: ocpworkshop
-logo: OpenShift_Logo_Small.png
+name: OpenShift Container Platform Workshop
 config:
   vars:
     - name: PROJECT_NAME
