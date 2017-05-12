@@ -13,7 +13,7 @@ the master URL.
 
 image:login.png[image]
 
-Key in the username and password provided by the instructor. You will
+Use the username and password provided by the instructor. You will
 see the list of projects now. Note the project you created in the last
 lab exercise is shown here.
 
@@ -58,10 +58,10 @@ image:terminal_view.png[image]
 If you click onto the *Metrics* tab under Pod and get an error viewing
 metrics on the browser, please do the following:
 
-1.  Open https://hawkular.apps.osecloud.com/hawkular/metrics from a new
+1.  Open https://hawkular.{{APPS_ADDRESS}}/hawkular/metrics from a new
 tab on the same broswer
 2.  Click "Advanced" link
-3.  Click "Proceed to hawkular.apps.osecloud.com (unsafe)"
+3.  Click "Proceed to hawkular.{{APPS_ADDRESS}} (unsafe)"
 4.  Refresh the browser where you login at OpenShift console.
 
 Click *Builds* on left menu and select *Builds*. Select the build name

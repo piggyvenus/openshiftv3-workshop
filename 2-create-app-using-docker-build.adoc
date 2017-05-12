@@ -196,7 +196,7 @@ I0701 01:05:24.258995       1 docker.go:91] Successfully pushed 172.30.246.7:500
 In the above log note how the image is pushed to the local docker
 registry. The registry is running at `172.30.246.7` at port `5000`.
 
-*_Step 4: Deployment_*
+*Step 4: Deployment*
 
 Once the image is pushed to the docker registry, OpenShift will trigger
 a deploy process. Let us also quickly look at the deployment

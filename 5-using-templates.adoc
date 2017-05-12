@@ -13,9 +13,12 @@ application from a browser.
 Based on the experience gained from the previous exercise, log into the
 OpenShift Web Console. You will see the list of Projects.
 
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
+
 Using the *New Project* button, create a new project. We will call it
-*consoleproject-UserName*. Replace by your username to make this project
-unique. Type in a *Display Name* and *Description* of your choice.
+*consoleproject-userxx*.
+Type in a *Display Name* and *Description* of your choice.
 
 Press the *Create* button to complete the project creation from the Web
 Console. This will accomplish the same job as `oc new-project` from CLI.
@@ -26,14 +29,14 @@ Click on *Add to Project* button and you will be taken to select an
 image or template. You will see the application create screen as shown
 below:
 
-image:images/application_create_screen.png[image]
+image:application_create_screen.png[image]
 
 Scroll down and click on *Data Stores* session. Find *MySQL (Ephemeral)*
 template from the list and click *Select*. You will also notice *MySQL
 (Persistent)* template. But we will address that in a different lab
 exercise.
 
-image:images/mysql_ephemeral_template.png[image]
+image:mysql_ephemeral_template.png[image]
 
 You will be taken to the mysql ephemeral creation screen. Click edit
 parameters and edit the values to use the following values:
@@ -54,16 +57,16 @@ value=mysql
 
 Click the *Create* button.
 
-image:images/mysql_ephemeral_creation.png[image]
+image:mysql_ephemeral_creation.png[image]
 
 Click *Go to overview*.
 
-image:images/mysql_pod_on_proj_details.png[image]
+image:mysql_pod_on_proj_details.png[image]
 
 It will take you back to the project overview page and soon you will see
 an image of a running pod.
 
-image:images/mysql_pod_on_proj_overview.png[image]
+image:mysql_pod_on_proj_overview.png[image]
 
 If pod does not show running, Click *Applications* and select
 *Deployments*, do the following:
@@ -83,19 +86,20 @@ service has been assigned an IP address that starts with `172.*`. Make a
 note of that. Also note the port that is exposed by this service. By
 default it exposes `3306`.
 
-image:images/mysql_service.png[image]
+image:mysql_service.png[image]
 
 *Step 3: Add data to MySQL database*
 
 Let us see how we can enter the pod and access the database.
 
 From the command line, change the project to the
-"consoleproject-UserName" using the following command:
+"consoleproject-userxx" using the following command:
 
-*Remember* to substitute your username.
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
 
 ....
- oc project consoleproject-UserName
+ oc project consoleproject-userxx
 ....
 
 Based on what you learned previously get the list of running pods (Tip:
@@ -187,7 +191,7 @@ application in the same *consoleproject-UserName*. It takes you to
 select image or template page and choose the *PHP* template under PHP
 apps.
 
-image:images/php.png[image]
+image:php.png[image]
 
 Enter the following values for each parameters:
 
@@ -200,7 +204,7 @@ Click onto the link "Show advanced routing, build, and deployment
 options", go to Deployment Configuration section and enter the following
 environment variables:
 
-image:images/dbtest_deployment_env.png[image]
+image:dbtest_deployment_env.png[image]
 
 In the next section add a label:
 
@@ -211,14 +215,14 @@ In the next section add a label:
 
 Click *Create* to add this frontend application to talk to the database.
 
-image:images/cakephp_confirm.png[image]
+image:cakephp_confirm.png[image]
 
 Click *Continue to overview*.
 
 You will be taken back to the Project Overview page and you will start
 seeing that a new service is now available and exposed as a route.
 
-image:images/dbtest_build.png[image]
+image:dbtest_build.png[image]
 
 Click "Group Service" next to DB test and select "mysql" service.
 
@@ -226,7 +230,7 @@ You will also notice that a build starts running very soon. Once the
 build completes, the application image created from the source code will
 be uploaded to the docker repository.
 
-image:images/console_project_overview.png[image]
+image:console_project_overview.png[image]
 
 You can check the build logs using the following command:
 
@@ -241,7 +245,7 @@ Cloning "https://github.com/VeerMuchandi/dbtest.git" ...
 ---> Installing application source...
 
 
-Pushing image 172.30.89.28:5000/consoleproject-admin/dbtest:latest ...
+Pushing image 172.30.89.28:5000/consoleproject-userxx/dbtest:latest ...
 Pushed 0/5 layers, 7% complete
 Pushed 1/5 layers, 21% complete
 Pushed 2/5 layers, 41% complete

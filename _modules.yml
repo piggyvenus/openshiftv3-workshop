@@ -12,7 +12,9 @@ config:
     - name: GET_STARTED_CLI_URL
       desc: URL to documentation to configure CLI
       value: https://docs.openshift.com/container-platform/latest/cli_reference/get_started_cli.html
-
+    - name: NEXUS_URL
+      desc: URL to Nexus repository
+      value: http://nexus.ci.svc.cluster.local:8081/repository/maven-public/
 
 modules:
   0-setting-up-client-tools:

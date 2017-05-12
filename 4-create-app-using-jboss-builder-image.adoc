@@ -11,10 +11,11 @@ If you want to, you can create a new project based on what you have
 learned in previous labs. Or you can create a new project for JBoss
 Applications.
 
-*Remember* to replace the username before running the command.
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
 
 ....
-$ oc new-project myjbossapp-UserName --display-name="My JBoss Applications" --description="A place for my JBoss EAP Applications"
+$ oc new-project myjbossapp-userxx --display-name="My JBoss Applications" --description="A place for my JBoss EAP Applications"
 ....
 
 *Step 2: Create an application that uses the JBoss EAP builder image*
@@ -46,15 +47,10 @@ On *Build Configuration* add a new _Environment Variable_.
 
 ....
 name: MAVEN_MIRROR_URL
-value: <nexus_url>/repository/maven-public/
-
-Ex:-   http://nexus-ci.cloudapps.chicago.openshift3roadshow.com/repository/maven-public/
+value: {{NEXUS_URL}}
 ....
 
-*REMEMBER:* Check with your instructor the proper URL for the Nexus
-repository.
-
-image:images/nexus_repo.png[image]
+image:nexus_repo.png[image]
 
 Click on *Create* and then on *Continue to overview*.
 
@@ -149,8 +145,8 @@ $ oc get dc ks -o json
     "apiVersion": "v1",
     "metadata": {
         "name": "ks",
-        "namespace": "myjbossapp-admin",
-        "selfLink": "/oapi/v1/namespaces/myjbossapp-admin/deploymentconfigs/ks",
+        "namespace": "myjbossapp-userxx",
+        "selfLink": "/oapi/v1/namespaces/myjbossapp-userxx/deploymentconfigs/ks",
         "uid": "eb474e40-8b8a-11e6-ba5b-080027782cf7",
         "resourceVersion": "32872",
         "generation": 2,
@@ -190,7 +186,7 @@ $ oc get dc ks -o json
                         "namespace": "myjbossapp-admin",
                         "name": "ks:latest"
                     },
-                    "lastTriggeredImage": "172.30.89.28:5000/myjbossapp-admin/ks@sha256:156db8530725a535f9b7ab7b696fab2e3c9c27c7fa0db0ea91bec87ed52b4193"
+                    "lastTriggeredImage": "172.30.89.28:5000/myjbossapp-userxx/ks@sha256:156db8530725a535f9b7ab7b696fab2e3c9c27c7fa0db0ea91bec87ed52b4193"
                 }
             }
         ],
@@ -216,7 +212,7 @@ $ oc get dc ks -o json
                 "containers": [
                     {
                         "name": "ks",
-                        "image": "172.30.89.28:5000/myjbossapp-admin/ks@sha256:156db8530725a535f9b7ab7b696fab2e3c9c27c7fa0db0ea91bec87ed52b4193",
+                        "image": "172.30.89.28:5000/myjbossapp-userxx/ks@sha256:156db8530725a535f9b7ab7b696fab2e3c9c27c7fa0db0ea91bec87ed52b4193",
                         "ports": [
                             {
                                 "containerPort": 8080,
@@ -303,7 +299,7 @@ Route should be already created.
 $ oc get routes
 
 NAME      HOST/PORT                                                      PATH      SERVICES   PORT       TERMINATION
-ks        ks-myjbossapp-Username.apps.osecloud.com                                 ks         8080-tcp   
+ks        ks-myjbossapp-userxx.{{APPS_ADDRESS}}                                 ks         8080-tcp
 ....
 
 If route does not show, we expose the service `ks` via the command
@@ -323,7 +319,7 @@ Now access the application by using the route you got in the previous
 step. You can use either curl or your browser.
 
 ....
-$ curl ks-myjbossapp-UserName.apps.osecloud.com
+$ curl ks-myjbossapp-userxx.{{APPS_ADDRESS}}
 
  <!-- Plain HTML page that kicks us into the app -->
 <html>
@@ -333,10 +329,11 @@ $ curl ks-myjbossapp-UserName.apps.osecloud.com
 </html>
 ....
 
-Go to https://ks-myjbossapp-Username.apps.osecloud.com via your browser.
-Please replace your username with yours.
+Go to https://ks-myjbossapp-userxx.{{APPS_ADDRESS}} via your browser.
 
-image:images/ks-myjbossapp.png[image]
+IMPORTANT: Please replace *userxx* with the username assigned to you.
+
+image:ks-myjbossapp.png[image]
 
 Congratulations! In this exercise you have learned how to create, build
 and deploy a JBoss EAP application using OpenShift's JBoss EAP Builder
