@@ -4,8 +4,7 @@ Using Web Console
 
 In this lab exercise, we will review the OpenShift Web Console.
 
-Type in the master public URL provided by your instructor in a browser.
-Use `<master public URL>:<port>`. You will be directed to an OpenShift
+Open a browser and type in the master public URL {{CONSOLE_ADDRESS}}. You will be directed to an OpenShift
 login page.
 
 *Note*: Your browser may complain about the server's security
@@ -98,8 +97,7 @@ a different lab exercise.
 Extra Credits
 ^^^^^^^^^^^^^
 
-Repeat the lab *Creating an
-application from an existing Docker Image using CLI* using OpenShift Web
+Repeat the lab anchor:create-an-app-from-a-docker-image[] using OpenShift Web
 Console.
 
 Spend a few minutes and familiarize using Web Console.
