@@ -1,4 +1,9 @@
 # OpenShift Workshop Labs
+To provision the workshop on OCP just execute the following:
+
+```
+oc new-app osevg/workshopper -e CONTENT_URL_PREFIX="https://raw.githubusercontent.com/samueltauil/openshiftv3-workshop/master" -e WORKSHOPS_URLS="https://raw.githubusercontent.com/samueltauil/openshiftv3-workshop/master/_module_groups.yml"
+```
 
 ## Lab Exercises Table of Contents
 * Lab 0. [Setting up client tools](0-setting-up-client-tools.adoc)
