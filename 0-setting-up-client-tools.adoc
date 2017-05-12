@@ -64,4 +64,4 @@ $ oc login {{CONSOLE_ADDRESS}}
 ----
 
 [NOTE]
-Usernames and password will be provided by your instructor.
+Username and password will be provided by your instructor.
