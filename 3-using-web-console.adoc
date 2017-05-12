@@ -97,7 +97,7 @@ a different lab exercise.
 Extra Credits
 ^^^^^^^^^^^^^
 
-Repeat the lab anchor:create-an-app-from-a-docker-image[] using OpenShift Web
+Repeat the lab <<create-an-app-from-a-docker-image, that creates an app from a docker image>> using OpenShift Web
 Console.
 
 Spend a few minutes and familiarize using Web Console.
