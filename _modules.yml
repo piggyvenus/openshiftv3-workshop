@@ -5,7 +5,7 @@ config:
       value: <your username>
     - name: CONSOLE_ADDRESS
       desc: HTTP address of the OpenShift console
-      value: https://console.summit.pixy.io:8443
+      value: https://master.ocp.tauil.org
     - name: APPS_ADDRESS
       desc: HTTP address suffix of apps dployed on OpenShift
       value: apps.summit.pixy.io
@@ -48,4 +48,4 @@ modules:
   17-dynamic-config-updates-using-configmaps:
     name: Dynamic configuration updates using ConfigMap
   18-changing-code-onthefly:
-    name: Changing code on the fly   
+    name: Changing code on the fly

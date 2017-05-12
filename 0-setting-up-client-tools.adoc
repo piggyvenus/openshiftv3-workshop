@@ -60,5 +60,5 @@ To login to a remote server use:
 
 [source,shell]
 ----
-$ oc login <hostname>:<port>
+$ oc login {{CONSOLE_ADDRESS}}
 ----
