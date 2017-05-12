@@ -10,14 +10,16 @@ application docker image for you.
 
 If you want to, you can create a new project based on what you have
 learned in the previous lab. Since we already have a project we will use
-it. Run the following command to make sure. *Remember* to substitute
-UserName with your username.
+it. Run the following command to make sure.
+
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
 
 ....
-$ oc project mycliproject-UserName
+$ oc project mycliproject-userxx
 ....
 
-*Step 2: Create an application that uses docker file*
+*Step 2: Create an application that uses Dockerfile*
 
 This time we will use a project that has a Dockerfile in a source code
 repository. We will use a simple project on github
@@ -31,9 +33,9 @@ also a PHP version of the same project available in the php folder if
 you like to use that. The php version does exactly the same it has a
 `time.php` file that displays the time.
 
-*Docker Build*: When OpenShift finds a Dockerfile in the source, it uses
+NOTE: When OpenShift finds a Dockerfile in the source, it uses
 this Dockerfile as the basis to create a docker image for your
-application. This strategy is called "Docker Build" strategy on
+application. This strategy is called *Docker Build* strategy on
 OpenShift. We'll see more about it when we look at the build
 configuration a couple of steps down the line. Once OpenShift builds the
 application's docker image, it stores that in a local docker registry.
@@ -86,7 +88,7 @@ $ oc get bc time -o json
     "apiVersion": "v1",
     "metadata": {
         "name": "time",
-        "namespace": "mycliproject-user10",
+        "namespace": "mycliproject-userxx",
         "selfLink": "/oapi/v1/namespaces/mycliproject-admin/buildconfigs/time",
         "uid": "ac4beccd-9569-11e6-ad4c-000d3af733e4",
         "resourceVersion": "134692",
@@ -346,7 +348,7 @@ And then we check the route exposed.
 $ oc get routes
 
 NAME      HOST/PORT                                                          PATH      SERVICES   PORT       TERMINATION
-time      time-mycliproject-UserName.apps.osecloud.com                       time       8080-tcp   
+time      time-mycliproject-userxx.{{APPS_ADDRESS}}                       time       8080-tcp
 ....
 
 *Note:* Unlike in the previous lab, this time we did not use --hostname
@@ -361,7 +363,7 @@ time. *If you don't provide time.php extension, it displays apache's
 default index page.*
 
 ....
-$ curl time-mycliproject-UserName.apps.osecloud.com
+$ curl time-mycliproject-userxx.{{APPS_ADDRESS}}
 Wednesday 1st of July 2015 01:12:20 AM
 ....
 

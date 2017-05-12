@@ -7,11 +7,11 @@ how to create an application from an existing docker image.
 
 *Step 1: Add a new project from command line*
 
-IMPORTANT: Please replace *UserName* with the username assigned to you in
+IMPORTANT: Please replace *userxx* with the username assigned to you in
 the commands below.
 
 ....
-$ oc new-project mycliproject-UserName --description="My CLI Project" --display-name="CLI Project"
+$ oc new-project mycliproject-userxx --description="My CLI Project" --display-name="CLI Project"
 ....
 
 Upon project creation, OpenShift will automatically switch to the newly
@@ -32,7 +32,7 @@ command. It says that the project is currently not running anything.
 ....
 $ oc status
 
-In project CLI Project (mycliproject-UserName)
+In project CLI Project (mycliproject-userxx)
 
 You have no services, deployment configs, or build configs.
 Run 'oc new-app' to create an application.
@@ -113,10 +113,10 @@ command will allow you to expose your service to the world so that you
 can access it from the browser.
 
 ....
-$ oc expose service welcome --name=welcome --hostname=welcome.UserName.{{APPS_ADDRESS}}
+$ oc expose service welcome --name=welcome --hostname=welcome.userxx.{{APPS_ADDRESS}}
 
 NAME      HOST/PORT                     PATH      SERVICE   LABELS
-welcome   welcome.UserName.{{APPS_ADDRESS}}             welcome
+welcome   welcome.userxx.{{APPS_ADDRESS}}             welcome
 ....
 
 *Step 4: Try your application*
@@ -125,7 +125,7 @@ Access the application: Now access the application using curl (looking
 for 200 status code) or from the browser and see the result
 
 ....
-$ curl -Is http://welcome.UserName.{{APPS_ADDRESS}}
+$ curl -Is http://welcome.userxx.{{APPS_ADDRESS}}
 ....
 
 Voila!! you created your first application using an existing docker
@@ -148,7 +148,7 @@ welcome   ConfigChange, ImageChange   1
 CONTROLLER   CONTAINER(S)   IMAGE(S)                             SELECTOR                                        REPLICAS
 welcome-1    welcome        redhatworkshops/welcome-php:latest   deployment=welcome-1,deploymentconfig=welcome   1
 NAME      HOST/PORT                     PATH      SERVICE   LABELS
-welcome   welcome.apps.osecloud.com             welcome
+welcome   welcome.userxx.{{APPS_ADDRESS}}             welcome
 NAME      LABELS    SELECTOR                   IP(S)           PORT(S)
 welcome   <none>    deploymentconfig=welcome   172.30.155.37   80/TCP
 NAME              READY     REASON    RESTARTS   AGE
