@@ -9,8 +9,8 @@ In this Lab we will look at how to install the OpenShift CLI tools.
 After completing this section, you should be able to:
 
 * Locate the binaries for the OpenShift Enterprise command-line
-interface (OSE CLI)
-* Install the OSE CLI tools.
+interface (OC CLI)
+* Install the OpenShift CLI tools.
 * CLI basic configuration
 
 *Locating the binaries*
@@ -22,7 +22,7 @@ Red Hat Customer Portal via the following link:
 
 Portal https://access.redhat.com/downloads/content/290
 
-*Installing the CLI tools*
+*Installing the OpenShift CLI tools*
 
 The CLI is provided as compressed files that can be decompressed to any
 directory. In order to make it simple for any user to access the OSE
@@ -62,3 +62,6 @@ To login to a remote server use:
 ----
 $ oc login {{CONSOLE_ADDRESS}}
 ----
+
+[NOTE]
+Usernames and password will be provided by your instructor.
