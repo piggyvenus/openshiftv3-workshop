@@ -60,5 +60,5 @@ To login to a remote server use:
 
 [source,shell]
 ----
-$ oc login {{CONSOLE_ADDRESS}} -u {{env.USERNAME}} -p {{DEFAULT_PASSWORD}}
+$ oc login {{CONSOLE_ADDRESS}} -u ENV['USERNAME'] -p {{DEFAULT_PASSWORD}}
 ----
