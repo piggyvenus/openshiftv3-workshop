@@ -1,14 +1,11 @@
 config:
   vars:
-    - name: PROJECT_NAME
-      desc: Name of the user project
-      value: <your username>
     - name: CONSOLE_ADDRESS
       desc: HTTP address of the OpenShift console
       value: https://master.ocp.tauil.org
     - name: APPS_ADDRESS
-      desc: HTTP address suffix of apps dployed on OpenShift
-      value: apps.summit.pixy.io
+      desc: HTTP address suffix of apps deployed on OpenShift
+      value: apps.master.ocp.tauil.org
 
 modules:
   0-setting-up-client-tools:
