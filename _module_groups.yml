@@ -1,6 +1,6 @@
-workshop:
-  name: OpenShift Container Platform Workshop
-  logo: OpenShift_Logo_Small.png
+id: ocptigerteam
+name: OpenShift Container Platform Workshop
+logo: OpenShift_Logo_Small.png
   modules:
     - 0-setting-up-client-tools
     - 1-create-app-from-docker-image
