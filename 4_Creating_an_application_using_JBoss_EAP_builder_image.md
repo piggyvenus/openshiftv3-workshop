@@ -36,6 +36,8 @@ On **Build Configuration** add a new *Environment Variable*.
 ```
 name: MAVEN_MIRROR_URL
 value: <nexus_url>/repository/maven-public/
+
+Ex:-   http://nexus-ci.cloudapps.chicago.openshift3roadshow.com/repository/maven-public/
 ```
 **REMEMBER:** Check with your instructor the proper URL for the Nexus repository.
 

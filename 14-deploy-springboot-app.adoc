@@ -11,8 +11,8 @@ new project with name `spring-UserName`. *Remember* to substitute the
 
 *Step 2:* Create a new application using SpringBoot S2I Builder image.
 Here we will deploy sample code from a git repository
-link:[https://github.com/RedHatWorkshops/spring-sample-app]. Please take
-time to understand the code; it is pretty simple.
+https://github.com/RedHatWorkshops/spring-sample-app. Please take time
+to understand the code; it is pretty simple.
 
 You may want to clone this into your git repository and deploy that, if
 you want to make changes and test.

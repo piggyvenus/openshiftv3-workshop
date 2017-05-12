@@ -90,7 +90,7 @@ You will be taken to a bash prompt inside the running pod. Now using the service
 *Tip:* If you need service ip address navigate to **Applications->Services** tab on the Web Console.
 
 ````
-mysql -h172.30.5.210 -P3306 -umysqluser -psupersecret
+mysql -h127.0.0.1 -P3306 -umysqluser -psupersecret
 ````
 
 You will be taken to the `mysql` prompt. See the list of databases. You will notice that the sample database that you requested is added and available.
@@ -151,7 +151,7 @@ Enter the following values for each parameters:
 
 ```
 * Name: dbtest
-* Git Repository URL: https://github.com/<provided_by_presentor>/dbtest.git
+* Git Repository URL: https://github.com/VeerMuchandi/dbtest
 ```
 Click onto the link "Show advanced routing, build, and deployment options", go to Deployment Configuration section and enter the following environment variables:
 
