@@ -36,7 +36,7 @@ template from the list and click *Select*. You will also notice *MySQL
 (Persistent)* template. But we will address that in a different lab
 exercise.
 
-image:mysql_ephemeral_template.png[image]
+image:mysql_ephemeral_template.png[width="60%"]
 
 You will be taken to the mysql ephemeral creation screen. Click edit
 parameters and edit the values to use the following values:
@@ -120,8 +120,7 @@ service ip address you noted earlier, port number, username and password
 you used start the mysql client as shown below. You will have to
 substitute your values here.
 
-_Tip:_ If you need service ip address navigate to
-*Applications->Services* tab on the Web Console.
+TIP: If you need service ip address navigate to *Applications->Services* tab on the Web Console.
 
 ....
 mysql -h127.0.0.1 -P3306 -umysqluser -psupersecret
