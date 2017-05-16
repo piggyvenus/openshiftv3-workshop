@@ -261,9 +261,11 @@ deployment is complete, the frontend pod starts running. You will find
 the running pod when you navigate to *Applications->Pods* on the Web
 console.
 
-Now type in your application url in the browser or use curl with
-`http://<<your application url>>/dbtest.php`
-
+Now type in your application url in the browser or use curl with:
+[source,shell]
+----
+http://<<your application url>>/dbtest.php
+----
 You will notice that it displays the records read from the database
 
 ....

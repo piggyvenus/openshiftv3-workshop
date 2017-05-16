@@ -74,6 +74,7 @@ pushing this to OpenShift's internal docker registry.
 
 ....
 $oc get pods
+
 NAME         READY     STATUS    RESTARTS   AGE
 ks-1-build   1/1       Running   0          11m
 ....

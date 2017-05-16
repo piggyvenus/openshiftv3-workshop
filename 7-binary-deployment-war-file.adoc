@@ -18,9 +18,12 @@ want to download the WAR file on your workstation.
 
 *Step 1: Create project & folder structure*
 
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
+
 [source,sh]
 ----
-oc new-project binarydeploy-UserName
+oc new-project binarydeploy-userxx
 mkdir binarytest && cd binarytest
 mkdir deployments
 ----
@@ -104,7 +107,7 @@ Receiving source from STDIN as archive ...
 Copying all deployments war artifacts from /home/jboss/source/deployments directory into /opt/webserver/webapps for later deployment...
 '/home/jboss/source/deployments/ROOT.war' -> '/opt/webserver/webapps/ROOT.war'
 
-Pushing image 172.30.89.28:5000/mycliproject-admin/myapp:latest ...
+Pushing image 172.30.89.28:5000/mycliproject-userxx/myapp:latest ...
 Pushed 0/6 layers, 2% complete
 Pushed 1/6 layers, 18% complete
 Pushed 2/6 layers, 40% complete
@@ -151,6 +154,7 @@ browser.
 
 ....
 $ oc expose svc myapp
+
 route "myapp" exposed
 ....
 

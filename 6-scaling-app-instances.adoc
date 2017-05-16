@@ -161,6 +161,7 @@ specify the `dc`)
 
 ....
 $ oc scale --replicas=3 dc/time
+
 deploymentconfig "time" scaled
 ....
 
@@ -202,6 +203,7 @@ Run the following command to find the available endpoints
 
 ....
 $ oc get endpoints
+
 NAME      ENDPOINTS                                            AGE
 time      10.128.0.33:8080,10.129.0.30:8080,10.129.2.27:8080   15m
 ....
@@ -213,6 +215,7 @@ Run the `oc idle endpoints/time` command to idle the application
 
 ....
 $ oc idle endpoints/time
+
 Marked service mycliproject-userxx/time to unidle resource DeploymentConfig mycliproject-userxx/time (unidle to 3 replicas)
 Idled DeploymentConfig mycliproject-userxx/time (dry run)
 ....
