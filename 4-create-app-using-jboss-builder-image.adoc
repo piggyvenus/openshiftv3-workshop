@@ -80,7 +80,8 @@ ks-1-build   1/1       Running   0          11m
 
 We can check the logs by executing the following command:
 
-....
+[source,shell]
+----
 $ oc logs pod/ks-1-build
 
 
@@ -88,9 +89,9 @@ $ oc logs pod/ks-1-build
 [INFO] ------------------------------------------------------------------------
 [INFO] Building JBoss AS Quickstarts: kitchensink 7.1.1-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-+
+
 skipped logs
-+
+
 [INFO] Packaging webapp
 [INFO] Assembling webapp [jboss-kitchensink] in [/home/jboss/source/target/jboss-kitchensink]
 [INFO] Processing war project
@@ -123,7 +124,7 @@ Pushed 4/6 layers, 82% complete
 Pushed 5/6 layers, 98% complete
 Pushed 6/6 layers, 100% complete
 Push successful
-....
+----
 
 You will notice that in the logs that not only does it copy your source
 code to the builder image, but it also does a `maven` build to compile
