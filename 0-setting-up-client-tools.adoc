@@ -20,7 +20,7 @@ lower-level tools to interact with each component of a system. The
 binaries for Mac, Windows, and Linux are available for download from the
 Red Hat Customer Portal via the following link:
 
-Portal https://access.redhat.com/downloads/content/290
+{{REDHAT_DOWNLOAD_OC_PORTAL_URL}}
 
 *Installing the OpenShift CLI tools*
 
