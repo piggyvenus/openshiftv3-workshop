@@ -36,7 +36,7 @@ template from the list and click *Select*. You will also notice *MySQL
 (Persistent)* template. But we will address that in a different lab
 exercise.
 
-image:mysql_ephemeral_template.png[width="60%"]
+image:mysql_ephemeral_template.png[scaledwidth="60%"]
 
 You will be taken to the mysql ephemeral creation screen. Click edit
 parameters and edit the values to use the following values:
@@ -102,9 +102,11 @@ the commands below.
  oc project consoleproject-userxx
 ....
 
-Based on what you learned previously get the list of running pods (Tip:
-`oc get pods`). You will find one pod for mysql running. Take a note of
-it's name.
+Based on what you learned previously get the list of running pods.
+
+TIP: `oc get pods`
+
+You will find one pod for mysql running. Take a note of it's name.
 
 Enter the pod by running the following command. Substitute the pod name
 with your mysql pod name.
