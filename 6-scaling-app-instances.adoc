@@ -8,13 +8,16 @@ instances are always running.
 
 *Step 1: Switch to an existing project*
 
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
+
 For this exercise, we will be using an already running application. We
-will be using the `mycliproject-UserName` that you created in the
+will be using the `mycliproject-userxx` that you created in the
 previous labs. Make sure you are switched to that project by using the
-`oc project` command and *remember* to substitute UserName.
+`oc project` command.
 
 ....
-$ oc project mycliproject-UserName
+$ oc project mycliproject-userxx
 ....
 
 *Step 2: View the deployment config*
@@ -35,9 +38,9 @@ metadata:
   labels:
     app: time
   name: time
-  namespace: mycliproject-admin
+  namespace: mycliproject-userxx
   resourceVersion: "32084"
-  selfLink: /oapi/v1/namespaces/mycliproject-admin/deploymentconfigs/time
+  selfLink: /oapi/v1/namespaces/mycliproject-userxx/deploymentconfigs/time
   uid: 6bb299e0-8b88-11e6-ba5b-080027782cf7
 spec:
   replicas: 1
@@ -64,7 +67,7 @@ spec:
         deploymentconfig: time
     spec:
       containers:
-      - image: 172.30.89.28:5000/mycliproject-admin/time@sha256:c490ea632c5362be3a3985285c623e674e58b876e70d9e3f94a151785b2ee87c
+      - image: 172.30.89.28:5000/mycliproject-userxx/time@sha256:c490ea632c5362be3a3985285c623e674e58b876e70d9e3f94a151785b2ee87c
         imagePullPolicy: Always
         name: time
         ports:
@@ -86,8 +89,8 @@ spec:
       from:
         kind: ImageStreamTag
         name: time:latest
-        namespace: mycliproject-admin
-      lastTriggeredImage: 172.30.89.28:5000/mycliproject-admin/time@sha256:c490ea632c5362be3a3985285c623e674e58b876e70d9e3f94a151785b2ee87c
+        namespace: mycliproject-userxx
+      lastTriggeredImage: 172.30.89.28:5000/mycliproject-userxx/time@sha256:c490ea632c5362be3a3985285c623e674e58b876e70d9e3f94a151785b2ee87c
     type: ImageChange
 status:
   availableReplicas: 1
@@ -97,7 +100,7 @@ status:
         from:
           kind: ImageStreamTag
           name: time:latest
-          namespace: mycliproject-admin
+          namespace: mycliproject-userxx
       type: ImageChange
     message: caused by an image change
   latestVersion: 1
@@ -133,7 +136,7 @@ NAME      DESIRED   CURRENT   AGE
 time-1    1         1         2h
 ....
 
-*Note:* You can change the number of replicas in `DeploymentConfig` or
+NOTE: You can change the number of replicas in `DeploymentConfig` or
 the `ReplicationController`.
 
 However note that if you change the `deploymentConfig` it applies to
@@ -151,7 +154,7 @@ To scale your application we will edit the `deploymentConfig` to 3.
 Open your browser to the Overview page and note you only have one
 instance running.
 
-image:images/scale_updown_overview.png[image]
+image:scale_updown_overview.png[image]
 
 Now scale your application using the `oc scale` command (remembering to
 specify the `dc`)
@@ -163,11 +166,11 @@ deploymentconfig "time" scaled
 
 If you look at the web console and you will see that there are 3
 instances running now
-image:images/scale_updown_overview_scaled.png[image]
+image:scale_updown_overview_scaled.png[image]
 
 *Note:* You can also scale up and down from the web console by going to
 the project overview page and clicking twice on
-image:images/scale_up.jpg[image] right next to the pod count circle to
+image:scale_up.jpg[image] right next to the pod count circle to
 add 2 more pods.
 
 On the command line, see how many pods you are running now:
@@ -210,21 +213,22 @@ Run the `oc idle endpoints/time` command to idle the application
 
 ....
 $ oc idle endpoints/time
-Marked service mycliproject-veer/time to unidle resource DeploymentConfig mycliproject-veer/time (unidle to 3 replicas)
-Idled DeploymentConfig mycliproject-veer/time (dry run)
+Marked service mycliproject-userxx/time to unidle resource DeploymentConfig mycliproject-userxx/time (unidle to 3 replicas)
+Idled DeploymentConfig mycliproject-userxx/time (dry run)
 ....
 
 Go back to the webconsole. You will notice that the pods show up as
 idled.
 
-image:images/idled_pods.jpeg[image]
+image:idled_pods.jpeg[image]
 
 At this point the application is idled, the pods are not running and no
 resources are being used by the application. This doesn't mean that the
-application is deleted. The current state is just saved.. that's all.
+application is deleted. The current state is just saved that's all.
 
-*Step 6: Reactivate your application* Now click on the application route
-URL or access the application via curl.
+*Step 6: Reactivate your application*
+
+Now click on the application route URL or access the application via curl.
 
 Note that it takes a little while for the application to respond. This
 is because pods are spinning up again. You can notice that in the web
@@ -247,7 +251,7 @@ deploymentconfig "time" scaled
 ....
 
 Alternately, you can go to project overview page and click on
-image:images/scale_down.jpg[image] twice to remove 2 running pods.
+image:scale_down.jpg[image] twice to remove 2 running pods.
 
 Congratulations!! In this exercise you have learned about scaling and
 how to scale up/down your application on OpenShift!
