@@ -8,7 +8,7 @@ config:
       value: https://master.ocp.tauil.org
     - name: APPS_ADDRESS
       desc: HTTP address suffix of apps deployed on OpenShift
-      value: apps.master.ocp.tauil.org
+      value: apps.ocp.tauil.org
     - name: GET_STARTED_CLI_URL
       desc: URL to documentation to configure CLI
       value: https://docs.openshift.com/container-platform/latest/cli_reference/get_started_cli.html
