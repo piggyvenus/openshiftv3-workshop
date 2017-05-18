@@ -1,6 +1,7 @@
 [[installing-the-jboss-developer-studio]]
 Installing the JBoss Developer Studio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+:data-uri:
 
 In this exercise we will learn how to install JBDS and configure to
 access the OpenShift instance.
@@ -10,9 +11,9 @@ access the OpenShift instance.
 * Download the latest JBoss Developer studio from:
 http://www.jboss.org/products/devstudio/download
 
-image:images/jboss_install_1.png[image]
+image::jboss_install_1.png[image]
 
-image:images/jboss_install_2.png[image]
+image::jboss_install_2.png[image]
 
 *Step 2: Install OpenShift Plugin*
 
@@ -22,9 +23,9 @@ image:images/jboss_install_2.png[image]
 * Select it and install. Accept license agreement. It may warn you about
 unsigned content. Ignore it.
 
-image:images/jboss_install_3.png[image]
+image::jboss_install_3.png[image]
 
-image:images/jboss_install_4.png[image]
+image::jboss_install_4.png[image]
 
 *Step 3: Configure OpenShift v3 Plugin*
 
@@ -37,10 +38,10 @@ default server FQDN.
 * Provide the username and password.
 * Click Finish
 
-image:images/jboss_install_5.png[image]
+image::jboss_install_5.png[image]
 
-image:images/jboss_install_6.jpg[image]
-image:images/jboss_install_6a.jpg[image]
+image::jboss_install_6.jpg[image]
+image::jboss_install_6a.jpg[image]
 
 *Step 4: Verify your connection*
 
@@ -48,7 +49,7 @@ image:images/jboss_install_6a.jpg[image]
 the provider username and password have access to.
 * You can also see a number of types, such as deployment configurations,
 services routes, etc under OpenShift Explorer
-image:images/jboss_install_7.jpg[image]
+image::jboss_install_7.jpg[image]
 
 *Step 5: Create a OpenShift Application*
 
@@ -60,16 +61,16 @@ Application
 * Make sure the information is correct and enter username and password
 * Click next.
 
-image:images/jboss_install8.jpg[image]
+image::jboss_install8.jpg[image]
 
 * Select the newly created project from the project dropdown list
 * Select the eap64-basic-s2i template from the list
 * Click Next
 
-image:images/jboss_install_9.jpg[image]
+image::jboss_install_9.jpg[image]
 
 * Select Parameters listed below and enter the values
-** APPLICATION_DOMAIN:mytestapp-javatest-Username.apps.osecloud.com
+** APPLICATION_DOMAIN:mytestapp-javatest-userxx.{{APPS_ADDRESS}}
 ** APPLICATION_NAME:mytestapp
 ** CONTEXT_DIR:
 ** SOURCE_REPOSITORY_REF:
@@ -79,16 +80,16 @@ image:images/jboss_install_9.jpg[image]
 * Click Next after updating all the parameters
 * Click Finish.
 
-image:images/jboss_install_10.jpg[image]
+image::jboss_install_10.jpg[image]
 
 * Click OK
 
-image:images/jboss_install_11.jpg[image]
+image::jboss_install_11.jpg[image]
 
 * Click Finish
 
-image:images/jboss_install_12.jpg[image]
+image::jboss_install_12.jpg[image]
 
 * Review the status under OpenShift Explorer
 
-image:images/jboss_install_13.jpg[image]
+image::jboss_install_13.jpg[image]
