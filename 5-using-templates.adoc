@@ -37,7 +37,7 @@ template from the list and click *Select*. You will also notice *MySQL
 (Persistent)* template. But we will address that in a different lab
 exercise.
 
-image::mysql_ephemeral_template.png[MySQL Template,200px !important,auto !important,align="center"]
+image::mysql_ephemeral_template.png[MySQL Template,200]
 
 You will be taken to the mysql ephemeral creation screen. Click edit
 parameters and edit the values to use the following values:
@@ -58,16 +58,16 @@ value=mysql
 
 Click the *Create* button.
 
-image:mysql_ephemeral_creation.png[image]
+image::mysql_ephemeral_creation.png[image]
 
 Click *Go to overview*.
 
-image:mysql_pod_on_proj_details.png[image]
+image::mysql_pod_on_proj_details.png[image]
 
 It will take you back to the project overview page and soon you will see
 an image of a running pod.
 
-image:mysql_pod_on_proj_overview.png[image]
+image::mysql_pod_on_proj_overview.png[image]
 
 If pod does not show running, Click *Applications* and select
 *Deployments*, do the following:
@@ -87,7 +87,7 @@ service has been assigned an IP address that starts with `172.*`. Make a
 note of that. Also note the port that is exposed by this service. By
 default it exposes `3306`.
 
-image:mysql_service.png[image]
+image::mysql_service.png[image]
 
 *Step 3: Add data to MySQL database*
 
@@ -189,11 +189,11 @@ Browse through the code in this repository. It has a simple php file
 the users table and displays them.
 
 To add a frontend again click on *Add to Project* to spin up a frontend
-application in the same *consoleproject-UserName*. It takes you to
+application in the same *consoleproject-userxx*. It takes you to
 select image or template page and choose the *PHP* template under PHP
 apps.
 
-image:php.png[image]
+image::php.png[image]
 
 Enter the following values for each parameters:
 
@@ -206,7 +206,7 @@ Click onto the link "Show advanced routing, build, and deployment
 options", go to Deployment Configuration section and enter the following
 environment variables:
 
-image:dbtest_deployment_env.png[image]
+image::dbtest_deployment_env.png[image]
 
 In the next section add a label:
 
@@ -217,14 +217,14 @@ In the next section add a label:
 
 Click *Create* to add this frontend application to talk to the database.
 
-image:cakephp_confirm.png[image]
+image::cakephp_confirm.png[image]
 
 Click *Continue to overview*.
 
 You will be taken back to the Project Overview page and you will start
 seeing that a new service is now available and exposed as a route.
 
-image:dbtest_build.png[image]
+image::dbtest_build.png[image]
 
 Click "Group Service" next to DB test and select "mysql" service.
 
@@ -232,7 +232,7 @@ You will also notice that a build starts running very soon. Once the
 build completes, the application image created from the source code will
 be uploaded to the docker repository.
 
-image:console_project_overview.png[image]
+image::console_project_overview.png[image]
 
 You can check the build logs using the following command:
 
@@ -268,6 +268,7 @@ Now type in your application url in the browser or use curl with:
 ----
 http://<<your application url>>/dbtest.php
 ----
+
 You will notice that it displays the records read from the database
 
 ....
