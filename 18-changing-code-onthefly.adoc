@@ -5,17 +5,21 @@ Changing code on the fly
 In this lab, we will learn how to make changes to the code on the local
 machine and immediately sync it with the code running in a pod.
 
-*Note:* This model of programming is useful for interpreted languages.
+NOTE: This model of programming is useful for interpreted languages.
 
-*Prerequisite:* This lab assumes that you have git installed on your box
+*Prerequisite:* This lab assumes that you have git installed on your box.
 
-*Step 1: Create a new project* +
+*Step 1: Create a new project*
+
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
+
 Create a new project on the OpenShift cluster with name
-`synccode-UserName`. *Note* Substitute the `UserName` with your `userId`
+`synccode-userxx`.
 
 *Step 2: Clone the git repository locally* Clone the following git
 repository to your workstation.
-https://github.com/VeerMuchandi/nodejs-hello using the command
+https://github.com/VeerMuchandi/nodejs-hello using the command:
 
 ....
 $ git clone https://github.com/VeerMuchandi/nodejs-hello
@@ -74,11 +78,11 @@ Wait for the build to complete and test the application
 ....
 $ oc get route
 NAME           HOST/PORT                                          PATH      SERVICES       PORT       TERMINATION
-nodejs-hello   nodejs-hello-rsync-UserName.apps.devday.ocpcloud.com             nodejs-hello   8080-tcp
+nodejs-hello   nodejs-hello-rsync-userxx.{{APPS_ADDRESS}}             nodejs-hello   8080-tcp
 ....
 
 ....
-$ $ curl nodejs-hello-rsync-UserName.apps.devday.ocpcloud.com
+$ $ curl nodejs-hello-rsync-userxx.{{APPS_ADDRESS}}
 Welcome to OpenShift!! My HostName is: nodejs-hello-1-8qigc
 ....
 
@@ -87,8 +91,9 @@ Welcome to OpenShift!! My HostName is: nodejs-hello-1-8qigc
 Let us now make a small change to the application on your workstation.
 
 Edit `server.js` file using your favorite text editor (I use vi). The
-code snippet below displays the welcome message
+code snippet below displays the welcome message:
 
+[source,javascript]
 ....
 app.get('/', function (req, res) {
   res.send('Welcome to OpenShift!! My HostName is: ' + os.hostname() + '\n');
@@ -99,6 +104,7 @@ Let us make a small change to insert a `\n` character after the welcome
 message so that the hostname is displayed on a different line. The
 edited code should look like this.
 
+[source,javascript]
 ....
 app.get('/', function (req, res) {
   res.send('Welcome to OpenShift!! \n My HostName is: ' + os.hostname() + '\n');
@@ -126,7 +132,8 @@ total size is 805  speedup is 7.39
 ....
 
 The command above will copy the code from the local machine to the pod.
-Note that +
+Note that:
+
 * `/opt/app-root/src` is the default home location on the pod +
 * `--exclude=.git` will omit the hidden git folder
 
@@ -134,7 +141,7 @@ Now test the application again. This time it should show the output in
 two lines as below:
 
 ....
-$ curl nodejs-hello-rsync-veer.apps.devday.ocpcloud.com
+$ curl nodejs-hello-rsync-userxx.{{APPS_ADDRESS}}
 Welcome to OpenShift!!
 My HostName is: nodejs-hello-1-8qigc
 ....

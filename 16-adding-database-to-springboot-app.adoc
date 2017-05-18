@@ -2,15 +2,16 @@
 Adding a backend database to the SpringBoot application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+:data-uri:
+
 In this exercise we will add a backend database to the previous deployed
 SpringBoot application.
 
-If you already created the SpringBoot application in the previous lab
-link:14.%20Deploy%20a%20Spring%20Boot%20Application.md[deploy a spring
-boot application], just test one more thing. Try your application url
-with `/dbtest`
-(http://bootapp-spring-UserName.apps.devday.ocpcloud.com/dbtest
-*substitute* UserName) extension and it should list you some data from
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
+
+If you already created the SpringBoot application in the previous lab, just test one more thing. Try your application url
+with `/dbtest` (http://bootapp-spring-userxx.{{APPS_ADDRESS}}/dbtest) extension and it should list you some data from
 the HSQLDB configured within the same app.
 
 Let's take a moment to understand how this application is connecting to
@@ -20,7 +21,7 @@ and we have configured these spring datasource variables to use hsqldb.
 
 ....
 spring.datasource.platform=hsqldb
-spring.datasource.url= jdbc:hsqldb:file:/opt/app-root/src/mydb;shutdown=true
+spring.datasource.url=jdbc:hsqldb:file:/opt/app-root/src/mydb;shutdown=true
 spring.datasource.username=user
 spring.datasource.password=password
 ....
@@ -47,7 +48,10 @@ MySQL database running as a separate pod.
 
 Based on what you learnt in the previous labs, you know what to do!!
 
-Make sure you are in the `spring-UserName` project where your springboot
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
+
+Make sure you are in the `spring-userxx` project where your springboot
 application is running. Click on `Add to project` on your webconsole,
 select `MySQL Ephemeral` from the catalog and deploy it. When you are
 deploying this database you will have to choose the following values:
@@ -70,7 +74,7 @@ you noted in the last step i.e.
 
 ....
 spring.datasource.platform=mysql
-spring.datasource.url= jdbc:mysql://mysql.spring-UserName:3306/sampledb?useSSL=false
+spring.datasource.url=jdbc:mysql://mysql.spring-userxx:3306/sampledb?useSSL=false
 spring.datasource.username=user
 spring.datasource.password=password
 ....
@@ -81,16 +85,19 @@ So, is there another way?.. *Yes* Let's use a `ConfigMap`.
 
 ConfigMaps allow you to keep the configuration artifacts decoupled from
 the image content. More details
-https://docs.openshift.com/container-platform/3.3/dev_guide/configmaps.html[here].
+https://docs.openshift.com/container-platform/latest/dev_guide/configmaps.html[here].
 We will see use them here and understand their _flexibility_ in the next
 lab.
 
 Lets go to CLI.
 
-Change to `spring-UserName` project
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
+
+Change to `spring-userxx` project
 
 ....
-oc project spring-UserName
+oc project spring-userxx
 ....
 
 Create a new file with name `application.properties` with the following
@@ -98,13 +105,13 @@ content.
 
 ....
 spring.datasource.platform=mysql
-spring.datasource.url= jdbc:mysql://mysql.spring-UserName:3306/sampledb?useSSL=false
+spring.datasource.url= jdbc:mysql://mysql.spring-userxx:3306/sampledb?useSSL=false
 spring.datasource.username=user
 spring.datasource.password=password
 ....
 
 You need to make sure that you substitute the correct values you noted
-in the last step when you wre creating the service. *Be extra-careful..
+in the last step when you are creating the service. *Be extra-careful..
 read instructions below.*
 
 Specifically note the datasource url. It is in the following format:
@@ -113,8 +120,8 @@ Specifically note the datasource url. It is in the following format:
 
 You can replace `service-host` by the IP address of your MySQL service
 or the Service name. In the above example, I am using the service name
-for example `mysql.spring-user01`. Here `mysql` is the name of the
-service and `spring-user01` is the project name. This is a fully
+for example `mysql.spring-userxx`. Here `mysql` is the name of the
+service and `spring-userxx` is the project name. This is a fully
 qualified way to let your application do service discovery in OpenShift
 (it uses SkyDNS).
 
@@ -130,7 +137,7 @@ Try a couple of more commands
 ....
 $ oc describe configmap app-props
 Name:       app-props
-Namespace:  spring-UserName
+Namespace:  spring-userxx
 Labels:     <none>
 Annotations:    <none>
 
@@ -148,7 +155,7 @@ oc edit configmap app-props
 So far, we have created a ConfigMap in the project but your springboot
 application does not know how to use it.
 
-*Step 3: Edit Deployment Configuration *
+*Step 3: Edit Deployment Configuration*
 
 Now we will mount the ConfigMap so that the springboot application can
 use it. You can either edit from CLI or from WebConsole.
@@ -166,7 +173,7 @@ Scroll down to container spec, that looks like this:
       containers:
         -
           name: bootapp
-          image: '172.30.85.130:5000/spring-veer/bootapp@sha256:79e188d712e1209b933870c7d064423af281f16b371fb5e5911dfb09a6867776'
+          image: '172.30.85.130:5000/spring-userxx/bootapp@sha256:79e188d712e1209b933870c7d064423af281f16b371fb5e5911dfb09a6867776'
           ports:
             -
               containerPort: 8080
@@ -184,7 +191,7 @@ Note there could be multiple `spec`s in your DC.
 
 We will now add a volume that points to our ConfigMap right under
 `spec`. It is explained here
-https://docs.openshift.com/container-platform/3.3/dev_guide/configmaps.html#configmaps-use-case-consuming-in-volumes
+https://docs.openshift.com/container-platform/latest/dev_guide/configmaps.html#configmaps-use-case-consuming-in-volumes
 
 ....
 spec:
@@ -194,7 +201,7 @@ spec:
         name: app-props
 ....
 
-*Be super-careful with indentation*
+WARNING: Be super-careful with indentation
 
 We will now add `volumeMount` to mount the `volume` that we just added
 into the pod. It should be right under the container `name:` as shown
@@ -209,7 +216,7 @@ below.
             mountPath: /opt/app-root/src/config
 ....
 
-*Be super-careful with indentation*
+WARNING: Be super-careful with indentation
 
 After the changes, the `template` section in the dc, should now look
 like this
@@ -232,7 +239,7 @@ like this
           volumeMounts:
           - name: app-props-volume
             mountPath: /opt/app-root/src/config
-          image: '172.30.85.130:5000/spring-veer/bootapp@sha256:79e188d712e1209b933870c7d064423af281f16b371fb5e5911dfb09a6867776'
+          image: '172.30.85.130:5000/spring-userxx/bootapp@sha256:79e188d712e1209b933870c7d064423af281f16b371fb5e5911dfb09a6867776'
           ports:
             -
               containerPort: 8080
@@ -246,11 +253,11 @@ like this
       securityContext:
 ....
 
-Optional: you can run the following to do the update on the
+*Optional:* you can run the following to do the update on the
 deploymentConfig:
 
 ....
-    oc set volumes dc/bootapp --add -m /opt/app-root/src/config --configmap-name=app-props
+ oc set volumes dc/bootapp --add -m /opt/app-root/src/config --configmap-name=app-props
 ....
 
 So what is this location `/opt/app-root/src/config`?
@@ -267,23 +274,23 @@ build process).
 
 *Step 4: Verify the changes*
 
-Once the deployment is complete +
-* click on the pod circle +
-* click on the pod name +
-* get into the `Terminal` tab +
-* verify that your `application.properties` are now available in the
+Once the deployment is complete:
+1. Click on the pod circle
+2. Click on the pod name
+3. Get into the `Terminal` tab
+4. Verify that your `application.properties` are now available in the
 `config` folder
 
 ....
-sh-4.2$ ls config                                                                                                                                                 
-application.properties                                                                                                                                            
-sh-4.2$ cat config/application.properties                                                                                                                         
-# replace your own values based on the database service you created                                                                                               
-# url = jdbc:mysql://<<service-host>>:<<service-port>>/<<dbname>>?useSSL=false                                                                                    
-spring.datasource.platform=mysql                                                                                                                                  
-spring.datasource.url= jdbc:mysql://mysql.spring-veer:3306/sampledb?useSSL=false                                                                                  
-spring.datasource.username=user                                                                                                                                   
-spring.datasource.password=password                                                                                                                               
+sh-4.2$ ls config
+application.properties
+sh-4.2$ cat config/application.properties
+# replace your own values based on the database service you created
+# url = jdbc:mysql://<<service-host>>:<<service-port>>/<<dbname>>?useSSL=false
+spring.datasource.platform=mysql
+spring.datasource.url= jdbc:mysql://mysql.spring-userxx:3306/sampledb?useSSL=false
+spring.datasource.username=user
+spring.datasource.password=password
 ....
 
 Note the contents of this file are what you added to the ConfigMap.
@@ -292,7 +299,7 @@ Note the contents of this file are what you added to the ConfigMap.
 
 Go back to the `Overview` page. Click on your application url which
 would be something like
-`http://bootapp-spring-UserName.apps.devday.ocpcloud.com/`
+`http://bootapp-spring-userxx.{{APPS_ADDRESS}}/`
 
 It will open a new tab and your running application will greet you
 
@@ -306,7 +313,7 @@ oc logs -f bootapp-2-06a4b
 ....
 
 Now access the application with the `/dbtest` extension -
-`http://bootapp-spring-UserName.apps.devday.ocpcloud.com/dbtest`
+`http://bootapp-spring-userxx.{{APPS_ADDRESS}}/dbtest`
 
 It should show the data from your MySQL database.
 
@@ -330,7 +337,7 @@ Also note that your logs show the connection url, just to verify which
 database you are connecting to.
 
 ....
-connection url: jdbc:mysql://mysql.spring-UserName:3306/sampledb?useSSL=false
+connection url: jdbc:mysql://mysql.spring-userxx:3306/sampledb?useSSL=false
 ....
 
 *Bonus Points:* Log into the MySQL instance and verify the data in the

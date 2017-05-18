@@ -266,7 +266,7 @@ console.
 Now type in your application url in the browser or use curl with:
 [source,shell]
 ----
-http://<<your application url>>/dbtest.php
+http://[your application url]/dbtest.php
 ----
 
 You will notice that it displays the records read from the database

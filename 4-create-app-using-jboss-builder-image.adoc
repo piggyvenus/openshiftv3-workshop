@@ -2,6 +2,8 @@
 Creating an application using JBoss EAP builder image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+:data-uri:
+
 In this exercise we will learn how to create an application using source
 code and the JBoss EAP builder image.
 
@@ -50,7 +52,7 @@ name: MAVEN_MIRROR_URL
 value: {{NEXUS_URL}}
 ....
 
-image:nexus_repo.png[image]
+image::nexus_repo.png[image]
 
 Click on *Create* and then on *Continue to overview*.
 
@@ -336,7 +338,7 @@ Go to https://ks-myjbossapp-userxx.{{APPS_ADDRESS}} via your browser.
 
 IMPORTANT: Please replace *userxx* with the username assigned to you.
 
-image:ks-myjbossapp.png[image]
+image::ks-myjbossapp.png[image]
 
 Congratulations! In this exercise you have learned how to create, build
 and deploy a JBoss EAP application using OpenShift's JBoss EAP Builder

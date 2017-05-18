@@ -351,7 +351,7 @@ NAME      HOST/PORT                                                          PAT
 time      time-mycliproject-userxx.{{APPS_ADDRESS}}                       time       8080-tcp
 ....
 
-*Note:* Unlike in the previous lab, this time we did not use --hostname
+NOTE: Unlike in the previous lab, this time we did not use --hostname
 parameter while exposing the service to create a route. OpenShift
 automatically assigned the project name extension to the route name.
 
