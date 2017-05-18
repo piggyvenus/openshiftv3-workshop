@@ -1,6 +1,7 @@
 [[using-templates]]
 Using Templates
 ~~~~~~~~~~~~~~~
+:data-uri:
 
 In this lab exercise we will learn how to use OpenShift Web Console to
 spin up a MySQL database using templates. We will then add a frontend
@@ -29,14 +30,14 @@ Click on *Add to Project* button and you will be taken to select an
 image or template. You will see the application create screen as shown
 below:
 
-image:application_create_screen.png[image]
+image::application_create_screen.png[image]
 
 Scroll down and click on *Data Stores* session. Find *MySQL (Ephemeral)*
 template from the list and click *Select*. You will also notice *MySQL
 (Persistent)* template. But we will address that in a different lab
 exercise.
 
-image:mysql_ephemeral_template.png[MySQL Template,200,align="center"]
+image::mysql_ephemeral_template.png[MySQL Template,200,align="center"]
 
 You will be taken to the mysql ephemeral creation screen. Click edit
 parameters and edit the values to use the following values:
