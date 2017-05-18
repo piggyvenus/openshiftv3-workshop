@@ -2,7 +2,7 @@
 To provision the workshop on OCP just execute the following:
 
 ```
-oc new-app osevg/workshopper -e CONTENT_URL_PREFIX="https://raw.githubusercontent.com/samueltauil/openshiftv3-workshop/master" -e WORKSHOPS_URLS="https://raw.githubusercontent.com/samueltauil/openshiftv3-workshop/master/_module_groups.yml"
+oc new-app samueltauil/workshopper -e CONTENT_URL_PREFIX="https://raw.githubusercontent.com/samueltauil/openshiftv3-workshop/master" -e WORKSHOPS_URLS="https://raw.githubusercontent.com/samueltauil/openshiftv3-workshop/master/_module_groups.yml"
 ```
 
 ## Lab Exercises Table of Contents

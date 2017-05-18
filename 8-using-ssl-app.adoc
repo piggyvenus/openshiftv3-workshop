@@ -8,12 +8,15 @@ with the OpenShift Wildcard certificate.
 *Step 1: Switch to an existing project*
 
 For this exercise, we will use an application that we created before. We
-will be using the *myjbossapp-UserName* that you created in the previous
+will be using the *myjbossapp-userxx* that you created in the previous
 labs. Make sure you are switched to that project by using the *oc
-project* command. *Remember* to substitute UserName.
+project* command.
+
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
 
 ....
-$ oc project myjbossapp-UserName
+$ oc project myjbossapp-userxx
 ....
 
 *Step 2: View the routing config*
@@ -33,12 +36,12 @@ metadata:
   labels:
     app: ks
   name: ks
-  namespace: myjbossapp-admin
+  namespace: myjbossapp-userxx
   resourceVersion: "33256"
-  selfLink: /oapi/v1/namespaces/myjbossapp-admin/routes/ks
+  selfLink: /oapi/v1/namespaces/myjbossapp-userxx/routes/ks
   uid: 14cf078c-8b8e-11e6-ba5b-080027782cf7
 spec:
-  host: ks-myjbossapp-UserName.apps.osecloud.com
+  host: ks-myjbossapp-userxx.{{APPS_ADDRESS}}
   port:
     targetPort: 8080-tcp
   to:
@@ -51,8 +54,8 @@ status:
     - lastTransitionTime: 2016-10-06T06:28:23Z
       status: "True"
       type: Admitted
-    host: ks-myjbossapp-UserName.apps.osecloud.com
-    routerName: router  
+    host: ks-myjbossapp-userxx.{{APPS_ADDRESS}}
+    routerName: router
 ....
 
 Note here that the `host:` is set to the FQDN that your application is
@@ -91,10 +94,10 @@ metadata:
   name: ks
   namespace: myjbossapp-shchan
   resourceVersion: "2903142"
-  selfLink: /oapi/v1/namespaces/myjbossapp-shchan/routes/ks
+  selfLink: /oapi/v1/namespaces/myjbossapp-userxx/routes/ks
   uid: fba5d1e6-a85f-11e5-be21-fa163ec58dad
 spec:
-  host: ks-myjbossapp-UserName.apps.osecloud.com
+  host: ks-myjbossapp-userxx.{{APPS_ADDRESS}}
   tls:
     termination: edge
   port:

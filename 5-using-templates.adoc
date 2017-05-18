@@ -193,7 +193,7 @@ application in the same *consoleproject-userxx*. It takes you to
 select image or template page and choose the *PHP* template under PHP
 apps.
 
-image::php.png[image]
+image::php.png[PHP Template,300,align="center"]
 
 Enter the following values for each parameters:
 
