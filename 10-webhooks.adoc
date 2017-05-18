@@ -1,6 +1,7 @@
 [[scm-web-hooks]]
 SCM Web Hooks
-~~~~~~~~~~~~~
+~~~~~~~~~~~~
+:data-uri:
 
 OpenShift offers several mechanisms to trigger the automatic deployment
 of applications. In this Lab, we will demonstrate the deployment of a
@@ -18,17 +19,19 @@ In Part I of the Lab we will:
 
 *Step 1: Create new project*
 
-*Remember* to substitute the UserName
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
 
 ....
-$ oc new-project scm-web-hooks-UserName --display-name="Test WebHooks"
+$ oc new-project scm-web-hooks-userxx --display-name="Test WebHooks"
 ....
 
 *Step 2: Create new application*
 
 * We will use the forked repository from the previous lab.
 
-*Remember* to substitute the UserName.
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
 
 ....
 $ oc new-app --image-stream=php --code=https://github.com/your_github_username/bluegreen.git --name=scm-web-hooks
@@ -85,7 +88,7 @@ $ oc logs build/scm-web-hooks-1
 The build should finish similar to:
 
 ....
-Pushing image 172.30.89.28:5000/scm-web-hooks-admin/scm-web-hooks:latest ...
+Pushing image 172.30.89.28:5000/scm-web-hooks-userxx/scm-web-hooks:latest ...
 Pushed 0/5 layers, 2% complete
 Pushed 1/5 layers, 22% complete
 Pushed 2/5 layers, 44% complete
@@ -105,21 +108,22 @@ NAME            CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 scm-web-hooks   172.30.71.191   <none>        8080/TCP   4m
 ....
 
-*Remember* to substitute the UserName.
+IMPORTANT: Please replace *userxx* with the username assigned to you in
+the commands below.
 
 ....
-$ oc expose service scm-web-hooks --hostname=scm-web-hooks.UserName.apps.osecloud.com
+$ oc expose service scm-web-hooks --hostname=scm-web-hooks.userxx.{{APPS_ADDRESS}}
 NAME            HOST/PORT                                  PATH      SERVICE         LABELS              TLS TERMINATION
-scm-web-hooks   scm-web-hooks.UserName.apps.osecloud.com             scm-web-hooks   app=scm-web-hooks   
+scm-web-hooks   scm-web-hooks.userxx.{{APPS_ADDRESS}}             scm-web-hooks   app=scm-web-hooks
 ....
 
 *Step 5: Test the application*
 
 * Use the newly created route, in the above case
-`scm-web-hooks.UserName.apps.osecloud.com` and paste it in your browser.
+`scm-web-hooks.userxx.{{APPS_ADDRESS}}` and paste it in your browser.
 * You should see:
 
-image:images/green_deployment.png[image]
+image::green_deployment.png[image]
 
 [[part-ii]]
 Part II
@@ -147,7 +151,7 @@ this case.
 link.
 * Copy the *GitHub webhook URL*. You will need this URL for next step.
 
-image:images/github_show_url.png[image]
+image::github_show_url.png[image]
 
 *Step 2: Configure GitHub repository Web Hook*
 
@@ -162,7 +166,7 @@ image:images/github_show_url.png[image]
 * Confirm by adding the *Add Webhook* button in green at the bottom of
 the page.
 
-image:images/github_add_webhook.jpg[image]
+image::github_add_webhook.jpg[image]
 
 *Step 3: Redeploy the application*
 
