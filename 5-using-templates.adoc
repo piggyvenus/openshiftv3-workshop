@@ -37,7 +37,7 @@ template from the list and click *Select*. You will also notice *MySQL
 (Persistent)* template. But we will address that in a different lab
 exercise.
 
-image::mysql_ephemeral_template.png[MySQL Template,200,align="center"]
+image::mysql_ephemeral_template.png[MySQL Template,200 !important,align="center"]
 
 You will be taken to the mysql ephemeral creation screen. Click edit
 parameters and edit the values to use the following values:
