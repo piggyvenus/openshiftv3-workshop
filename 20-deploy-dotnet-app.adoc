@@ -396,7 +396,7 @@ $ curl dotnet11-userxx.{{APPS_ADDRESS}}
         <link rel="stylesheet" href="/css/site.min.css?v=78TaBTSGdek5nF1RDwBLOnz-PHnokB0X5pwQZ6rE9ZA" />
 </head>
 <body>
-.....
+
 <script>(window.jQuery||document.write("\u003Cscript src=\u0022\/lib\/jquery\/dist\/jquery.min.js\u0022\u003E\u003C\/script\u003E"));</script>
         <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js">
         </script>
@@ -407,6 +407,7 @@ $ curl dotnet11-userxx.{{APPS_ADDRESS}}
 
 </body>
 </html>
+....
 
 Congratulations! In this exercise you have learned how to create, build
 and deploy a JBoss EAP application using OpenShift's JBoss EAP Builder
