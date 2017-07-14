@@ -5,7 +5,7 @@ config:
       value: openshift
     - name: CONSOLE_ADDRESS
       desc: HTTP address of the OpenShift console
-      value: https://master.ocp.tauil.org
+      value: https://platform.eps-nonprod.corp.cox.com
     - name: APPS_ADDRESS
       desc: HTTP address suffix of apps deployed on OpenShift
       value: apps.ocp.tauil.org
