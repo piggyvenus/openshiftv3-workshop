@@ -35,4 +35,4 @@ modules:
   16-adding-database-to-springboot-app:
     name: Adding a backend database to the SpringBoot application
   17-dynamic-config-updates-using-configmaps:
-    name: Changing code on the fly
+    name: Dynamic configuration updates using ConfigMap 
