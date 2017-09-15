@@ -1,0 +1,116 @@
+[[exxon-containerize-application]]
+Containerized An Application
+
+
+In this exercise we will learn how to containerize an application and enable with CICD pipeline.
+
+*Step 1: Make changes to the code*
+
+....
+$ git clone ...
+<make code changes>
+....
+
+
+*Step 2: Push to Source Control*
+
+
+....
+$ git add <update files>
+$ git commit -m "description of the commit"
+$ git push -u origin master
+....
+
+*Step 3: Create projects*
+
+If you want to, you can create a new project based on what you have
+learned in the previous lab. Since we already have a project we will use
+it. Run the following command to make sure.
+
+IMPORTANT: Please replace *username* with the username assigned to you in
+the commands below.
+
+To create a new project"
+1. Login https://openshift.caascloud.net:8443
+2. Click "New Project"
+3. Enter project information
+4. Click create
+
+*Step 4: Create QA project*
+1. Login https://openshift.caascloud.net:8443
+2. Click "New Project"
+3. Enter project name as qa-<username>
+4. Click create
+
+*Step 5: Grant Permission to the projects*
+
+IMPORTANT:
+1. lab1 must match the project name
+2. qa-**username** must match created from step 4
+...
+oc policy add-role-to-user edit system:serviceaccount:lab1:jenkins -n lab1
+oc policy add-role-to-user edit system:serviceaccount:lab1:jenkins -n qa-**username**
+oc policy add-role-to-group system:image-puller system:serviceaccount:qa-**username** -n lab1
+
+...
+
+*Step 6: Create CICD pipeline*
+1. Once you are inside a project, you will click "Import YAML/JSON" tab
+2. Copy the information below and update the context with your information
+
+IMPORTANT:
+1. lab1 must match the project name
+2. myapp must match your application name
+
+```
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  annotations:
+  labels:
+    app: jenkins-pipeline-example
+    name: sample-pipeline
+    template: application-template-sample-pipeline
+  name: sample-pipeline
+spec:
+  nodeSelector: null
+  output: {}
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    type: None
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfile: |
+        node {
+        stage 'buildInDev'
+        openshiftBuild(namespace: 'lab1', buildConfig: 'myapp', showBuildLogs: 'true')
+        stage ('deployInDev')
+        openshiftDeploy(namespace: 'lab1', deploymentConfig: 'myapp')
+        stage ('tagImage')
+        openshiftTag(namespace: 'lab1', sourceStream: 'myapp',  sourceTag: 'latest', destinationNamespace:'qa', destinationStream: 'myapp', destinationTag: 'promoteToQA')
+        stage ('deployInQA') {
+          input 'Promote Dev Image to Testing?'
+          sh "oc project qa"
+          sh "oc new-app myapp:promoteToQA"
+          openshiftScale(namespace: 'qa-usernames', deploymentConfig: 'myapp',replicaCount: '2')
+          sh "oc expose svc myapp"
+          }
+
+        }
+    type: JenkinsPipeline
+  triggers: []
+
+```
+
+
+3. Paste below onto the text area
+4. Click create
+
+
+*Step 7: Build Triggers (GitLab Integrations)*
+
+*Step 8: Automatically Build new containers and shift workload to new container*
+
+*Step 9: Scaling/Decommissions*

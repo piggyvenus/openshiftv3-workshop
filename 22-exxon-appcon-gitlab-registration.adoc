@@ -1,0 +1,11 @@
+[[exxon-appcon-gitlab-registration]]
+Register Gitlab for Appcon Workshop
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this lab you will register as a new user to access both gitlab and OpenShift platform
+
+*Step 1: Register*
+
+1. Go to https://gitlab.caascloud.net/users/sign_in
+2. Enter information
+3. Click Register
