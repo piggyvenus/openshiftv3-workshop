@@ -1,0 +1,37 @@
+[[create-an-app-from-a-docker-image]]
+Create an App from a Docker image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this lab you will learn how to create a new project on OpenShift and
+how to create an application from an existing docker image using Web UI.
+
+*Step 1: Add a new project from command line*
+
+IMPORTANT: Please replace *userxx* with your username
+
+1. login to web UI via https://master.ocp.tauil.org
+2. Use the same username and password that assigned to you
+3. Click image:images/new-project.png[new project button]
+4. Enter project name (all lower case) and other information
+image:images/new-project-details.png[new project details]
+5. Click create button
+
+
+*Step 2: Create an application from a Docker Image*
+
+1. Once you created a new project, we will see this page
+image:images/add-project.png[Add to Project]
+2. Click on "Deploy Image" tab
+3. Select Image Name radio button
+image:images/deploy-image.png[deploy image]
+4. Enter the name of the container image under Image Name as
+redhatworkshops/welcome-php
+5. click on image:images/search.png[search]
+6. Enter a Name for the deploy
+image:images/image-details.png[image]
+7. Click create
+oc get all` again to make sure the project is empty.
+
+Congratulations!! You now know how to create a project, an application
+using an external docker image and navigate around. Get ready for more
+fun stuff!
