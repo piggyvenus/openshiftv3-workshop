@@ -106,7 +106,7 @@ the commands below.
   spring.datasource.username=user
   spring.datasource.password=password
   ....
-- Click create
+- Click `Create`
 
   You need to make sure that you substitute the correct values you noted
   in the last step when you are creating the service. *Be extra-careful..
@@ -273,7 +273,7 @@ It will open a new tab and your running application will greet you
 
 `Hello from bootapp-2-06a4b`
 
-Now move back to your webconsole and watch the pod logs. 
+Now move back to your webconsole and watch the pod logs.
 
 Now access the application with the `/dbtest` extension -
 `http://bootapp-spring-userxx.{{APPS_ADDRESS}}/dbtest`
