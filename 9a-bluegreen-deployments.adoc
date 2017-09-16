@@ -24,7 +24,7 @@ project that displays a green rectangle.
 * We will then switch the FQDN to from the first application (blue) to
 the second application (green).
 
-image::blue_green_deployment.png[image]
+image::images/blue_green_deployment.png[image]
 
 [[part-i]]
 Part I
@@ -34,22 +34,23 @@ Part I
 
 IMPORTANT: Please replace *userxx* with the username assigned to you in
 the commands below.
+IMPORTANT: Please replace *username* with your username
 
-....
-$ oc new-project bluegreen-userxx --display-name="Blue Green Project" --description="Blue Green Project"
-....
+1. login to web UI via https://master.ocp.tauil.org
+2. Use the same username and password that assigned to you
+3. Click "New Project"
+image::images/new-project.png[image]
+4. Enter project name (all lower case) as myproject-*username* and other information
+image:images/new-project-details.png[image]
+5. Click create button
+
 
 *Step 2: List existing image builder or image streams*
+1. Click "Add to Project"  --> Broswer Catalog
+2. Click PHP
+3. Click drop down from the Version under PHP and get the list of image stream
+image:images/versions.png[image]
 
-....
-$ oc new-app -S --image-stream=php
-
-Image streams (oc new-app --image-stream=<image-stream> [--code=<source>])
------
-php
-  Project: openshift
-  Tags:    5.5, 5.6, latest
-....
 
 *Step 3: Create an application*
 
