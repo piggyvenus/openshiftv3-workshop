@@ -32,28 +32,28 @@ Part I
 
 *Step 1: Create a new project*
 
-IMPORTANT: Please replace *username* with the username assigned to you in
+IMPORTANT: Please replace *userxx* with the username assigned to you in
 the commands below.
-IMPORTANT: Please replace *username* with your username
+IMPORTANT: Please replace *userxx* with your username
 
 - login to web UI via https://master.ocp.tauil.org
 - Use the same username and password that assigned to you
-- Click "New Project"
+- Click `New Project`
 
 image::images/new-project.png[image]
 
-- Enter project name (all lower case) as "bluegreen-*username*" and other information
+- Enter `bluegreen-*userxx*` as project name (all lower case)
 
 image::images/new-project-details.png[image]
 
-- Click create button
+- Click `Create`
 
 
 *Step 2: List existing image builder or image streams*
 
-- Click "Add to Project"  --> Browse Catalog
-- Click PHP
-- Click drop down from the Version under PHP and get the list of image stream
+- Click `Add to Project`  --> select `Browse Catalog`
+- Click `PHP`
+- Click drop down from the version under PHP and get the list of image stream
 
 image::images/version.png[image]
 
@@ -67,23 +67,23 @@ We will be using an env var in order to change the color of the box; but
 in practice you would use a different branch for each version of the
 code. (E.g. v1 branch and v2 branch)
 
-- Click "Add to Project"  --> Browse Catalog
-- Click PHP
-- Click "Select" in the PHP option
-- Enter name as blue
+- Click `Add to Project`  --> select `Browse Catalog`
+- Click `PHP`
+- Click `Select` in the PHP option
+- Enter name as `blue`
 - Enter Git Repository URL as https://github.com/RedHatWorkshops/bluegreen
-- Click "advanced options" link below
-- Scroll down to "Environment Variables (Runtime Only)" session
-- Add "COLOR" as key and "blue" as value
-- Click create
+- Click `advanced options` link below
+- Scroll down to `Environment Variables (Runtime Only)` session
+- Add `COLOR` as key and `blue` as value
+- Click `Create`
 
 
 
 *Step 4: Monitor the application build*
 
-- Click Builds --> Builds
-- Click #1
-- Click Logs tab
+- Click `Builds` --> `Builds`
+- Click `#1`
+- Click `Logs` tab
 
 
   Once the build finishes you should see something similar to:
@@ -103,8 +103,8 @@ code. (E.g. v1 branch and v2 branch)
 
 *Step 5: Check application deployment status*
 
-- Click Applications --> Pods
-- Pods blue shows "Running" Status
+- Click `Applications` --> `Pods`
+- Pods `blue` shows `Running` Status
 
 Notice that the build pod has Completed and you now have a single instance
 of the application running under one single pod.
@@ -113,12 +113,12 @@ This application displays a blue square.
 
 *Step 6: List the service*
 
-- Click Applications --> Services to view all services
+- Click `Applications` --> `Services` to view all services
 
 
 *Step 8: Test the application*
 
-- Click Overview
+- Click `Overview`
 - Click route link on the top right on the screen
 
 At this point you have deployed an application that displays for
@@ -142,15 +142,15 @@ image::blue_green_active_green.png[image]
 Create a new application the same way as you did above in Part I. Make
 sure to name the application as 'green' this time.
 
-- Click "Add to Project"  --> Browse Catalog
-- Click PHP
-- Click "Select" in the PHP option
-- Enter name as blue
+- Click `Add to Project`  --> select `Browse Catalog`
+- Click `PHP`
+- Click `Select` in the PHP option
+- Enter name as `blue`
 - Enter Git Repository URL as https://github.com/RedHatWorkshops/bluegreen
-- Click "advanced options" link below
-- Scroll down to "Environment Variables (Runtime Only)" session
-- Add "COLOR" as key and "green" as value
-- Click create
+- Click `advanced options` link below
+- Scroll down to `Environment Variables (Runtime Only)` session
+- Add `COLOR` as key and `green` as value
+- Click `Create`
 
 
 * Wait until the application is built and deployed. You should now see
@@ -164,11 +164,11 @@ was just created. You are essentially still using the FQDN you had
 previously created. However, that route will now point to a different
 (green) service.
 
-- Click Applications --> Routes
-- Click blue
-- Click Actions --> Edit
-- Select green under "Service"
-- Click Save
+- Click `Applications` --> `Routes`
+- Click `blue`
+- Click `Actions` --> `Edit`
+- Select `green` under Service
+  - Click `Save`
 
 
 *Step 2: Test the application*
