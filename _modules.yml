@@ -22,9 +22,9 @@ config:
 modules:
   0-setting-up-client-tools:
     name: Setting up client tools
-  1-create-app-from-docker-image:
+  1a-create-app-from-docker-image:
     name: Create an App from a Docker image
-  2-create-app-using-docker-build:
+  2a-create-app-using-docker-build:
     name: Create an App using Docker build
   7-binary-deployment-war-file:
     name: Binary Deployment of a war file
