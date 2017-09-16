@@ -10,21 +10,22 @@ from your screen.
 
 *Step 1: Create a new project*
 
-IMPORTANT: Please replace *username* with the username assigned to you in
+IMPORTANT: Please replace *userxx* with the username assigned to you in
 the commands below.
-IMPORTANT: Please replace *username* with your username
+
+IMPORTANT: Please replace *userxx* with your username
 
 - login to web UI via https://master.ocp.tauil.org
 - Use the same username and password that assigned to you
-- Click "New Project"
+- Click `New Project`
 
 image::images/new-project.png[image]
 
-- Enter project name (all lower case) as spring-*username* and other information
+- Enter project name (all lower case) as spring-*userxx* and other information
 
 image::images/new-project-details.png[image]
 
-- Click create button
+- Click `Create`
 
 *Step 2:* Add the Spring Boot image stream.
 
@@ -70,10 +71,10 @@ You have two ways to add this to the catalog.
 
 To add using Web UI
 
-- Click "Add to Project" --> select Import YAML/JSON
+- Click `Add to Project` --> select `Import YAML/JSON`
 - Copy the contents from https://raw.githubusercontent.com/VeerMuchandi/openshift-springboot/master/springboot-imagestream.json into the text area
-- Click create
-- Click Builds --> images to validate your spring boot image if it is listed
+- Click `Create`
+- Click `Builds` --> `Images` to validate your spring boot image if it is listed
 
 
 *Step 3 - Create application*
