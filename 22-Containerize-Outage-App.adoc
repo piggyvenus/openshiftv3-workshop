@@ -1,0 +1,94 @@
+[[Containerize-Outaage-App]]
+== Containerize Outage Application
+
+:data-uri:
+
+In this lab exercise we will learn how to container a WAR file and
+create you application container image
+
+*Step 1: Login and Create a Project*
+
+1. oc login https://tusltosm01.unisource.corp:8443 -u <user-name>
+2. oc new-project <name of your project> (please add your username as part of the project name)
+
+*Step 2: prepare to upload the war from local file system*
+Since there isn't any git repo in the environment, we will container our application via binary build.
+The location of the war file: G:\IT Projects\Active\Account Manager_Shared\OpenShiftPOC
+
+1. mkdir -p outageapp/deployments
+2. cp outageapp.war /deployments/
+3. cd outageapp
+
+*Step 3: Using builder image*
+Create a new build using the builder image of your choice. Here we are
+using JBoss EWS (tomcat 8) image. The flag `binary=true` indicates that
+this build will use the binary content instead of the url to the source
+code.
+
+Here I am naming my application as *outageapp*. So all the artifacts will
+get the name *outageapp*.
+
+....
+$ oc new-build --image-stream=jboss-webserver30-tomcat8-openshift --binary=true --name=outageapp
+
+--> Found image 58272fb (11 weeks old) in image stream "jboss-webserver30-tomcat8-openshift" in project "openshift" under tag "latest" for "jboss-webserver30-tomcat8-openshift"
+
+    JBoss Web Server 3.0
+    --------------------
+    Platform for building and running web applications on JBoss Web Server 3.0 - Tomcat v8
+
+    Tags: builder, java, tomcat8
+
+    * A source build using binary input will be created
+      * The resulting image will be pushed to image stream "myapp:latest"
+      * Use 'start-build --from-dir=DIR|--from-repo=DIR|--from-file=FILE' to trigger a new build
+      * WARNING: a binary build was created, you must specify one of --from-dir|--from-file|--from-repo when starting builds
+
+--> Creating resources with label build=outageapp ...
+    imagestream "outageapp" created
+    buildconfig "outageapp" created
+--> Success
+....
+
+*Step 4: Executing the build*
+
+Start the build by uploading the contents of your `deployments`
+directory. Make sure you are in the parent folder where you created the
+`deployments` folder inside previously. Remember the war file is in the
+`deployments` folder. The tomcat builder image knows to copy the
+contents of the `deployments` folder to the `deployments` directory and
+then builds the application image.
+
+....
+$ oc start-build outageapp --from-dir=.
+
+Uploading directory "." as binary input for the build ...
+build "outageapp-1" started
+....
+
+*Step 5: Deploy the application container*
+1. oc new-app outageapp --allow-missing-imagestream-tags
+2. Now, expose the service as a route to be able to use it from the
+browser.
+....
+$ oc expose svc outageapp
+
+route "outageapp" exposed
+....
+
+*Step 6: Add properties file location to the deployment configuration*
+As a developer, you may want to create directory within the container and copy properties files to it.
+Outage application uses ManualOutageFeed.xml from /apps/content/apps/OutageMap/
+
+....
+1. Adding environment variable: `oc set env dc/outageapp WEB_ENV_SERVER=b2c-server WEB_ENV_TYPE=test`
+2. oc get dc (to get the name of the deployment config)
+3. oc volume dc/outageapp --add --type=emptyDir --mount-path=/apps/content
+4. On the local file system, run `mkdir -p contents/apps/OutageMap`
+5. cp ManualOutageFeed.xml from G:\IT Projects\Active\Account Manager_Shared\OpenShiftPOC to contents/apps/OutageMap
+6. run `oc get pods` to get the name of the pod
+7. Change directory to contents
+8. run `oc rsync . <pod name>:/apps/content`
+9. run 'oc rsh <pod name>'
+10. Go to the directory /apps/contents/apps/OutageMap to validate the XML file
+....
