@@ -2,7 +2,6 @@
 
 
 ## Lab Exercises Table of Contents
-* Lab 0. [Setting up client tools](0-setting-up-client-tools.adoc)
 * Lab 1. [Creating an application from an existing Docker Image using Web UI](1a-create-app-from-docker-image.adoc)
 * Lab 2. [Create an application using Docker Build Strategy using Web UI and temaplate](2a-create-app-using-docker-build.adoc)
 * Lab 3. [Binary deployment of a war file](7-binary-deployment-war-file.adoc)
