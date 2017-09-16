@@ -15,7 +15,7 @@ IMPORTANT: Please replace *userxx* with your username
 - Click "New-Project"
 
 image::images/new-project.png[image]
-- Enter project name (all lower case) and other information
+- Enter project name (all lower case) as dockerfile-*username* and other information
 
 image::images/new-project-details.png[image]
 - Click create button

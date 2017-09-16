@@ -32,24 +32,30 @@ Part I
 
 *Step 1: Create a new project*
 
-IMPORTANT: Please replace *userxx* with the username assigned to you in
+IMPORTANT: Please replace *username* with the username assigned to you in
 the commands below.
 IMPORTANT: Please replace *username* with your username
 
-1. login to web UI via https://master.ocp.tauil.org
-2. Use the same username and password that assigned to you
-3. Click "New Project"
+- login to web UI via https://master.ocp.tauil.org
+- Use the same username and password that assigned to you
+- Click "New Project"
+
 image::images/new-project.png[image]
-4. Enter project name (all lower case) as myproject-*username* and other information
-image:images/new-project-details.png[image]
-5. Click create button
+
+- Enter project name (all lower case) as "bluegreen-*username*" and other information
+
+image::images/new-project-details.png[image]
+
+- Click create button
 
 
 *Step 2: List existing image builder or image streams*
-1. Click "Add to Project"  --> Broswer Catalog
-2. Click PHP
-3. Click drop down from the Version under PHP and get the list of image stream
-image:images/versions.png[image]
+
+- Click "Add to Project"  --> Browse Catalog
+- Click PHP
+- Click drop down from the Version under PHP and get the list of image stream
+
+image::images/version.png[image]
 
 
 *Step 3: Create an application*
@@ -61,82 +67,59 @@ We will be using an env var in order to change the color of the box; but
 in practice you would use a different branch for each version of the
 code. (E.g. v1 branch and v2 branch)
 
-....
-$ oc new-app --image-stream=php --code=https://github.com/RedHatWorkshops/bluegreen --env COLOR=blue --name=blue
-....
+- Click "Add to Project"  --> Browse Catalog
+- Click PHP
+- Click "Select" in the PHP option
+- Enter name as blue
+- Enter Git Repository URL as https://github.com/RedHatWorkshops/bluegreen
+- Click "advanced options" link below
+- Scroll down to "Environment Variables (Runtime Only)" session
+- Add "COLOR" as key and "blue" as value
+- Click create
+
+
 
 *Step 4: Monitor the application build*
 
-....
-$ oc get builds
-
-NAME      TYPE      FROM          STATUS     STARTED              DURATION
-blue-1    Source    Git@afdc492   Complete   About a minute ago   1m8s
-....
-
-Using the build name of the recently created application run:
-
-....
-$ oc logs build/blue-1
-....
-
-Once the build finishes you should see something similar to:
-
-....
-...
----> Installing application source...
+- Click Builds --> Builds
+- Click #1
+- Click Logs tab
 
 
-Pushing image 172.30.89.28:5000/bluegreen-userxx/blue:latest ...
-Pushed 0/5 layers, 2% complete
-Pushed 1/5 layers, 24% complete
-Pushed 2/5 layers, 46% complete
-Pushed 3/5 layers, 68% complete
-Pushed 3/5 layers, 100% complete
-Pushed 4/5 layers, 100% complete
-Pushed 5/5 layers, 100% complete
-Push successful
-....
+  Once the build finishes you should see something similar to:
+
+  ...
+  Pushing image docker-registry.default.svc:5000/guide/blue:latest ...
+  Pushed 0/6 layers, 2% complete
+  Pushed 1/6 layers, 27% complete
+  Pushed 2/6 layers, 40% complete
+  Pushed 3/6 layers, 53% complete
+  Pushed 4/6 layers, 73% complete
+  Pushed 4/6 layers, 92% complete
+  Pushed 5/6 layers, 97% complete
+  Pushed 6/6 layers, 100% complete
+  Push successful
+  ....
 
 *Step 5: Check application deployment status*
 
-....
-$ oc get pods
+- Click Applications --> Pods
+- Pods blue shows "Running" Status
 
-NAME           READY     STATUS       RESTARTS   AGE
-blue-1-build   0/1       Completed    0          4m
-blue-1-ruyrt   1/1       Running      0          19s
-....
-
-Notice that the build pod has exited and you now have a single instance
+Notice that the build pod has Completed and you now have a single instance
 of the application running under one single pod.
 
 This application displays a blue square.
 
 *Step 6: List the service*
 
-....
-$ oc get service
-....
+- Click Applications --> Services to view all services
 
-*Step 7: Create a route for the application*
-
-*Remember* to substitute the username. Expose the service:
-
-....
-$ oc expose service blue --hostname=bluegreen.userxx.{{APPS_ADDRESS}} --name=bluegreen
-....
 
 *Step 8: Test the application*
 
-....
-$ oc get route
-....
-
-Copy the HOST/PORT and paste it in your browser. You should see
-something similar to:
-
-image::blue_deployment.jpeg[image]
+- Click Overview
+- Click route link on the top right on the screen
 
 At this point you have deployed an application that displays for
 illustration purposes a blue rectangle for version 1.
@@ -159,58 +142,39 @@ image::blue_green_active_green.png[image]
 Create a new application the same way as you did above in Part I. Make
 sure to name the application as 'green' this time.
 
-....
-$ oc new-app --image-stream=php --code=https://github.com/RedHatWorkshops/bluegreen --env COLOR=green --name=green
-....
+- Click "Add to Project"  --> Browse Catalog
+- Click PHP
+- Click "Select" in the PHP option
+- Enter name as blue
+- Enter Git Repository URL as https://github.com/RedHatWorkshops/bluegreen
+- Click "advanced options" link below
+- Scroll down to "Environment Variables (Runtime Only)" session
+- Add "COLOR" as key and "green" as value
+- Click create
+
 
 * Wait until the application is built and deployed. You should now see
-two services if you run:
+two services on Overview
 
-....
-$ oc get service
 
-NAME      CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
-blue      172.30.2.161     <none>        8080/TCP   24m
-green     172.30.136.184   <none>        8080/TCP   1m
-....
-
-* Edit the previously created route and change the `service` name (from
+*Step 2 Edit service*
+Edit the previously created route and change the `service` name (from
 `blue` to `green`), all the way at the bottom to the new service that
 was just created. You are essentially still using the FQDN you had
 previously created. However, that route will now point to a different
 (green) service.
 
-....
-$ oc edit route bluegreen
+- Click Applications --> Routes
+- Click blue
+- Click Actions --> Edit
+- Select green under "Service"
+- Click Save
 
-apiVersion: v1
-kind: Route
-metadata:
-  creationTimestamp: 2015-12-22T19:16:28Z
-  labels:
-    app: green
-  name: bluegreen
-  namespace: bluegreen-userxx
-  resourceVersion: "2969408"
-  selfLink: /oapi/v1/namespaces/bluegreen-userxx/routes/bluegreen
-  uid: 80829b59-a8e0-11e5-be21-fa163ec58dad
-spec:
-  host: bluegreen.userxx.{{APPS_ADDRESS}}
-  port:
-    targetPort: "8080"
-  to:
-    kind: Service
-    name: green
-status: {}
-....
 
 *Step 2: Test the application*
 
-....
-$ oc get route
-....
+- Click onto the Route URL
 
-* Copy the HOST/PORT and paste it in your browser.
 * You should now see the new version of the recently deployed
 application with a green rectangle.
 
