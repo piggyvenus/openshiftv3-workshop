@@ -12,13 +12,15 @@ IMPORTANT: Please replace *userxx* with your username
 
 - login to web UI via https://master.ocp.tauil.org
 - Use the same username and password that assigned to you
-- Click "New-Project"
+- Click `New-Project`
 
 image::images/new-project.png[image]
-- Enter project name (all lower case) as dockerfile-*userxx* and other information
+
+- Enter `dockerfile-*userxx*` as project name (all lower case)
 
 image::images/new-project-details.png[image]
-- Click create button
+
+- Click `Create`
 
 
 *Step 2: Create an application that uses Dockerfile*
@@ -46,21 +48,20 @@ Later it uses this image to deploy an application that runs in a pod.
 
 Now let's create an application using this approach.
 
-- Click into the project
-- Click Add to Project --> Browse Catalog
+- Click `Add to Project` --> select `Browse Catalog`
 
 image::images/browse-catalog.png[image]
 
 - Type: dockerfile
-- Click 'Select" on the dockerfilebuild template
+- Click `Select` on the dockerfilebuild template
 
 image::images/dockerfile-template.png[image]
 
-- Parameters:
+- Enter values for Parameters as shown below:
   * Application Name: time
   * Git Repo: https://github.com/VeerMuchandi/time
 
-- Click Create and "Continue to overview"
+- Click `Create` and `Continue to overview`
 
 You'll notice that OpenShift created a few things at this point. You
 will find a buildconfig, deploymentconfig, service and imagestreams in
@@ -73,15 +74,16 @@ the build.
 In the meanwhile lets have a look at the buildconfig by running the
 command shown below.
 
-- Click "Overview" on the left menu
+- Click `Overview` on the left menu
 
 image::images/overview.png[image]
 
-- Click anywhere next to the deployment time, so it will expand the information as shown below.
+- Click anywhere next to the deployment `time`, so it will expand the information as shown below.
 
 image::images/expand.png[image]
 
-- Click "View Full Log" from the bottom right on the overview panel
+- Click `View Full Log` from the bottom right on the overview panel
+- Log shows as shown below
   ....
   Removing intermediate container 850026b88ed6
   Successfully built 86375f734d8f
@@ -97,13 +99,13 @@ image::images/expand.png[image]
   In the above log note how the image is pushed to the local docker
   registry. The registry is running at `docker-registry.default.svc:5000/`.
 
-- Click Builds --> Builds on the left menu
+- Click `Builds` --> `Builds` on the left menu
 
 image::images/build-menu.png[image]
 
-- Click onto time
-- Click Actions --> Edit on the top right corner to view the buildconfig
-- Click Actions --> Edit yaml to view the buildconfig YAML file
+- Click onto `time`
+- Click `Actions` --> `Edit` on the top right to view the buildconfig
+- Click `Actions` --> `Edit yaml` to view the buildconfig YAML file
 
 image::images/edit.png[image]
 
@@ -121,9 +123,9 @@ a deploy process. Let us also quickly look at the deployment
 configuration by running the following command. Note dc represents
 deploymentconfig.
 
-- Click on Applications --> Deployments from the left menu
-- Click time
-- Click Actions --> Edit YAML
+- Click `Applications` --> `Deployments` from the left menu
+- Click `time`
+- Click `Actions` --> `Edit YAML`
 
   ....
   apiVersion: v1
@@ -189,7 +191,7 @@ deploymentconfig.
   means the deployment step deploys the application image what was built
   earlier during the build step.
 
-- Applications --> Pods
+- Click `Applications` --> `Pods`
   If you get the list of pods, you'll notice that the application gets
   deployed quickly and starts running in its own pod.
 
@@ -199,20 +201,20 @@ deploymentconfig.
 This step is very much the same as what we did in the previous exercise.
 We will check the service and add a route to expose that service.
 
-- Click Applications --> Services
+- Click `Applications` --> `Services`
   Here we expose the service as a route.
-- Click Overview
-- Click Create Route
+- Click `Overview`
+- Click `Create Route`
 
 image::images/create-route.png[image]
 
-- Click create
-- Click Applications --> Routes
+- Click `Create`
+- Click `Applications` --> `Routes`
 
 *Step 6: Run the application*
 
-- Click Applications --> Routes
-- Click time
+- Click `Applications` --> `Routes`
+- Click `time`
 - Click on link on the route
 
 Now run the application by using the route you provided in the previous
