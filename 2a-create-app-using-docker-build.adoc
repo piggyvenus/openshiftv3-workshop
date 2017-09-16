@@ -12,9 +12,9 @@ IMPORTANT: Please replace *userxx* with your username
 
 1. login to web UI via https://master.ocp.tauil.org
 2. Use the same username and password that assigned to you
-3. Click image:images/new-project.png[new project button]
+3. Click image:images/new-project.png[image]
 4. Enter project name (all lower case) and other information
-image:images/new-project-details.png[new project details]
+image:images/new-project-details.png[image]
 5. Click create button
 
 
@@ -45,11 +45,11 @@ Now let's create an application using this approach.
 
 1. Click into the project
 2. Click Add to Project --> Browse Catalog
-image:images/browse-catalog.png[Browse Catalog]
+image:images/browse-catalog.png[image]
 
 3. Type: dockerfile
 4. Click 'Select" on the dockerfilebuild template
-image:images/dockerfile-template.png[Dockerfile Build]
+image:images/dockerfile-template.png[image]
 
 5. Parameters:
   * Application Name: time
@@ -68,9 +68,9 @@ the build.
 In the meanwhile lets have a look at the buildconfig by running the
 command shown below.
 
-1. Click image:images/overview.png[overview] on the left menu
+1. Click image:images/overview.png[image] on the left menu
 2. Click anywhere next to the deployment time, so it will expand the information as shown below.
-image:images/expand.png[Expand]
+image:images/expand.png[image]
 3. Click "View Full Log" from the bottom right on the overview panel
   ....
   Removing intermediate container 850026b88ed6
@@ -85,15 +85,15 @@ image:images/expand.png[Expand]
   notice that the docker image is successfully created and it will start
   pushing this to OpenShift's internal docker registry.
   In the above log note how the image is pushed to the local docker
-  registry. The registry is running at `172.30.246.7` at port `5000`.
+  registry. The registry is running at `docker-registry.default.svc:5000/`.
 
 4. Click Builds --> Builds on the left menu
-image:images/build-menu.png[Builds]
+image:images/build-menu.png[image]
 
 5. Click onto time
 6. Click Actions --> Edit on the top right corner to view the buildconfig
 7. Click Actions --> Edit yaml to view the buildconfig YAML file
-image:images/edit.png[Edit]
+image:images/edit.png[image]
 
 
   Note the name of the buildconfig in metadata is set to "time", the git
@@ -191,7 +191,7 @@ We will check the service and add a route to expose that service.
   Here we expose the service as a route.
 2. Click Overview
 3. Click Create Route
-image:images/create-route.png[Create Route]
+image:images/create-route.png[image]
 4. Click create
 5. Click Applications --> Routes
 
