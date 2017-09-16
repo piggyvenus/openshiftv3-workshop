@@ -9,31 +9,39 @@ how to create an application from an existing docker image using Web UI.
 
 IMPORTANT: Please replace *username* with your username
 
-1. login to web UI via https://master.ocp.tauil.org
-2. Use the same username and password that assigned to you
-3. Click image:images/new-project.png[image]
-4. Enter project name (all lower case) as myproject-*username* and other information
-image:images/new-project-details.png[image]
-5. Click create button
+- login to web UI via https://master.ocp.tauil.org
+- Use the same username and password that assigned to you
+- Click "New Project"
+
+image::images/new-project.png[image]
+- Enter project name (all lower case) as myproject-*username* and other information
+
+image::images/new-project-details.png[image]
+- Click create button
 
 
 *Step 2: Create an application from a Docker Image*
 
-1. Once you created a new project, we will see this page
-image:images/add-project.png[image]
+- Once you created a new project, we will see this page
 
-2. Click on "Deploy Image" tab
-3. Select "Image Name" radio button
-image:images/deploy-image.png[image]
+image::images/add-project.png[image]
 
-4. Enter the name of the container image under Image Name as
+- Click on "Deploy Image" tab
+- Select "Image Name" radio button
+
+image::images/deploy-image.png[image]
+
+- Enter the name of the container image under Image Name as
 redhatworkshops/welcome-php
-5. Click on image:images/search.png[image]
+- Click on search
 
-6. Enter a Name for the deploy
+image::images/search.png[image]
+
+- Enter a Name for the deploy
+
 image:images/image-details.png[image]
 
-7. Click create
+- Click create
 
 
 Congratulations!! You now know how to create a project, an application
