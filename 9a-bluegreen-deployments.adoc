@@ -24,7 +24,7 @@ project that displays a green rectangle.
 * We will then switch the FQDN to from the first application (blue) to
 the second application (green).
 
-image::images/blue_green_deployment.png[image]
+image::blue_green_deployment.png[image]
 
 [[part-i]]
 Part I
@@ -40,11 +40,11 @@ IMPORTANT: Please replace *userxx* with your username
 - Use the same username and password that assigned to you
 - Click `New Project`
 
-image::images/new-project.png[image]
+image::new-project.png[image]
 
 - Enter `bluegreen-*userxx*` as project name (all lower case)
 
-image::images/new-project-details.png[image]
+image::new-project-details.png[image]
 
 - Click `Create`
 
@@ -55,7 +55,7 @@ image::images/new-project-details.png[image]
 - Click `PHP`
 - Click drop down from the version under PHP and get the list of image stream
 
-image::images/version.png[image]
+image::version.png[image]
 
 
 *Step 3: Create an application*

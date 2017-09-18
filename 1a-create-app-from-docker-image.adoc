@@ -13,10 +13,10 @@ IMPORTANT: Please replace *userxx* with your username
 - Use the same username and password that assigned to you
 - Click "New Project"
 
-image::images/new-project.png[image]
+image::new-project.png[image]
 - Enter project name (all lower case) as myproject-*userxx* and other information
 
-image::images/new-project-details.png[image]
+image::new-project-details.png[image]
 - Click create button
 
 
@@ -24,22 +24,22 @@ image::images/new-project-details.png[image]
 
 - Once you created a new project, we will see this page
 
-image::images/add-project.png[image]
+image::add-project.png[image]
 
 - Click on "Deploy Image" tab
 - Select "Image Name" radio button
 
-image::images/deploy-image.png[image]
+image::deploy-image.png[image]
 
 - Enter the name of the container image under Image Name as
 redhatworkshops/welcome-php
 - Click on search
 
-image::images/search.png[image]
+image::search.png[image]
 
 - Enter a Name for the deploy
 
-image:images/image-details.png[image]
+image::/image-details.png[image]
 
 - Click create
 
