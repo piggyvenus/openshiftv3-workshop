@@ -41,7 +41,7 @@ image::search.png[image]
 
 image::image-details.png[image]
 
-- Click create
+- Click `Create`
 
 
 Congratulations!! You now know how to create a project, an application
