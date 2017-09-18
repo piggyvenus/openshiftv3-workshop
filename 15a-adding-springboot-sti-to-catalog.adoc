@@ -19,11 +19,11 @@ IMPORTANT: Please replace *userxx* with your username
 - Use the same username and password that assigned to you
 - Click `New Project`
 
-image::images/new-project.png[image]
+image::new-project.png[image]
 
 - Enter project name (all lower case) as spring-*userxx* and other information
 
-image::images/new-project-details.png[image]
+image::new-project-details.png[image]
 
 - Click `Create`
 
