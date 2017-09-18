@@ -70,13 +70,13 @@ code. (E.g. v1 branch and v2 branch)
 - Click `Add to Project`  --> select `Browse Catalog`
 - Click `PHP`
 
-image::php-catalog.php[image]
+image::php-catalog.png[image]
 
 - Click `Select` in the PHP option with the default version
 - Enter name as `blue`
 - Enter Git Repository URL as https://github.com/RedHatWorkshops/bluegreen
 
-image::blue.php[image]
+image::blue.png[image]
 
 - Click `advanced options` link below to expand the options area
 - Scroll down to `Environment Variables (Runtime Only)` session
