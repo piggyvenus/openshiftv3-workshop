@@ -69,13 +69,19 @@ code. (E.g. v1 branch and v2 branch)
 
 - Click `Add to Project`  --> select `Browse Catalog`
 - Click `PHP`
-- Click `Select` in the PHP option
+
+image::php-catalog.php[image]
+
+- Click `Select` in the PHP option with the default version
 - Enter name as `blue`
 - Enter Git Repository URL as https://github.com/RedHatWorkshops/bluegreen
-- Click `advanced options` link below
+
+image::blue.php[image]
+
+- Click `advanced options` link below to expand the options area
 - Scroll down to `Environment Variables (Runtime Only)` session
 - Add `COLOR` as key and `blue` as value
-- Click `Create`
+- Scroll down and click `Create`
 
 
 
@@ -145,12 +151,12 @@ sure to name the application as 'green' this time.
 - Click `Add to Project`  --> select `Browse Catalog`
 - Click `PHP`
 - Click `Select` in the PHP option
-- Enter name as `blue`
+- Enter name as `green`
 - Enter Git Repository URL as https://github.com/RedHatWorkshops/bluegreen
-- Click `advanced options` link below
+- Click `advanced options` link below to expand the options area
 - Scroll down to `Environment Variables (Runtime Only)` session
 - Add `COLOR` as key and `green` as value
-- Click `Create`
+- Scroll down and click `Create`
 
 
 * Wait until the application is built and deployed. You should now see
