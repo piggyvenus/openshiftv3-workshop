@@ -26,7 +26,7 @@ modules:
     name: Create an App from a Docker image
   2a-create-app-using-docker-build:
     name: Create an App using Docker build
-  7-binary-deployment-war-file:
+  7a-binary-deployment-war-file:
     name: Binary Deployment of a war file
   9a-bluegreen-deployments:
     name: Blue-Green Deployments
