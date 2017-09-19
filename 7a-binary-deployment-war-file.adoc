@@ -1,0 +1,82 @@
+[[binary-deployment-of-a-war-file]]
+Binary Deployment of a war file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the past you have seen how OpenShift can take your existing java
+code, build it and deploy the resultant docker image as an application.
+OpenShift S2I process includes an assemble script that copies the source
+code from a git repository, invokes a maven build, places the resultant
+war file in the deployments folder, builds a new application image and
+pushes that image into the registry.
+
+But how about if you want OpenShift to deploy a war file that you built
+yourself?
+
+In this exercise you will learn to deploy a war file. We will assume
+that you built your source code outside of OpenShift build process and
+want to download the WAR file on your workstation.
+
+*Step 1: Add a new project from command line*
+
+IMPORTANT: Please replace *userxx* with your username
+
+- login to web UI via https://master.ocp.tauil.org
+- Use the same username and password that assigned to you
+- Click `New-Project`
+
+image::new-project.png[image]
+
+- Enter `dockerfile-*userxx*` as project name (all lower case)
+
+image::new-project-details.png[image]
+
+- Click `Create`
+
+
+*Step 2: Deploy war file*
+
+- Click `Add to Project`
+- Click `Java`
+- Click `Red Hat JBoss Web Server (Tomcat)`
+- Click select under `Red Hat JBoss Web Server 3.0 Tomcat 8`
+- Enter name as `petstore`
+- Enter Git repository URL as `https://github.com/VeerMuchandi/ews-bin-deploy.git`
+- Click show `advance options`
+- Add environment variable under `Build Configuration` as below
+WAR_FILE_URL and https://raw.githubusercontent.com/VeerMuchandi/ps/master/deployments/ROOT.war
+- Scroll down and click `Create`
+- Click `Continue to Overview`
+
+
+*Step 3: Edit build configuration*
+
+In the Git repo example https://github.com/VeerMuchandi/ews-bin-deploy, the build assemble script was modified to take an binary file.
+In the custom assemble script we passed an environment variable. But we did not assign any value to that yet. We need to tell our build configuration on which .war file to use to deploy. Now we will edit the build configuration to add an environment variable WAR_FILE_URL that points to where your .war file is. Your build management tool may have placed your .war file in an artifact repository and you can point to that. In this example, we are using the petstore war file that I posted on github.
+
+Note: OpenShift does an automatic build and deploy within minutes after your application is created. So by the time you are here, a build may have already started. Don’t worry. There is no harm. Let it go. We will start a build again after we edited the build configuration.
+
+....
+Custom code for binary deployment
+https://raw.githubusercontent.com/VeerMuchandi/ps/master/deployments/ROOT.war
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 6011k  100 6011k    0     0  8366k      0 --:--:-- --:--:-- --:--:-- 8372k
+Pushing image docker-registry.default.svc:5000/user1-test/petstore:latest ...
+Pushed 0/7 layers, 1% complete
+Pushed 1/7 layers, 20% complete
+Pushed 2/7 layers, 36% complete
+Pushed 3/7 layers, 51% complete
+Pushed 4/7 layers, 63% complete
+Pushed 5/7 layers, 80% complete
+Pushed 6/7 layers, 96% complete
+Pushed 7/7 layers, 100% complete
+Push successful
+....
+
+Since we are using the template from the OpenShift catalog, it will create service and route for the application.
+
+
+You can use the route to access the application using the URL.
