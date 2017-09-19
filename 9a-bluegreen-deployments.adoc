@@ -79,8 +79,11 @@ image::php-catalog.png[image]
 image::blue.png[image]
 
 - Click `advanced options` link below to expand the options area
-- Scroll down to `Environment Variables (Runtime Only)` session
+- Scroll down to `Deployment Configuration` session
 - Add `COLOR` as key and `blue` as value
+
+image::deploy-config.png[image]
+
 - Scroll down and click `Create`
 
 
@@ -88,7 +91,7 @@ image::blue.png[image]
 *Step 4: Monitor the application build*
 
 - Click `Builds` --> `Builds`
-- Click `#1`
+- Click onto `#1`
 - Click `Logs` tab
 
 
@@ -154,7 +157,7 @@ sure to name the application as 'green' this time.
 - Enter name as `green`
 - Enter Git Repository URL as https://github.com/RedHatWorkshops/bluegreen
 - Click `advanced options` link below to expand the options area
-- Scroll down to `Environment Variables (Runtime Only)` session
+- Scroll down to `Deployment Configuration` session
 - Add `COLOR` as key and `green` as value
 - Scroll down and click `Create`
 
@@ -174,7 +177,7 @@ previously created. However, that route will now point to a different
 - Click `blue`
 - Click `Actions` --> `Edit`
 - Select `green` under Service
-  - Click `Save`
+- Click `Save`
 
 
 *Step 2: Test the application*
