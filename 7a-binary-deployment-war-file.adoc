@@ -51,7 +51,7 @@ WAR_FILE_URL and https://raw.githubusercontent.com/VeerMuchandi/ps/master/deploy
 *Step 3: Edit build configuration*
 
 In the Git repo example https://github.com/VeerMuchandi/ews-bin-deploy, the build assemble script was modified to take an binary file.
-In the custom assemble script we passed an environment variable. But we did not assign any value to that yet. We need to tell our build configuration on which .war file to use to deploy. Now we will edit the build configuration to add an environment variable WAR_FILE_URL that points to where your .war file is. Your build management tool may have placed your .war file in an artifact repository and you can point to that. In this example, we are using the petstore war file that I posted on github.
+In the custom assemble script (https://github.com/VeerMuchandi/ews-bin-deploy/blob/master/.sti/bin/assemble) we passed an environment variable. But we did not assign any value to that yet. We need to tell our build configuration on which .war file to use to deploy. Now we will edit the build configuration to add an environment variable WAR_FILE_URL that points to where your .war file is. Your build management tool may have placed your .war file in an artifact repository and you can point to that. In this example, we are using the petstore war file that I posted on github.
 
 Note: OpenShift does an automatic build and deploy within minutes after your application is created. So by the time you are here, a build may have already started. Don’t worry. There is no harm. Let it go. We will start a build again after we edited the build configuration.
 
