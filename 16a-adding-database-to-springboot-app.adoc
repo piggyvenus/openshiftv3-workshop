@@ -53,9 +53,11 @@ the commands below.
 
 Make sure you are in the `spring-userxx` project where your springboot
 application is running. Click on `Add to project` on your webconsole,
-select `MySQL Ephemeral` from the catalog and deploy it. When you are
-deploying this database you will have to choose the following values:
+select `MySQL Ephemeral` from the catalog and deploy it.
 
+image::mysql.png[image]
+
+When you are deploying this database you will have to choose the following values:
 *Database Service Name:* mysql +
 *MySQL Connection Username:* user +
 *MySQL Connection Password:* password +
@@ -89,31 +91,32 @@ https://docs.openshift.com/container-platform/latest/dev_guide/configmaps.html[h
 We will see use them here and understand their _flexibility_ in the next
 lab.
 
-Lets go to CLI.
+Lets create configMap in the Web UI.
 
 IMPORTANT: Please replace *username* with the username assigned to you in
 the commands below.
 
-- Click into `spring-username` project
+- Click into the `spring-username` project if you are not in the project
 - Click `Resources` --> `Config Maps`
 - Click `Create Config Map` on top right
 - Enter `app-props` as Name
 - Enter `application.properties` as key
 - Copy and paste following contents to the value text area
-  ....
+  Make sure you update the `userxx` and the values match what you gave when creating MySQL database
+
+  ```
   spring.datasource.platform=mysql
-  spring.datasource.url=jdbc:mysql://mysql.spring-username:3306/sampledb?useSSL=false
+  spring.datasource.url=jdbc:mysql://mysql.spring-userxx:3306/sampledb?useSSL=false
   spring.datasource.username=user
   spring.datasource.password=password
-  ....
+  ```
+
 - Click `Create`
 
   You need to make sure that you substitute the correct values you noted
   in the last step when you are creating the service. *Be extra-careful..
   read instructions below.*
-
   Specifically note the datasource url. It is in the following format:
-
   `spring.datasource.url = jdbc:<<databasetype>>://<<service-host>>:<<service-port>>/<<dbname>>?useSSL=false`
 
   You can replace `service-host` by the IP address of your MySQL service
