@@ -12,7 +12,7 @@ IMPORTANT: Please replace *userxx* with your username
 
 - login to web UI via https://master.ocp.tauil.org
 - Use the same username and password that assigned to you
-- Click `New-Project`
+- Click `Create Project`
 
 image::new-project.png[image]
 
@@ -48,7 +48,7 @@ Later it uses this image to deploy an application that runs in a pod.
 
 Now let's create an application using this approach.
 
-- Click `Add to Project` --> select `Browse Catalog`
+- Click `Add to Project` --> select `Browse Catalog` if you are using the same project from lab 1
 
 image::browse-catalog.png[image]
 
@@ -78,18 +78,16 @@ command shown below.
 
 image::overview.png[image]
 
-- Click anywhere next to the deployment `time`, so it will expand the information as shown below.
-
-image::expand.png[image]
-
-- Click `View Full Log` from the bottom right on the overview panel
+- Click Builds on the left menu --> select Builds
+- Click onto `#1`
+- Click on `Logs` to view the build logs
 - Log shows as shown below
-  ....
+  ```
   Removing intermediate container 850026b88ed6
   Successfully built 86375f734d8f
   Pushing image docker-registry.default.svc:5000/workshop/time:latest
   Push successful
-  ...
+  ```
 
   Note the name of the build that is running i.e. time #1. We will use that
   name to look at the build logs. Run the command as shown below to look
@@ -108,6 +106,7 @@ image::build-menu.png[image]
 - Click `Actions` --> `Edit yaml` to view the buildconfig YAML file
 
 image::edit.png[image]
+- Click `Cancel`
 
 
   Note the name of the buildconfig in metadata is set to "time", the git
@@ -127,7 +126,7 @@ deploymentconfig.
 - Click `time`
 - Click `Actions` --> `Edit YAML`
 
-  ....
+  ```
   apiVersion: v1
   kind: DeploymentConfig
   metadata:
@@ -182,8 +181,7 @@ deploymentconfig.
         schedulerName: default-scheduler
         securityContext: {}
         terminationGracePeriodSeconds: 30
-
-  ....
+        ```
 
   Note where the image is picked from. It shows that the deployment picks
   the image from the local registry (same ip address and port as in
@@ -191,6 +189,7 @@ deploymentconfig.
   means the deployment step deploys the application image what was built
   earlier during the build step.
 
+- Click `Cancel`
 - Click `Applications` --> `Pods`
   If you get the list of pods, you'll notice that the application gets
   deployed quickly and starts running in its own pod.
@@ -202,20 +201,19 @@ This step is very much the same as what we did in the previous exercise.
 We will check the service and add a route to expose that service.
 
 - Click `Applications` --> `Services`
-  Here we expose the service as a route.
 - Click `Overview`
-- Click `Create Route`
+- Click `Create Route` to expose service as a route
 
 image::create-route.png[image]
 
 - Click `Create`
-- Click `Applications` --> `Routes`
+- Click `Applications` --> `Routes` to view the list of routes
 
 *Step 6: Run the application*
 
 - Click `Applications` --> `Routes`
-- Click `time`
-- Click on link on the route
+- Click `time` route
+- Click on link under the route name
 
 Now run the application by using the route you provided in the previous
 step. You can use either curl or your browser. The application displays

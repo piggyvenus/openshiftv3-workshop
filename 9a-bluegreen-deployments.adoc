@@ -38,7 +38,7 @@ IMPORTANT: Please replace *userxx* with your username
 
 - login to web UI via https://master.ocp.tauil.org
 - Use the same username and password that assigned to you
-- Click `New Project`
+- Click `Create Project`
 
 image::new-project.png[image]
 
@@ -105,7 +105,7 @@ image::blue.png[image]
   Pushed 5/6 layers, 97% complete
   Pushed 6/6 layers, 100% complete
   Push successful
-  ....
+  ...
 
 *Step 5: Check application deployment status*
 
