@@ -5,10 +5,10 @@ config:
       value: openshift
     - name: CONSOLE_ADDRESS
       desc: HTTP address of the OpenShift console
-      value: https://master.ocp.tauil.org
+      value: https://openshift.caascloud.net:8443
     - name: APPS_ADDRESS
       desc: HTTP address suffix of apps deployed on OpenShift
-      value: apps.ocp.tauil.org
+      value: apps.caascloud.net
     - name: GET_STARTED_CLI_URL
       desc: URL to documentation to configure CLI
       value: https://docs.openshift.com/container-platform/latest/cli_reference/get_started_cli.html
@@ -22,15 +22,11 @@ config:
 modules:
   0-setting-up-client-tools:
     name: Setting up client tools
-  1a-create-app-from-docker-image:
+  1-create-app-from-docker-image:
     name: Create an App from a Docker image
-  2a-create-app-using-docker-build:
-    name: Create an App using Docker build
-  7a-binary-deployment-war-file:
-    name: Binary Deployment of a war file
-  9a-bluegreen-deployments:
-    name: Blue-Green Deployments
-  15a-adding-springboot-sti-to-catalog:
-    name: Adding Spring Boot S2I Image to the Project Catalog
-  16a-adding-database-to-springboot-app:
-    name: Adding a backend database to the SpringBoot application
+  22-exxon-appcon-gitlab-registration:
+    name: Registration
+  23-exxon-containerize-application:
+    name: Hands on doing the above booth demo
+  24-exxon-auto-scaling-of-your-application:
+    name: Auto Scaling Of your application
