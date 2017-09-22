@@ -31,86 +31,174 @@ IMPORTANT: Please replace *username* with the username assigned to you in
 the commands below.
 
 To create a new project"
-1. Login https://openshift.caascloud.net:8443
-2. Click "New Project"
-3. Enter project information
-4. Click create
 
-*Step 4: Create QA project*
-1. Login https://openshift.caascloud.net:8443
-2. Click "New Project"
-3. Enter project name as qa-<username>
-4. Click create
+  1. Login https://openshift.caascloud.net:8443
+  2. Click `Create Project`
+  3. Enter project information, i.e. `lab1-username`
+  4. Click `Create`
 
-*Step 5: Grant Permission to the projects*
 
-IMPORTANT:
-1. lab1 must match the project name
-2. qa-**username** must match created from step 4
-...
-oc policy add-role-to-user edit system:serviceaccount:lab1:jenkins -n lab1
-oc policy add-role-to-user edit system:serviceaccount:lab1:jenkins -n qa-**username**
-oc policy add-role-to-group system:image-puller system:serviceaccount:qa-**username** -n lab1
+*Step 4 Create Application*
 
-...
+  1. Click `Add to project` if you are not already in the Browse Catalog.
+  2. Click `PHP` under Browse Catalog
+  3. Click `Select` in the PHP box
+  4. Enter: myapp as name
+  5. Enter: https://gitlab.caascloud.net/shannachan/welcome-php.git as Git Repository URL
+
+  IMPORTANT: please folk this git repo if you like to use this php code and use your repo URL for this Git Repo URL
+
+  6. Click `advance options`
+  7. Click `Create New Secret` (if you git repository require credential)
+  8. Enter Secret name
+  9. Use `Basic Authentication` as Authentication Type
+  10. Enter your username for gitlab
+  11. Enter your password
+  12. Click `Create`
+  13. Click `Create`
+  14. Click `Continue to Overview`
+  15. Wait until the build is down. You will see a blue solid circle on Overview page
+  16. Click the link on the top right corner `http://myapp-lab1-username.app.caascloud.net` to view your php application
+
+
+*Step 5: Create QA project*
+
+  1. Login https://openshift.caascloud.net:8443
+  2. Click `Create Project`
+  3. Enter project name as `qa-<username>`
+  4. Click `Create`
+
 
 *Step 6: Create CICD pipeline*
-1. Once you are inside a project, you will click "Import YAML/JSON" tab
-2. Copy the information below and update the context with your information
 
-IMPORTANT:
-1. lab1 must match the project name
-2. myapp must match your application name
+  1. Once you are inside a project, you will click `Add to project` --> `Import YAML/JSON` tab
+  2. Copy the information below and update the context with your information
 
-```
-apiVersion: v1
-kind: BuildConfig
-metadata:
-  annotations:
-  labels:
-    app: jenkins-pipeline-example
-    name: sample-pipeline
-    template: application-template-sample-pipeline
-  name: sample-pipeline
-spec:
-  nodeSelector: null
-  output: {}
-  postCommit: {}
-  resources: {}
-  runPolicy: Serial
-  source:
-    type: None
-  strategy:
-    jenkinsPipelineStrategy:
-      jenkinsfile: |
-        node {
-        stage 'buildInDev'
-        openshiftBuild(namespace: 'lab1', buildConfig: 'myapp', showBuildLogs: 'true')
-        stage ('deployInDev')
-        openshiftDeploy(namespace: 'lab1', deploymentConfig: 'myapp')
-        stage ('tagImage')
-        openshiftTag(namespace: 'lab1', sourceStream: 'myapp',  sourceTag: 'latest', destinationNamespace:'qa', destinationStream: 'myapp', destinationTag: 'promoteToQA')
-        stage ('deployInQA') {
-          input 'Promote Dev Image to Testing?'
-          sh "oc project qa"
-          sh "oc new-app myapp:promoteToQA"
-          openshiftScale(namespace: 'qa-usernames', deploymentConfig: 'myapp',replicaCount: '2')
-          sh "oc expose svc myapp"
-          }
+IMPORTANT: Please update the following
 
-        }
-    type: JenkinsPipeline
-  triggers: []
+ - replace `lab1-username`  and `qa-username` to match your project name
+ - replace `myapp` must match your application name
 
-```
+    ```
+    apiVersion: v1
+    kind: BuildConfig
+    metadata:
+      annotations:
+      labels:
+        app: jenkins-pipeline-example
+        name: sample-pipeline
+        template: application-template-sample-pipeline
+      name: sample-pipeline
+    spec:
+      triggers:
+        - type: Generic
+          generic:
+            secret: efe7f857458df9c3
+        - type: GitHub
+          github:
+            secret: 0084feefe5b6b26c
+      nodeSelector: null
+      output: {}
+      postCommit: {}
+      resources: {}
+      runPolicy: Serial
+      source:
+        type: None
+      strategy:
+        jenkinsPipelineStrategy:
+          jenkinsfile: |
+            node {
+            stage 'buildInDev'
+            openshiftBuild(namespace: 'lab1-username', buildConfig: 'myapp', showBuildLogs: 'true')
+            stage ('deployInDev')
+            openshiftDeploy(namespace: 'lab1-username', deploymentConfig: 'myapp')
+            stage ('tagImage')
+            openshiftTag(namespace: 'lab1-username', sourceStream: 'myapp',  sourceTag: 'latest', destinationNamespace:'qa-username', destinationStream: 'myapp', destinationTag: 'promoteToQA')
+            stage ('deployInQA') {
+              input 'Promote Dev Image to Testing?'
+              sh "oc project qa-username"
+              sh "oc new-app myapp:promoteToQA"
+              openshiftScale(namespace: 'qa-username', deploymentConfig: 'myapp',replicaCount: '2')
+              sh "oc expose svc myapp"
+              }
+
+            }
+        type: JenkinsPipeline
+      triggers: []
+
+    ```
+
+    3. Paste below onto the text area
+    4. Click create
+    5. To view your newly created pipeline, click 'Builds' --> `Pipelines`
+    6. Click on the name of the pipeline `sample-pipeline`
+    5. Click `Configuration` tab to view
+    6. Click `Action` (at the top right) --> Edit to edit the pipeline
+
+*Step 7: Grant Permission to the projects*
+
+IMPORTANT: Please update the following
+
+ - lab1-**username** must match the project name
+ - qa-**username** must match created from step 4
+ - Please replace the <lab1-username> and <qa-username> with appropriate project name.
+
+1. Switch to the command line
+2. Execute the following via OC CLI:
+
+  ```
+  $oc login -u <your_username> https://openshift.caascloud.net:8443
+  $oc project <lab1-username>
+  $oc policy add-role-to-user edit system:serviceaccount:<lab1-username>:jenkins -n <lab1-username>
+  $oc policy add-role-to-user edit system:serviceaccount:<lab1-username>:jenkins -n <qa-username>
+  $oc policy add-role-to-group system:image-puller system:serviceaccount:<qa-username> -n <lab1-username>
+
+  ```
+
+*Step 8: Build Triggers (GitLab Integrations)*
+
+1. Login OpenShift Web UI (https://openshift.caascloud.net:8443)
+2. Click on `lab1-username` project
+3. Click `Builds` --> `Pipelines`
+4. Click `sample-pipeline` or your pipeline's name
+5. Click `Configuration` tab
+6. Copy `Generic Webhook URL` under Triggers
+7. Login to https://gitlab.caascloud.net/
+8. Click into the project that you use to build your application `Step #4`
+9. Click `Settings`
+10. Click `Integration`
+11. Paste the `Generic Webhook URL` from `step 6` above to the URL field
+12. Uncheck `Enable SSL verification`
+13. Click `Add webhook`
 
 
-3. Paste below onto the text area
-4. Click create
+*Step 9: Automatically Build new containers and shift workload to new container*
 
+1. make a change in one of the files your repo
+2. Execute the following
+  ```
+  git add <file-that-has-changes>
+  git commit -m "update files"
+  git push -u origin master
+  ```
+3. Login to https://openshift.caascloud.net:8443
+4. Click onto your project
+5. Click `Builds` --> `Pipelines`
+6. Click `Input Required` from your pipeline build
+7. Click `Login Openshift`
+8. Click allow access
+9. Click `Proceed`
+10. take few minutes to promote the image to qa project
+10. Click to qa-username project
+11. Application is deployed and scale up.
 
-*Step 7: Build Triggers (GitLab Integrations)*
+*Step 10: Scaling/Decommissions*
 
-*Step 8: Automatically Build new containers and shift workload to new container*
+1. Switch back command line terminal
+2. Execute the following via OC CLI:
 
-*Step 9: Scaling/Decommissions*
+  ```
+  $oc login -u <your_username> https://openshift.caascloud.net:8443
+  $oc project <qa-username>
+  $oc delete all --all
+  ```

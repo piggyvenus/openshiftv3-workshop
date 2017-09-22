@@ -1,0 +1,54 @@
+[[exxon-auto-scaling-of-your-application]]
+Auto-scaling An Application
+
+
+In this exercise we will learn how to setup horizontal pod autoscalers
+
+*Step 1: Create projects*
+
+If you want to, you can create a new project based on what you have
+learned in the previous lab. Since we already have a project we will use
+it. Run the following command to make sure.
+
+IMPORTANT: Please replace *username* with the username assigned to you in
+the commands below.
+
+To create a new project"
+
+  1. Login https://openshift.caascloud.net:8443
+  2. Click `Create Project`
+  3. Enter project information, i.e. `lab2-username`
+  4. Click `Create`
+
+*Step 4 Create Application*
+
+  1. Click `Add to project` if you are not already in the Browse Catalog.
+  2. Click `PHP` under Browse Catalog
+  3. Click `Select` in the PHP box
+  4. Enter: phpapp as name
+  5. Enter: https://github.com/RedHatWorkshops/welcome-php.git as Git Repository URL
+
+
+*Step 5 Add Autoscaler to Deployment*
+
+  1. Click `Applications` --> `Deployments`
+  2. Click on the name of Deployment that you need to add autoscaler
+  3. Click `Actions` (top right) --> select `Add Resource Limits`
+  4. Enter `200` for CPU request
+  5. Enter `300` for CPU limit
+  6. Enter `100` for Memory request
+  7. Enter `200` for Memory limit
+  8. Click `Save`
+  9. Click `Actions` (top right) --> select `Add Autoscalers`
+  10. Enter name for Autoscaler
+  11. Enter `1` for Min Pods
+  12. Enter `2` for Max Pods
+  13. Enter `5` for CPU request target
+  14. Click `Save`
+  15. Click `Overview`
+
+*Step 5 Add loads to Application*
+
+1. URL of the application is on the top right of the overview page.
+2. run on linux or MAC: ab -n 100000000 -c 100 <your application URL>
+Example: ab -n 100000000 -c 100 http://welcome-autoscaler.cloudapps.example.com/
