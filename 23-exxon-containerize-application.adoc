@@ -4,24 +4,8 @@ Containerized An Application
 
 In this exercise we will learn how to containerize an application and enable with CICD pipeline.
 
-*Step 1: Make changes to the code*
 
-....
-$ git clone ...
-<make code changes>
-....
-
-
-*Step 2: Push to Source Control*
-
-
-....
-$ git add <update files>
-$ git commit -m "description of the commit"
-$ git push -u origin master
-....
-
-*Step 3: Create projects*
+*Step 1: Create projects*
 
 If you want to, you can create a new project based on what you have
 learned in the previous lab. Since we already have a project we will use
@@ -38,7 +22,7 @@ To create a new project"
   4. Click `Create`
 
 
-*Step 4 Create Application*
+*Step 2: Create Application*
 
   1. Click `Add to project` if you are not already in the Browse Catalog.
   2. Click `PHP` under Browse Catalog
@@ -46,7 +30,7 @@ To create a new project"
   4. Enter: myapp as name
   5. Enter: https://gitlab.caascloud.net/shannachan/welcome-php.git as Git Repository URL
 
-  IMPORTANT: please folk this git repo if you like to use this php code and use your repo URL for this Git Repo URL
+  IMPORTANT: please fork this git repo if you like to use this php code and use your repo URL for this Git Repo URL
 
   6. Click `advance options`
   7. Click `Create New Secret` (if you git repository require credential)
@@ -174,13 +158,25 @@ IMPORTANT: Please update the following
 
 *Step 9: Automatically Build new containers and shift workload to new container*
 
-1. make a change in one of the files your repo
+1. Make changes to the code to index.php or info.php
+you can make changes via the gitlab web interface via `Edit`
+
+    ```
+    $ git clone ...
+    <make code changes>
+    $ git add <update files>
+    $ git commit -m "description of the commit"
+    $ git push -u origin master
+    ```
+
 2. Execute the following
-  ```
-  git add <file-that-has-changes>
-  git commit -m "update files"
-  git push -u origin master
-  ```
+
+    ```
+    git add <file-that-has-changes>
+    git commit -m "update files"
+    git push -u origin master
+    ```
+
 3. Login to https://openshift.caascloud.net:8443
 4. Click onto your project
 5. Click `Builds` --> `Pipelines`
