@@ -45,7 +45,7 @@ To create a new project"
   16. Click the link on the top right corner `http://myapp-lab1-username.app.caascloud.net` to view your php application
 
 
-*Step 5: Create QA project*
+*Step 3: Create QA project*
 
   1. Login https://openshift.caascloud.net:8443
   2. Click `Create Project`
@@ -53,7 +53,7 @@ To create a new project"
   4. Click `Create`
 
 
-*Step 6: Create CICD pipeline*
+*Step 4: Create CICD pipeline*
 
   1. Once you are inside a project, you will click `Add to project` --> `Import YAML/JSON` tab
   2. Copy the information below and update the context with your information
@@ -99,7 +99,7 @@ IMPORTANT: Please update the following
             stage ('tagImage')
             openshiftTag(namespace: 'lab1-username', sourceStream: 'myapp',  sourceTag: 'latest', destinationNamespace:'qa-username', destinationStream: 'myapp', destinationTag: 'promoteToQA')
             stage ('deployInQA') {
-              input 'Promote Dev Image to Testing?'
+            //  input 'Promote Dev Image to Testing?'
               sh "oc project qa-username"
               sh "oc new-app myapp:promoteToQA"
               openshiftScale(namespace: 'qa-username', deploymentConfig: 'myapp',replicaCount: '2')
@@ -119,7 +119,7 @@ IMPORTANT: Please update the following
     5. Click `Configuration` tab to view
     6. Click `Action` (at the top right) --> Edit to edit the pipeline
 
-*Step 7: Grant Permission to the projects*
+*Step 5: Grant Permission to the projects*
 
 IMPORTANT: Please update the following
 
@@ -139,7 +139,7 @@ IMPORTANT: Please update the following
 
   ```
 
-*Step 8: Build Triggers (GitLab Integrations)*
+*Step 6: Build Triggers (GitLab Integrations)*
 
 1. Login OpenShift Web UI (https://openshift.caascloud.net:8443)
 2. Click on `lab1-username` project
@@ -156,7 +156,7 @@ IMPORTANT: Please update the following
 13. Click `Add webhook`
 
 
-*Step 9: Automatically Build new containers and shift workload to new container*
+*Step 7: Automatically Build new containers and shift workload to new container*
 
 1. Make changes to the code to index.php or info.php
 you can make changes via the gitlab web interface via `Edit`
@@ -188,7 +188,7 @@ you can make changes via the gitlab web interface via `Edit`
 10. Click to qa-username project
 11. Application is deployed and scale up.
 
-*Step 10: Scaling/Decommissions*
+*Step 8: Scaling/Decommissions*
 
 1. Switch back command line terminal
 2. Execute the following via OC CLI:
