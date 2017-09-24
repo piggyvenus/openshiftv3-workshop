@@ -3,6 +3,6 @@ Using the oc Terminal Application
 
 
 To login into Openshift we will use the oc web terminal at 
-http://terminal.caascloud.net
+https://terminal.caascloud.net
 
 *Step 1: *
