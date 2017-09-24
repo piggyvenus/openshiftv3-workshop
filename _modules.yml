@@ -20,8 +20,8 @@ config:
       value: https://access.redhat.com/downloads/content/290
 
 modules:
-  0-setting-up-client-tools:
-    name: Setting up client tools
+  25-exxon-using-the-oc-terminal-application:
+    name: Using the oc Terminal Application
   1-create-app-from-docker-image:
     name: Create an App from a Docker image
   22-exxon-appcon-gitlab-registration:
