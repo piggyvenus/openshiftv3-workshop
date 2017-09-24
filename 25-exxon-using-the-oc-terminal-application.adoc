@@ -16,10 +16,21 @@ Navigate to the question mark icon on the top right and select Command Line Tool
 Copy the content in the text box below
 After downloading and installing it, you can start by logging in using this current session token:
 
-example: oc login https://openshift.caascloud.net:8443 --token=<your token>
+example: 
+....
+$ oc login https://openshift.caascloud.net:8443 --token=<your token>
+....
 
 Paste this string into the oc web terminal and press enter
 
-Now run oc status
+Now execute
+....
+$ oc status
+....
 
-and oc whoami to confirm your identity
+and 
+....
+$ oc whoami
+....
+
+to confirm your identity
