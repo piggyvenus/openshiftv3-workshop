@@ -2,6 +2,7 @@
 Using the oc Terminal Application
 
 
-In this exercise we will learn how to setup horizontal pod autoscalers
+To login into Openshift we will use the oc web terminal at 
+http://terminal.caascloud.net
 
 *Step 1: *
