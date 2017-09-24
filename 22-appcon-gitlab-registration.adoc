@@ -1,4 +1,4 @@
-[[exxon-appcon-gitlab-registration]]
+[[exxon-gitlab-registration]]
 Register Gitlab for Appcon Workshop
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
