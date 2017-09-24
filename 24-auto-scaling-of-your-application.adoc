@@ -47,7 +47,12 @@ To create a new project"
   14. Click `Save`
   15. Click `Overview`
 
-*Step 5 Add loads to Application*
+*Step 6 install Apache Bench on Windows
+  1. Download apache binaries from an apache recommended download site (i.e. https://www.apachelounge.com/download/apache)
+  2. Extract the content using zip tool
+  3. Copy the /bin/ab.exe to a folder of your choice (i.e.: c:\temp)
+
+*Step 7 Add loads to Application*
 
 1. URL of the application is on the top right of the overview page.
 2. run on linux or MAC: ab -n 100000000 -c 100 <your application URL>
