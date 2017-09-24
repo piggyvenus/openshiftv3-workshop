@@ -1,0 +1,7 @@
+[[exxon-using-the-oc-terminal-application]]
+Using the oc Terminal Application
+
+
+In this exercise we will learn how to setup horizontal pod autoscalers
+
+*Step 1: *
