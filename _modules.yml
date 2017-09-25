@@ -31,7 +31,7 @@ modules:
   24-appcon-auto-scaling-of-your-application:
     name: Auto Scaling Of your application
   9-bluegreen-deployments:
-    name: Blue/Green Deployments
+    name: Blue-Green Deployments
   10-webhooks:
     name: Create Webhooks
   15a-adding-springboot-sti-to-catalog:
