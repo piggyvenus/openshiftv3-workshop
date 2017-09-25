@@ -29,8 +29,13 @@ modules:
   23-appcon-containerize-application:
     name: Hands on doing the above booth demo
 
-
-advmodules:
-    24-appcon-auto-scaling-of-your-application:
+-----
+  24-appcon-auto-scaling-of-your-application:
     name: Auto Scaling Of your application
+  9-bluegreen-deployments:
+    name: Blue/Green Deployments
+  10-webhooks:
+    name: Create Webhooks
+  15a-adding-springboot-sti-to-catalog:
+    name: Adding Spring Boot S2I Image to the Project Catalog
     
