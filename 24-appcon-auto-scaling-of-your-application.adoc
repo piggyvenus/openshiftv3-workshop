@@ -1,4 +1,4 @@
-[[exxon-auto-scaling-of-your-application]]
+[[appcon-auto-scaling-of-your-application]]
 Auto-scaling An Application
 
 
