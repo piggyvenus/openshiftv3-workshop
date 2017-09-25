@@ -28,8 +28,6 @@ modules:
     name: Create an App from a Docker image
   23-appcon-containerize-application:
     name: Hands on doing the above booth demo
-
------
   24-appcon-auto-scaling-of-your-application:
     name: Auto Scaling Of your application
   9-bluegreen-deployments:
