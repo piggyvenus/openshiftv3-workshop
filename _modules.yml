@@ -24,7 +24,7 @@ modules:
     name: Using the oc Terminal Application
   1-create-app-from-docker-image:
     name: Create an App from a Docker image
-  22-appcon-appcon-gitlab-registration:
+  22-appcon-gitlab-registration:
     name: Registration
   23-appcon-containerize-application:
     name: Hands on doing the above booth demo
