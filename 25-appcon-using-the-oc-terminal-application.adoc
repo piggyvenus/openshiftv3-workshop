@@ -1,4 +1,5 @@
 [[appcon-using-the-oc-terminal-application]]
+##**Method 1.**## 
 Using the oc Terminal Application
 
 
@@ -34,3 +35,26 @@ $ oc whoami
 ....
 
 to confirm your identity
+
+##**Method 2.**##
+Install your own oc term application
+
+Browse to https://openshift.caascloud.net:8443 
+
+Select "New Project" button
+
+name the project (userxxx)term and give it a Display name of "Your Name" Web Term
+
+Click the "Create" button
+
+Select Deploy Image Tab and then select the "Image Name" radio button
+
+Enter smacktrace/octerm and then click the eyeglass to search the docker registry
+
+Then create two environment variables
+....
+OCTERMUSER and set to userxxx
+OCTERMPASS and set to Appcon2017!
+....
+
+then click the "Create" button
