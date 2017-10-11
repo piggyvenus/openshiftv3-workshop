@@ -63,54 +63,55 @@ IMPORTANT: Please update the following
  - replace `lab1-username`  and `qa-username` to match your project name
  - replace `myapp` must match your application name
 
-    ```
-    apiVersion: v1
-    kind: BuildConfig
-    metadata:
-      annotations:
-      labels:
-        app: jenkins-pipeline-example
-        name: sample-pipeline
-        template: application-template-sample-pipeline
-      name: sample-pipeline
-    spec:
-      triggers:
-        - type: Generic
-          generic:
-            secret: efe7f857458df9c3
-        - type: GitHub
-          github:
-            secret: 0084feefe5b6b26c
-      nodeSelector: null
-      output: {}
-      postCommit: {}
-      resources: {}
-      runPolicy: Serial
-      source:
-        type: None
-      strategy:
-        jenkinsPipelineStrategy:
-          jenkinsfile: |
-            node {
-            stage 'buildInDev'
-            openshiftBuild(namespace: 'lab1-username', buildConfig: 'myapp', showBuildLogs: 'true')
-            stage ('deployInDev')
-            openshiftDeploy(namespace: 'lab1-username', deploymentConfig: 'myapp')
-            stage ('tagImage')
-            openshiftTag(namespace: 'lab1-username', sourceStream: 'myapp',  sourceTag: 'latest', destinationNamespace:'qa-username', destinationStream: 'myapp', destinationTag: 'promoteToQA')
-            stage ('deployInQA') {
-            //  input 'Promote Dev Image to Testing?'
-              sh "oc project qa-username"
-              sh "oc new-app myapp:promoteToQA"
-              openshiftScale(namespace: 'qa-username', deploymentConfig: 'myapp',replicaCount: '2')
-              sh "oc expose svc myapp"
-              }
-
+```yaml
+--- 
+apiVersion: v1
+kind: BuildConfig
+metadata: 
+  annotations: ~
+  labels: 
+    app: jenkins-pipeline-example
+    name: sample-pipeline
+    template: application-template-sample-pipeline
+  name: sample-pipeline
+spec: 
+  nodeSelector: ~
+  output: {}
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source: 
+    type: None
+  strategy: 
+    jenkinsPipelineStrategy: 
+      jenkinsfile: |
+          node {
+          stage 'buildInDev'
+          openshiftBuild(namespace: 'lab1-username', buildConfig: 'myapp', showBuildLogs: 'true')
+          stage ('deployInDev')
+          openshiftDeploy(namespace: 'lab1-username', deploymentConfig: 'myapp')
+          stage ('tagImage')
+          openshiftTag(namespace: 'lab1-username', sourceStream: 'myapp',  sourceTag: 'latest', destinationNamespace:'qa-username', destinationStream: 'myapp', destinationTag: 'promoteToQA')
+          stage ('deployInQA') {
+            input 'Promote Dev Image to Testing?'
+            sh "oc project qa-username"
+            sh "oc new-app myapp:promoteToQA"
+            openshiftScale(namespace: 'qa-username', deploymentConfig: 'myapp',replicaCount: '2')
+            sh "oc expose svc myapp"
             }
-        type: JenkinsPipeline
-      triggers: []
-
-    ```
+            }
+  triggers: 
+    - 
+      generic: 
+        secret: efe7f857458df9c3
+      type: Generic
+    - 
+      github: 
+        secret: 0084feefe5b6b26c
+      type: GitHub
+  type: JenkinsPipeline
+triggers: []
+```
 
     3. Paste below onto the text area
     4. Click create
