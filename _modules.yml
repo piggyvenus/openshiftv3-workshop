@@ -44,17 +44,17 @@ modules:
     name: SCM Web Hooks
   11-rollback-applications:
     name: Rollback Applications
-  12-code-promotion-across-envs:
-    name: Code Promotion across Environments
-  13-using-jbds:
-    name: Installing the JBoss Developer Studio
-  14-deploy-springboot-app:
-    name: Deploy a SpringBoot Application
-  15-adding-springboot-sti-to-catalog:
-    name: Adding Spring Boot S2I Image to the Project Catalog
-  16-adding-database-to-springboot-app:
-    name: Adding a backend database to the SpringBoot application
-  17-dynamic-config-updates-using-configmaps:
-    name: Dynamic configuration updates using ConfigMap
-  18-changing-code-onthefly:
-    name: Changing code on the fly
+#  12-code-promotion-across-envs:
+#    name: Code Promotion across Environments
+#  13-using-jbds:
+#    name: Installing the JBoss Developer Studio
+#  14-deploy-springboot-app:
+#    name: Deploy a SpringBoot Application
+#  15-adding-springboot-sti-to-catalog:
+#    name: Adding Spring Boot S2I Image to the Project Catalog
+#  16-adding-database-to-springboot-app:
+#    name: Adding a backend database to the SpringBoot application
+#  17-dynamic-config-updates-using-configmaps:
+#    name: Dynamic configuration updates using ConfigMap
+#  18-changing-code-onthefly:
+#    name: Changing code on the fly
