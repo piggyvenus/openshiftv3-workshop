@@ -19,14 +19,17 @@ To Login and use lab2 project"
   5. Enter: https://github.com/RedHatWorkshops/welcome-php.git as Git Repository URL
 
 
-*Step 2 Setup Application Health Check*
+*Step 2 Setup Application Health Checks*
 
   1. Click `Applications` --> `Deployments`
   2. Click on the name of Deployment that you need to add health check
   3. Click `Actions` (top right) --> select `Edit Health Checks`
   4. Click onto `Add Readiness Probe`
-  5. Enter `/healthz.php` for Path
+  5. Enter `/healthz.php` as Path
   6. Enter `10` for Initial Delay seconds
   7. Enter `20` for timeout seconds
-  8. Click `Save`
-  9. Application will be redeploy and
+  8. Click onto `Add Liveness Probe`
+  9. Enter `/healthz.php` for Path
+  10. Enter `120` for Initial Delay seconds
+  11. Click `Save`
+  12. Application will be redeploy
