@@ -1,5 +1,5 @@
 [[appcon-application-healthcheck]]
-In this exercise, you will learn how to setup healthcheck for your application.
+In this exercise, you will learn how to setup health checks for your application.
 
 
 If you want to, you can create a new project based on what you have
@@ -7,7 +7,6 @@ learned in the previous labs. Since we already have a project we will use
 it. Run the following command to make sure.
 
 *Step 1 Make sure welcome application is deployed*
-To Login and use lab2 project"
 
   1. Login https://openshift.caascloud.net:8443
   2. Click `lab2-username` project
@@ -22,7 +21,7 @@ To Login and use lab2 project"
 *Step 2 Setup Application Health Checks*
 
   1. Click `Applications` --> `Deployments`
-  2. Click on the name of Deployment that you need to add health check
+  2. Click on the name of Deployment that you need to add health checks 
   3. Click `Actions` (top right) --> select `Edit Health Checks`
   4. Click onto `Add Readiness Probe`
   5. Enter `/healthz.php` as Path
