@@ -22,18 +22,21 @@ config:
 modules:
   22-appcon-gitlab-registration:
     name: Registration
+  0a-setting-up-client-tools.adoc:
+    name: OC CLI Setup
 #  25-appcon-using-the-oc-terminal-application:
-#    name: Using the oc Terminal Application  
+#    name: Using the oc Terminal Application
 #  1-create-app-from-docker-image:
 #    name: Create an App from a Docker image in the oc terminal
   23-appcon-containerize-application:
     name: Create an App from a Docker image in Openshift Web Console
-#  24-appcon-auto-scaling-of-your-application:
-#    name: Auto Scaling Of your application
+  24-appcon-auto-scaling-of-your-application:
+    name: Auto Scaling Of your application
+  26-appcon-application-healthchecks:
+    name: Add Health Checks
   9-bluegreen-deployments:
     name: Blue-Green Deployments
   10-webhooks:
     name: Create Webhooks
   15a-adding-springboot-sti-to-catalog:
     name: Adding Spring Boot S2I Image to the Project Catalog
-    
