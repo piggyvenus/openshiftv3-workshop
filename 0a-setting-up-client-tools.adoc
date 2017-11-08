@@ -43,14 +43,15 @@ Copy the binary to the `/usr/local/bin` directory, or one of the
 paths listed in the `PATH` environment variable.
 
 *2. Windows:*
-https://github.com/openshift/origin/releases/download/v1.5.1/openshift-origin-client-tools-v1.5.1-7b451fc-windows.zip
 
-Use `oc.exe` to open an OpenShift shell. If you getting error from
+** https://github.com/openshift/origin/releases/download/v1.5.1/openshift-origin-client-tools-v1.5.1-7b451fc-windows.zip
+
+** Use `oc.exe` to open an OpenShift shell. If you getting error from
 running oc, go to http://git-scm.com to download git bash for Windows (during
 installation you need to specify in the selection to integrate with the
 command prompt)
 
-**important notes**
+**Important notes**
 Download and install Notepad++ and install the JSON plugin or use
 http://jsonlint.com/ to edit and validate JSON.
 http://ammonsonline.com/formatted-json-in-notepad/
