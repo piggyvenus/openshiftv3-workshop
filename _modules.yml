@@ -22,7 +22,7 @@ config:
 modules:
   22-appcon-gitlab-registration:
     name: Registration
-  0a-setting-up-client-tools.adoc:
+  0a-setting-up-client-tools:
     name: OC CLI Setup
 #  25-appcon-using-the-oc-terminal-application:
 #    name: Using the oc Terminal Application
