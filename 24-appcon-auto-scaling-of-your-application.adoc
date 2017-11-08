@@ -27,6 +27,9 @@ To create a new project"
   3. Click `Select` in the PHP box
   4. Enter: phpapp as name
   5. Enter: https://github.com/RedHatWorkshops/welcome-php.git as Git Repository URL
+  6. Click `Create`
+  7. Click `Continue to Overview`
+  8. Wait and see if the solid blue coming up again.
 
 
 *Step 5 Add Autoscaler to Deployment*
@@ -43,7 +46,7 @@ To create a new project"
   10. Enter name for Autoscaler
   11. Enter `1` for Min Pods
   12. Enter `2` for Max Pods
-  13. Enter `5` for CPU request target
+  13. Enter `3` for CPU request target
   14. Click `Save`
   15. Click `Overview`
 
@@ -56,4 +59,4 @@ To create a new project"
 
 1. URL of the application is on the top right of the overview page.
 2. run on linux or MAC: ab -n 100000000 -c 100 <your application URL>
-Example: ab -n 100000000 -c 100 http://welcome-autoscaler.cloudapps.example.com/
+Example: ab -n 1000000000 -c 100 http://welcome-autoscaler.cloudapps.example.com/
