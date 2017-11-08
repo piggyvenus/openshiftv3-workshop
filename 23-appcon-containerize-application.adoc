@@ -51,11 +51,13 @@ To create a new project"
   2. Click `Create Project`
   3. Enter project name as `qa-<username>`
   4. Click `Create`
+  5. Click back to the top left corner the `home` icon
 
 
 *Step 4: Create CICD pipeline*
 
-  1. Once you are inside a project, you will click `Add to project` --> `Import YAML/JSON` tab
+  1. Make sure you are in `lab1-username` project
+  2. Once you are inside a project, you will click `Add to project` --> `Import YAML/JSON` tab
   2. Copy the information below and update the context with your information
 
 IMPORTANT: Please update the following
@@ -64,26 +66,26 @@ IMPORTANT: Please update the following
  - replace `myapp` must match your application name
 
 ```yaml
---- 
+---
 apiVersion: v1
 kind: BuildConfig
-metadata: 
+metadata:
   annotations: ~
-  labels: 
+  labels:
     app: jenkins-pipeline-example
     name: sample-pipeline
     template: application-template-sample-pipeline
   name: sample-pipeline
-spec: 
+spec:
   nodeSelector: ~
   output: {}
   postCommit: {}
   resources: {}
   runPolicy: Serial
-  source: 
+  source:
     type: None
-  strategy: 
-    jenkinsPipelineStrategy: 
+  strategy:
+    jenkinsPipelineStrategy:
       jenkinsfile: |
           node {
           stage 'buildInDev'
@@ -100,13 +102,13 @@ spec:
             sh "oc expose svc myapp"
             }
             }
-  triggers: 
-    - 
-      generic: 
+  triggers:
+    -
+      generic:
         secret: efe7f857458df9c3
       type: Generic
-    - 
-      github: 
+    -
+      github:
         secret: 0084feefe5b6b26c
       type: GitHub
   type: JenkinsPipeline
@@ -159,35 +161,44 @@ IMPORTANT: Please update the following
 
 *Step 7: Automatically Build new containers and shift workload to new container*
 
-1. Make changes to the code to index.php or info.php
+1. Run the following to cleanup the qa-<username> projects
+
+  ```
+  oc login -u <username> https://openshift.caascloud.net:8443
+  oc project qa-<username>
+  oc delete all --all
+  ```
+
+2. Make changes to the code to index.php or info.php
 you can make changes via the gitlab web interface via `Edit`
 
     ```
-    $ git clone ...
-    <make code changes>
+    $ git clone https://gitlab.caascloud.net/<yourname>/welcome-php.git
+    <make code changes> with index.php
     $ git add <update files>
     $ git commit -m "description of the commit"
     $ git push -u origin master
     ```
 
-2. Execute the following
+3. Execute the following
 
     ```
     git add <file-that-has-changes>
     git commit -m "update files"
     git push -u origin master
     ```
+    Once the new source is pushed, the pipeline will be triggered to rebuild.
 
-3. Login to https://openshift.caascloud.net:8443
-4. Click onto your project
-5. Click `Builds` --> `Pipelines`
-6. Click `Input Required` from your pipeline build
-7. Click `Login Openshift`
-8. Click allow access
-9. Click `Proceed`
-10. take few minutes to promote the image to qa project
-10. Click to qa-username project
-11. Application is deployed and scale up.
+4. Login to https://openshift.caascloud.net:8443
+5. Click onto your project
+6. Click `Builds` --> `Pipelines`
+7. Click `Input Required` from your pipeline build
+8. Click `Login Openshift`
+9. Click allow access
+10. Click `Proceed`
+11. take few minutes to promote the image to qa project
+12. Click to qa-username project
+13. Application is deployed and scale up.
 
 *Step 8: Scaling/Decommissions*
 
