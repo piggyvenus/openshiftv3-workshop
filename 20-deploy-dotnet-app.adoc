@@ -32,14 +32,14 @@ Click into *Add to Project* button.
 
 In the search text box type `dotnet` and select `.Net Core` template with
 latest version tag for this builder image (at the moment of creation
-this lab it is `dotnetcore-11-rhel7:latest`).
+this lab it is `.NET Core Builder Images`).
 
 Fill the fields with the following information:
 
 ....
-Name: dotnet11
+Name: dotnet20
 Git Repository URL: https://github.com/redhat-developer/s2i-dotnetcore-ex
-Branch: dotnetcore-1.1
+Branch: dotnetcore-2.0
 Context Dir: app
 ....
 
