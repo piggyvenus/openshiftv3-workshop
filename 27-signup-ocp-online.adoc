@@ -1,0 +1,13 @@
+[[signup-ocp-online]]
+***Signup for OpenShift Online***
+
+
+The steps to register OpenShift Online
+
+- go to http://manage.openshift.com
+- click Sign up
+- click register
+- fill out the information and click `CREATE MY ACCOUNT`
+- Verify from your email
+- login
+- select the Plan
