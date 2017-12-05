@@ -226,14 +226,6 @@ seeing that a new service is now available and exposed as a route.
 
 image::dbtest_build.png[image]
 
-Click "Group Service" next to DB test and select "mysql" service.
-
-You will also notice that a build starts running very soon. Once the
-build completes, the application image created from the source code will
-be uploaded to the docker repository.
-
-image::console_project_overview.png[image]
-
 You can check the build logs using the following command:
 
 ....
