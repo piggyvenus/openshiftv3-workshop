@@ -5,10 +5,10 @@ config:
       value: openshift
     - name: CONSOLE_ADDRESS
       desc: HTTP address of the OpenShift console
-      value: https://testopenshift.sc.osecloud.com:8443
+      value: https://master.osft.cloudvillage.in:8443/
     - name: APPS_ADDRESS
       desc: HTTP address suffix of apps deployed on OpenShift
-      value: apps.testapps.sc.osecloud.com
+      value: apps.osft.cloudvillage.in
     - name: GET_STARTED_CLI_URL
       desc: URL to documentation to configure CLI
       value: https://docs.openshift.com/container-platform/latest/cli_reference/get_started_cli.html
@@ -60,3 +60,5 @@ modules:
     name: Dynamic configuration updates using ConfigMap
   18-changing-code-onthefly:
     name: Changing code on the fly
+  20-deploy-dotnet-app:
+    name: Deploy .Net core application
