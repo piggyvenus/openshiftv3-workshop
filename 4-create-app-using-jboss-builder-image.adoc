@@ -33,7 +33,7 @@ Click into *Add to Project* button.
 
 In the search text box type `jboss-eap64-openshift` and select the
 latest version tag for this builder image (at the moment of creation
-this lab it is `jboss-eap64-openshift:1.4`).
+this lab it is `jboss-eap64-openshift:1.5`).
 
 Fill the fields with the following information:
 
