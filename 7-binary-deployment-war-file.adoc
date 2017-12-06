@@ -38,6 +38,11 @@ download this example WAR file
 https://raw.githubusercontent.com/VeerMuchandi/ps/master/deployments/ROOT.war[here]).
 
 ....
+$cd deployments
+$wget https://raw.githubusercontent.com/VeerMuchandi/ps/master/deployments/ROOT.war
+....
+
+....
 $ ls -lR
 
 total 0

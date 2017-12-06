@@ -34,7 +34,7 @@ IMPORTANT: Please replace *userxx* with the username assigned to you in
 the commands below.
 
 ....
-$ oc new-app --image-stream=php --code=https://github.com/your_github_username/bluegreen.git --name=scm-web-hooks
+$ oc new-app --image-stream=php --code=http://gogs-ci.apps.osft.cloudvillage.in/your_gogs_username/bluegreen.git --name=scm-web-hooks
 ....
 
 *Step 3: Look at some of the created resources*
