@@ -22,8 +22,6 @@ config:
 modules:
   0-setting-up-client-tools:
     name: Setting up client tools
-  27-signup-ocp-online:
-    name: Signup OpenShift Online
   1-create-app-from-docker-image:
     name: Create an App from a Docker image
   2-create-app-using-docker-build:
@@ -62,3 +60,5 @@ modules:
     name: Changing code on the fly
   20-deploy-dotnet-app:
     name: Deploy .Net core application
+  27-signup-ocp-online:
+    name: Signup OpenShift Online
