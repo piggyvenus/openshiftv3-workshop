@@ -149,20 +149,19 @@ In this part of the Lab we will:
 this case.
 * Click *Configuration* tab to get list of *Triggers* for the GitHub
 link.
-* Copy the *GitHub webhook URL*. You will need this URL for next step.
+* Copy the *Generic webhook URL*. You will need this URL for next step.
 
 image::github_show_url.png[image]
 
 *Step 2: Configure GitHub repository Web Hook*
 
-* Login to your GitHub account.
+* Login to your Gogs account.
 * Navigate to the forked repository you used to create the application.
 * Click on Settings.
 * Click on Webhooks.
 * Click on the *Add webhook* button.
 * Add the recently copied Web Hook URL from OpenShift.
 * Change the Content-type as "application/json"
-* Click on the *Disable SSL Verification* button.
 * Confirm by adding the *Add Webhook* button in green at the bottom of
 the page.
 
