@@ -5,10 +5,10 @@ config:
       value: openshift
     - name: CONSOLE_ADDRESS
       desc: HTTP address of the OpenShift console
-      value: https://master.osft.cloudvillage.in:8443/
+      value: https://master.ocpazure.cgftdev.com:8443
     - name: APPS_ADDRESS
       desc: HTTP address suffix of apps deployed on OpenShift
-      value: apps.osft.cloudvillage.in
+      value: apps.ocpazure.cgftdev.com
     - name: GET_STARTED_CLI_URL
       desc: URL to documentation to configure CLI
       value: https://docs.openshift.com/container-platform/latest/cli_reference/get_started_cli.html
