@@ -22,41 +22,41 @@ config:
 modules:
   0-Setting-up-client-tools:
     name: Setting up client tools
-  1-Create-App-From-a-Docker-Image:
+  1_Create_App_From_a_Docker_Image:
     name: Create an App from a Docker image
-  2-Create-App-Using-Docker-Build:
+  2_Create_App_Using_Docker_Build:
     name: Create an App using Docker build
-  3-Using-Web-Console:
+  3_Using_Web_Console:
     name: Using Web Console
-  4-Creating-an-application-using-JBoss-EAP-builder_image:
+  4_Creating_an_application_using_JBoss_EAP_builder_image:
     name: Creating an application using JBoss EAP builder image
-  5-Using-templates:
+  5_Using_templates:
     name: Using Templates
-  6-Scale-up-and-Scale-down-the-application-instances:
+  6_Scale_up_and_Scale_down_the_application_instances:
     name: Scale up and Scale down and Idle the application instances
-  7-Binary-Deployment-of-a-war-file:
+  7_Binary_Deployment_of_a_war_file:
     name: Binary Deployment of a war file
-  8-Using-SSL-In-your-Application:
+  8_Using_SSL_In_your_Application:
     name: Using SSL in your application
-  9-Blue-Green-Deployments:
+  9_Blue_Green_Deployments:
     name: Blue-Green Deployments
-  10-SCM-Web-Hooks:
+  10_SCM_Web_Hooks:
     name: SCM Web Hooks
-  11-Rollback-Applications:
+  11_Rollback_Applications:
     name: Rollback Applications
-  12-Code-Promotion-Across-Environments:
+  12_Code_Promotion_Across_Environments:
     name: Code Promotion across Environments
-  13-Using-Persistent-Storage:
-    name: Using Persistent Storage
-  14-Deploy-a-Spring-Boot-Application:
+  13_Using_Persistent_Storage:
+    name: Using Persisent Storage
+  14_Deploy_a_Spring_Boot_Application:
     name: Deploy a SpringBoot Application
-  15-Adding-Spring-Boot-S2I-Image-to-the-Project-Catalog:
+  15_Adding_Spring_Boot_S2I_Image_to_the_Project_Catalog:
     name: Adding Spring Boot S2I Image to the Project Catalog
-  16-Adding-database-to-your-Spring-Boot-Application:
+  16_Adding_database_to_your_Spring_Boot_Application:
     name: Adding a backend database to the SpringBoot application
-  17-dynamic-config-updates-using-configmaps:
+  17_Dynamic_Configuration_Updates_using_ConfigMap:
     name: Dynamic configuration updates using ConfigMap
-  18-Changing-code-on-the-fly:
+  18_Changing_code_on_the_fly:
     name: Changing code on the fly
-  19-Creating-a-Pipeline:
-    name: Deploy .Net core application
+  19_Creating_a_Pipeline:
+    name: Create pipeline
