@@ -28,7 +28,7 @@ modules:
     name: Create an App using Docker build
   3-Using-Web-Console:
     name: Using Web Console
-  4-Creating-an-application-using-JBoss-EAP-builder_image:
+  4-Creating-an-application-using-JBoss-EAP-builder-image:
     name: Creating an application using JBoss EAP builder image
   5-Using-templates:
     name: Using Templates
