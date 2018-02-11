@@ -143,21 +143,21 @@ Untick the following boxes:
 * `Automatically start a new deployment when the deployment configuration changes`
 
 Click "Save" and in the end, the config should look like this.
-image:disable-triggers1.png[image]
+image::disable-triggers1.png[image]
 
 
 Do the same steps for the `testing-UserName` project. It should
 look similar.
-image:disable-triggers2.png[image]
+image::disable-triggers2.png[image]
 
 
 *Step 5:* Start pipeline
 
 Now click on the `Start Pipeline` button to start the pipeline.
-image:pipeline2.jpeg[image]
+image::pipeline2.jpeg[image]
 
 Notice the pipeline starts and `build` and `deploy` stages are executed.
-image:pipeine3.jpeg[image]
+image::pipeine3.jpeg[image]
 
 Click on the `View log` link for the pipeline. It’ll take you to Jenkins
 and show the logs.
