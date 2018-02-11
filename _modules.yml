@@ -20,43 +20,45 @@ config:
       value: https://access.redhat.com/downloads/content/290
 
 modules:
-  0_Setting-up-client-tools:
+  0-setting-up-client-tools:
     name: Setting up client tools
-  1_Create_App_From_a_Docker_Image:
+  1-create-app-from-docker-image:
     name: Create an App from a Docker image
-  2_Create_App_Using_Docker_Build:
+  2-create-app-using-docker-build:
     name: Create an App using Docker build
-  3_Using_Web_Console:
+  3-using-web-console:
     name: Using Web Console
-  4_Creating_an_application_using_JBoss_EAP_builder_image:
+  4-create-app-using-jboss-builder-image:
     name: Creating an application using JBoss EAP builder image
-  5_Using_templates:
+  5-using-templates:
     name: Using Templates
-  6_Scale_up_and_Scale_down_the_application_instances:
+  6-scaling-app-instances:
     name: Scale up and Scale down and Idle the application instances
-  7_Binary_Deployment_of_a_war_file:
+  7-binary-deployment-war-file:
     name: Binary Deployment of a war file
-  8_Using_SSL_In_your_Application:
+  8-using-ssl-app:
     name: Using SSL in your application
-  9_Blue_Green_Deployments:
+  9-bluegreen-deployments:
     name: Blue-Green Deployments
-  10_SCM_Web_Hooks:
+  10-webhooks:
     name: SCM Web Hooks
-  11_Rollback_Applications:
+  11-rollback-applications:
     name: Rollback Applications
-  12_Code_Promotion_Across_Environments:
+  12-code-promotion-across-envs:
     name: Code Promotion across Environments
-  13_Using_Persistent_Storage:
-    name: Using Persisent Storage
-  14_Deploy_a_Spring_Boot_Application:
+  13-using-jbds:
+    name: Installing the JBoss Developer Studio
+  14-deploy-springboot-app:
     name: Deploy a SpringBoot Application
-  15_Adding_Spring_Boot_S2I_Image_to_the_Project_Catalog:
+  15-adding-springboot-sti-to-catalog:
     name: Adding Spring Boot S2I Image to the Project Catalog
-  16_Adding_database_to_your_Spring_Boot_Application:
+  16-adding-database-to-springboot-app:
     name: Adding a backend database to the SpringBoot application
-  17_Dynamic_Configuration_Updates_using_ConfigMap:
+  17-dynamic-config-updates-using-configmaps:
     name: Dynamic configuration updates using ConfigMap
-  18_Changing_code_on_the_fly:
+  18-changing-code-onthefly:
     name: Changing code on the fly
-  19_Creating_a_Pipeline:
-    name: Create pipeline
+  20-deploy-dotnet-app:
+    name: Deploy .Net core application
+  27-signup-ocp-online:
+    name: Signup OpenShift Online
