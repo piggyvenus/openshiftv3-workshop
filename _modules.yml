@@ -54,7 +54,7 @@ modules:
     name: Adding Spring Boot S2I Image to the Project Catalog
   16-Adding-database-to-your-Spring-Boot-Application:
     name: Adding a backend database to the SpringBoot application
-  17-dynamic-config-updates-using-configmaps:
+  17-Dynamic-Configuration-Updates-using-ConfigMap:
     name: Dynamic configuration updates using ConfigMap
   18-Changing-code-on-the-fly:
     name: Changing code on the fly
