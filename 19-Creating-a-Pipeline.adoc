@@ -7,7 +7,7 @@ pipeline will be setup using Jenkins running as an application pod on
 OpenShift. The pipeline running on Jenkins will trigger builds and
 deployments on OpenShift.
 
-*Prerequisites:* 
+*Prerequisites:*
 
 * You need a github account if you want to make changes and test the pipeline kick-off.
 * You will be using the projects you created in the "Promiting Applications" lab.
@@ -135,7 +135,7 @@ Using the left-side navigation; go to `Application` -> `Deployments`. On the ove
 page click on your build to see your deployment histroy page.
 
 Click on the `Actions` -> `Edit` on the upper right hand side to go into
-the `Configuration` page for your deployment. 
+the `Configuration` page for your deployment.
 
 Untick the following boxes:
 
@@ -143,21 +143,21 @@ Untick the following boxes:
 * `Automatically start a new deployment when the deployment configuration changes`
 
 Click "Save" and in the end, the config should look like this.
-image:images/disable-triggers1.png[image]
+image:disable-triggers1.png[image]
 
 
-Do the same steps for the `testing-UserName` project. It should 
+Do the same steps for the `testing-UserName` project. It should
 look similar.
-image:images/disable-triggers2.png[image]
+image:disable-triggers2.png[image]
 
 
 *Step 5:* Start pipeline
 
 Now click on the `Start Pipeline` button to start the pipeline.
-image:images/pipeline2.jpeg[image]
+image:pipeline2.jpeg[image]
 
 Notice the pipeline starts and `build` and `deploy` stages are executed.
-image:images/pipeine3.jpeg[image]
+image:pipeine3.jpeg[image]
 
 Click on the `View log` link for the pipeline. It’ll take you to Jenkins
 and show the logs.

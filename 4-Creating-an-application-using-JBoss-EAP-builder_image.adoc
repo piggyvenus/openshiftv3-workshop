@@ -42,7 +42,7 @@ Application Name: ks
 Git Repository URL: https://github.com/RedHatWorkshops/kitchensink
 ....
 
-image:images/jboss_wizard_configuration.png[image]
+image:jboss_wizard_configuration.png[image]
 
 
 Click on the blue link that says: *Advanced Options*
@@ -59,7 +59,7 @@ Ex:-  http://nexus-artrepo.apps.devday.ocpcloud.com/repository/maven-public/
 *REMEMBER:* Check with your instructor the proper URL for the Nexus
 repository.
 
-image:images/nexus_repo.png[image]
+image:nexus_repo.png[image]
 
 Click on *Create* and then on *Continue to the project overview*.
 
@@ -307,7 +307,7 @@ Route should be already created.
 $ oc get routes
 
 NAME      HOST/PORT                                                      PATH      SERVICES   PORT       TERMINATION
-ks        ks-myjbossapp-Username.apps.osecloud.com                                 ks         8080-tcp   
+ks        ks-myjbossapp-Username.apps.osecloud.com                                 ks         8080-tcp
 ....
 
 If route does not show, we expose the service `ks` via the command
