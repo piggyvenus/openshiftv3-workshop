@@ -1,0 +1,12 @@
+[[exxon-auto-scaling-application]]
+Auto Scaling of Your Application and Configuring Health Checks
+
+
+*Step 1: Determine scaling requirements*
+metrics & limit
+
+*Step 2: Defining Resource Limits for Deployment*
+
+*Step 3: Configure Autoscaler*
+
+*Step 4: Adding Health Checks*
