@@ -275,15 +275,15 @@ Once the deployment is complete +
 `config` folder
 
 ....
-sh-4.2$ ls config                                                                                                                                                 
-application.properties                                                                                                                                            
-sh-4.2$ cat config/application.properties                                                                                                                         
-# replace your own values based on the database service you created                                                                                               
-# url = jdbc:mysql://<<service-host>>:<<service-port>>/<<dbname>>?useSSL=false                                                                                    
-spring.datasource.platform=mysql                                                                                                                                  
-spring.datasource.url= jdbc:mysql://mysql.spring-veer:3306/sampledb?useSSL=false                                                                                  
-spring.datasource.username=user                                                                                                                                   
-spring.datasource.password=password                                                                                                                               
+sh-4.2$ ls config
+application.properties
+sh-4.2$ cat config/application.properties
+# replace your own values based on the database service you created
+# url = jdbc:mysql://<<service-host>>:<<service-port>>/<<dbname>>?useSSL=false
+spring.datasource.platform=mysql
+spring.datasource.url= jdbc:mysql://mysql.spring-veer:3306/sampledb?useSSL=false
+spring.datasource.username=user
+spring.datasource.password=password
 ....
 
 Note the contents of this file are what you added to the ConfigMap.
