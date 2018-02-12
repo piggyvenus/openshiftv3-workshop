@@ -59,4 +59,4 @@ modules:
   18-Changing-code-on-the-fly:
     name: Changing code on the fly
   19-Creating-a-Pipeline:
-    name: Deploy .Net core application
+    name: Create Pipeline
