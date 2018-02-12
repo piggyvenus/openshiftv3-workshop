@@ -51,7 +51,7 @@ On *Build Configuration* add a new _Environment Variable_.
 
 ....
 name: MAVEN_MIRROR_URL
-value: <nexus_url>/repository/maven-public/
+value: {{NEXUS_URL}}
 
 Ex:-  http://nexus-artrepo.apps.devday.ocpcloud.com/repository/maven-public/
 ....
