@@ -47,7 +47,7 @@ MySQL root user Password: pricelist
 MySQL Database Name: pricelist
 ....
 
-image::Pmysql_ephemeral_creation.png[image]
+image::mysql_ephemeral_creation.png[image]
 
 Click the *Next* button.
 
@@ -154,7 +154,7 @@ console.
 Now use `curl` to run the database `bootstrap` script
 ....
 $ oc project
-Using project "consoleproject-Username" on server "https://ocp.example.com:8443".
+Using project "consoleproject-Username" on server "{{CONSOLE_ADDRESS}}".
 
 $ curl -k http://$(oc get route/pricelist -o jsonpath='{.spec.host}')/create_database.php
 Array
@@ -171,7 +171,7 @@ Go ahead and open your application. The URL will be displayed by `oc get route`
 ....
 $ oc get route
 NAME        HOST/PORT                                                    PATH      SERVICES    PORT       TERMINATION   WILDCARD
-pricelist   pricelist-consoleproject-Username.apps.example.com 	                   pricelist   8080-tcp                 None
+pricelist   pricelist-consoleproject-Username.{{APPS_ADDRESS}} 	                   pricelist   8080-tcp                 None
 ....
 
 When you open your application, click on the "Create Record" button and create a record.
@@ -232,4 +232,4 @@ configured this frontend application to access the database using a
 service, in this case, the ``mysql'' service. The frontend is made
 accessible using a route for which you gave a URL.
 
-link:0_toc.adoc[Table Of Contents]
+link:https://github.com/RedHatWorkshops/openshiftv3-workshop/blob/master/0_toc.adoc[Table Of Contents]
