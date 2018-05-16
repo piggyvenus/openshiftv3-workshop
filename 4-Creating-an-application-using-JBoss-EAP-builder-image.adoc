@@ -54,7 +54,7 @@ image::jboss_wizard_configuration.png[image]
 image::jboss_wizard_configuration2.png[image]
 
 Click Next
-Select `Create a secret in ... to be used later`
+
 Click on *Create* and then on *Continue to the project overview*.
 
 *Step 3: Build*
