@@ -34,6 +34,8 @@ modules:
     name: Adding Spring Boot S2I Image to the Project Catalog
   16-Adding-database-to-your-Spring-Boot-Application:
     name: Adding a backend database to the SpringBoot application
+  12-Code-Promotion-Across-Environments:
+    name: Code Promotion across Environments
   19-Creating-a-Pipeline:
     name: Create Pipeline
   5-Using-templates:
@@ -42,5 +44,3 @@ modules:
     name: Using SSL in your application
   10-SCM-Web-Hooks:
     name: SCM Web Hooks
-  12-Code-Promotion-Across-Environments:
-    name: Code Promotion across Environments
