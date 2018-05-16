@@ -21,6 +21,7 @@ image::new-project.png[image]
 image::new-project-details.png[image]
 
 - Click `Create`
+- Click onto the newly created project
 
 
 *Step 2: Create an application that uses Dockerfile*
@@ -48,20 +49,21 @@ Later it uses this image to deploy an application that runs in a pod.
 
 Now let's create an application using this approach.
 
-- Click `Add to Project` --> select `Browse Catalog` if you are using the same project from lab 1
+- Click `Browse Catalog`
+- Type: dockerfile in the `Search Catalog` field on the top
+- Click onto `dockerfilebuild` from the list
+- Click `Next` from this screen
 
-image::browse-catalog.png[image]
-
-- Type: dockerfile
-- Click `Select` on the dockerfilebuild template
-
-image::dockerfile-template.png[image]
+image::dockerbuild.png[image]
 
 - Enter values for Parameters as shown below:
   * Application Name: time
   * Git Repo: https://github.com/VeerMuchandi/time
 
-- Click `Create` and `Continue to overview`
+- Click `Next`
+- Select `Create a secret in dockerfile-shanna`
+- Click `Create`
+- Click `Continue to the project overview`
 
 You'll notice that OpenShift created a few things at this point. You
 will find a buildconfig, deploymentconfig, service and imagestreams in

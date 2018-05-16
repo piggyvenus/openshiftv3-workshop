@@ -24,7 +24,7 @@ modules:
     name: Setting up client tools
   1a-Create-App-From-Docker-Image:
     name: Create an App from a Docker image
-  2a-Create-App-Using-Docker-Build:
+  2-Create-App-Using-Docker-Build:
     name: Create an App using Docker build
   4-Creating-an-application-using-JBoss-EAP-builder-image:
     name: Creating an application using JBoss EAP builder image
