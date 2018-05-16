@@ -1,0 +1,225 @@
+[[create-an-app-using-docker-build]]
+Create an App using Docker build
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this exercise we will learn how to create an application from a
+Dockerfile. OpenShift takes Dockerfile as an input and generates your
+application docker image for you.
+
+*Step 1: Add a new project from command line*
+
+IMPORTANT: Please replace *userxx* with your username
+
+- login to web UI via {{CONSOLE_ADDRESS}}
+- Use the same username and password that assigned to you
+- Click `Create Project`
+
+image::new-project.png[image]
+
+- Enter `dockerfile-*userxx*` as project name (all lower case)
+
+image::new-project-details.png[image]
+
+- Click `Create`
+
+
+*Step 2: Create an application that uses Dockerfile*
+
+This time we will use a project that has a Dockerfile in a source code
+repository. We will use a simple project on github
+(https://github.com/VeerMuchandi/time). "rhel" folder from this github
+project is built starting with rhel7 as the base image which is
+described in Dockerfile. Look at the Dockerfile for this project. It
+starts off with `registry.access.redhat.com/rhel7` image. It copies the
+source code which is a simple `init.sh` file and exposes port `8080`.
+Look at the `init.sh` that just displays the current datetime. There is
+also a PHP version of the same project available in the php folder if
+you like to use that. The php version does exactly the same it has a
+`time.php` file that displays the time.
+
+NOTE: When OpenShift finds a Dockerfile in the source, it uses
+this Dockerfile as the basis to create a docker image for your
+application. This strategy is called *Docker Build* strategy on
+OpenShift. We'll see more about it when we look at the build
+configuration a couple of steps down the line. Once OpenShift builds the
+application's docker image, it stores that in a local docker registry.
+Later it uses this image to deploy an application that runs in a pod.
+
+
+Now let's create an application using this approach.
+
+- Click `Add to Project` --> select `Browse Catalog` if you are using the same project from lab 1
+
+image::browse-catalog.png[image]
+
+- Type: dockerfile
+- Click `Select` on the dockerfilebuild template
+
+image::dockerfile-template.png[image]
+
+- Enter values for Parameters as shown below:
+  * Application Name: time
+  * Git Repo: https://github.com/VeerMuchandi/time
+
+- Click `Create` and `Continue to overview`
+
+You'll notice that OpenShift created a few things at this point. You
+will find a buildconfig, deploymentconfig, service and imagestreams in
+the above list. The application is not running yet. It needs to be built
+and deployed. Within a minute or so, you will see that OpenShift starts
+the build.
+
+*Step 3: Build*
+
+In the meanwhile lets have a look at the buildconfig by running the
+command shown below.
+
+- Click `Overview` on the left menu
+
+image::overview.png[image]
+
+- Click Builds on the left menu --> select Builds
+- Click onto `#1`
+- Click on `Logs` to view the build logs
+- Log shows as shown below
+  ```
+  Removing intermediate container 850026b88ed6
+  Successfully built 86375f734d8f
+  Pushing image docker-registry.default.svc:5000/workshop/time:latest
+  Push successful
+  ```
+
+  Note the name of the build that is running i.e. time #1. We will use that
+  name to look at the build logs. Run the command as shown below to look
+  at the build logs. This will run for a few mins. At the end you will
+  notice that the docker image is successfully created and it will start
+  pushing this to OpenShift's internal docker registry.
+  In the above log note how the image is pushed to the local docker
+  registry. The registry is running at `docker-registry.default.svc:5000/`.
+
+- Click `Builds` --> `Builds` on the left menu
+
+image::build-menu.png[image]
+
+- Click onto `time`
+- Click `Actions` --> `Edit` on the top right to view the buildconfig
+- Click `Actions` --> `Edit yaml` to view the buildconfig YAML file
+
+image::edit.png[image]
+- Click `Cancel`
+
+
+  Note the name of the buildconfig in metadata is set to "time", the git
+  uri pointing to the value you gave while creating the application. Also
+  note the Strategy.type set to "Docker". This indicates that the build
+  will use the instructions in this Dockerfile to do the docker build.
+
+
+*Step 4: Deployment*
+
+Once the image is pushed to the docker registry, OpenShift will trigger
+a deploy process. Let us also quickly look at the deployment
+configuration by running the following command. Note dc represents
+deploymentconfig.
+
+- Click `Applications` --> `Deployments` from the left menu
+- Click `time`
+- Click `Actions` --> `Edit YAML`
+
+  ```
+  apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: '2017-09-15T23:49:45Z'
+    generation: 5
+    labels:
+      app: time
+    name: time
+    namespace: workshop
+    resourceVersion: '142269'
+    selfLink: /oapi/v1/namespaces/workshop/deploymentconfigs/time
+    uid: 8d1a6b68-9a70-11e7-a153-080027ed01ae
+  spec:
+    replicas: 1
+    selector:
+      app: time
+      deploymentconfig: time
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: time
+          deploymentconfig: time
+      spec:
+        containers:
+          - image: >-
+              docker-registry.default.svc:5000/workshop/time@sha256:760db5000a9084382a8f31ffd40c6e45060819d414351fb990aee677482b1c5c
+            imagePullPolicy: Always
+            name: time
+            ports:
+              - containerPort: 8080
+                protocol: TCP
+            resources: {}
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        ```
+
+  Note where the image is picked from. It shows that the deployment picks
+  the image from the local registry (same ip address and port as in
+  buildconfig) and the image tag is same as what we built earlier. This
+  means the deployment step deploys the application image what was built
+  earlier during the build step.
+
+- Click `Cancel`
+- Click `Applications` --> `Pods`
+  If you get the list of pods, you'll notice that the application gets
+  deployed quickly and starts running in its own pod.
+
+
+*Step 5: Adding route*
+
+This step is very much the same as what we did in the previous exercise.
+We will check the service and add a route to expose that service.
+
+- Click `Applications` --> `Services`
+- Click `Overview`
+- Click `Create Route` to expose service as a route
+
+image::create-route.png[image]
+
+- Click `Create`
+- Click `Applications` --> `Routes` to view the list of routes
+
+*Step 6: Run the application*
+
+- Click `Applications` --> `Routes`
+- Click `time` route
+- Click on link under the route name
+
+Now run the application by using the route you provided in the previous
+step. You can use either curl or your browser. The application displays
+time. *If you don't provide time.php extension, it displays apache's
+default index page.*
+
+
+Congratulations!! In this exercise you have learnt how to create, build
+and deploy an application using OpenShift's "Docker Build strategy".
