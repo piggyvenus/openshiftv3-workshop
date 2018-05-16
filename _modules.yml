@@ -5,16 +5,16 @@ config:
       value: openshift
     - name: CONSOLE_ADDRESS
       desc: HTTP address of the OpenShift console
-      value: https://ocp.34.211.7.120.nip.io:8443
+      value: https://ocpmaster.workshop.sc.osecloud.com
     - name: APPS_ADDRESS
       desc: HTTP address suffix of apps deployed on OpenShift
-      value: apps.34.211.7.120.nip.io
+      value: apps.workshop.sc.osecloud.com
     - name: GET_STARTED_CLI_URL
       desc: URL to documentation to configure CLI
       value: https://docs.openshift.com/container-platform/latest/cli_reference/get_started_cli.html
     - name: NEXUS_URL
       desc: URL to Nexus repository
-      value: http://nexus-ci.apps.34.211.7.120.nip.io/repository/maven-public/
+      value: http://nexus-ci.apps.workshop.sc.osecloud.com/repository/maven-public/
     - name: REDHAT_DOWNLOAD_OC_PORTAL_URL
       desc: URL for Red Hat portal oc binary download
       value: https://access.redhat.com/downloads/content/290
@@ -22,27 +22,25 @@ config:
 modules:
   0-Setting-up-client-tools:
     name: Setting up client tools
-  1-Create-App-From-a-Docker-Image:
+  1a-Create-App-From-a-Docker-Image:
     name: Create an App from a Docker image
-  2-Create-App-Using-Docker-Build:
+  2a-Create-App-Using-Docker-Build:
     name: Create an App using Docker build
-  3-Using-Web-Console:
-    name: Using Web Console
   4-Creating-an-application-using-JBoss-EAP-builder-image:
     name: Creating an application using JBoss EAP builder image
-  5-Using-templates:
-    name: Using Templates
-  8-Using-SSL-In-your-Application:
-    name: Using SSL in your application
-  10-SCM-Web-Hooks:
-    name: SCM Web Hooks
   14-Deploy-a-Spring-Boot-Application:
     name: Deploy a SpringBoot Application
   15-Adding-Spring-Boot-S2I-Image-to-the-Project-Catalog:
     name: Adding Spring Boot S2I Image to the Project Catalog
   16-Adding-database-to-your-Spring-Boot-Application:
     name: Adding a backend database to the SpringBoot application
-  12-Code-Promotion-Across-Environments:
-    name: Code Promotion across Environments
   19-Creating-a-Pipeline:
     name: Create Pipeline
+  5-Using-templates:
+    name: Using Templates
+  8-Using-SSL-In-your-Application:
+    name: Using SSL in your application
+  10-SCM-Web-Hooks:
+    name: SCM Web Hooks
+  12-Code-Promotion-Across-Environments:
+    name: Code Promotion across Environments
