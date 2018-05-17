@@ -40,7 +40,7 @@ modules:
     name: Create Pipeline
   5-Using-templates:
     name: Using Templates
-  7-Binary-Deployment-of-a-war-File:
+  7-Binary-Deployment-of-a-war-file:
     name: Binary Deployment of a war file
   8-Using-SSL-In-your-Application:
     name: Using SSL in your application
