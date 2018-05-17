@@ -40,7 +40,11 @@ modules:
     name: Create Pipeline
   5-Using-templates:
     name: Using Templates
+  7-binary-deployment-war-file:
+    name: Binary Deployment of a war file
   8-Using-SSL-In-your-Application:
     name: Using SSL in your application
+  9-bluegreen-deployments:
+    name: Blue-Green Deployments
   10-SCM-Web-Hooks:
     name: SCM Web Hooks
