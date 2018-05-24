@@ -18,9 +18,10 @@ Create both new projects with your user name:name: value
 
 
 *Step 2:* Deploy an application
+
 1. In dev-Username project
 2. select PHP builder image in the catalog
-3. name the application as `myapp` and git url as `https://github.com/RedHatWorkshops/welcome-php`
+3. name the application as `myapp` and git url as `https://github.com/RedHatWorkshops/time`
 4. create and deploy the application
 
 
