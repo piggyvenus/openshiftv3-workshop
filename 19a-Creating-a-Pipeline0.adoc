@@ -151,9 +151,10 @@ Click "Save" and in the end, the config should look like this.
 image::images/disable-triggers1.png[image]
 
 *Step 5:* Start pipeline
-Change Project to pipeline-Username
-Build --> Pipelines
-Now click on the `Start Pipeline` button to start the pipeline.
+
+- Change Project to dev-Username
+- Build --> Pipelines
+- Now click on the `Start Pipeline` button to start the pipeline.
 
 Notice the pipeline starts and `build` and `deploy` stages are executed.
 
@@ -170,8 +171,8 @@ application to notice that the `blue` box is displayed.
 
 Navigate back to the `configuration` tab for the pipeline as explained
 in Step 3. Copy the value for `Github webhook` url
-Since development-User uses git repo from https://github.com/RedHatWorkshops/time),
-you will need to fork this repo and update the developement configure to use the forked repo.
+Since dev-Username uses git repo from https://github.com/RedHatWorkshops/time),
+you will need to fork this repo and update the development configure to use the forked repo.
 
 Based on what you learn in the past, go to your github repository that
 you cloned and set up a webhook pointing to this URL.
