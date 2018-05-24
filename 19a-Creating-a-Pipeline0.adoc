@@ -65,7 +65,7 @@ pipeline that runs. We will discuss that in the next step.
 This will spin up a Jenkins pod. Give it a few minutes as it takes time
 to download and deploy jenkins. You will also see the URL assigned to
 your Jenkins. It would be something like
-`https://jenkins-dev-UserName.{{APPS_ADDRESS}}`
+`https://jenkins-dev-UserName.apps.workshop.sc.osecloud.com
 
 If you click on that URL, you will be taken to Jenkins Console. *Note:*
 The browser may complain that the URL is insecure. Click on advanced and
@@ -96,15 +96,15 @@ you to the editing page. Replace the current content with the following.
 ....
 node {
 stage 'buildInDev'
-openshiftBuild(namespace: 'dev', buildConfig: 'myapp', showBuildLogs: 'true')
+openshiftBuild(namespace: 'dev-Uername', buildConfig: 'time', showBuildLogs: 'true')
 stage 'deployInDev'
-openshiftDeploy(namespace: 'dev', deploymentConfig: 'myapp')
+openshiftDeploy(namespace: 'dev-Uername', deploymentConfig: 'time')
 stage 'Deploy QA'
 input 'Promote the Dev image to QA?'
 stage 'deployInTesting'
-openshiftTag(namespace: 'dev', sourceStream: 'myapp',  sourceTag: 'latest', destinationStream: 'myapp', destinationTag: 'promoteToQA')
-sh 'oc project qa'
-sh 'oc new-app dev/myapp:promoteToQA --allow-missing-imagestream-tags=true'
+openshiftTag(namespace: 'dev-Uername', sourceStream: 'time',  sourceTag: 'latest', destinationStream: 'time', destinationTag: 'promoteToQA')
+sh 'oc project qa-Uername'
+sh 'oc new-app dev-Uername/time:promoteToQA --allow-missing-imagestream-tags=true'
 sh 'oc expose svc myapp'
 }
 
@@ -114,8 +114,8 @@ And click `Save`. (Make sure you change the values according to your configurati
 
 Review these `Jenkinsfile` changes on this page.
 * It has two stages `build` and `deploy`
-* In the build stage the `openshiftBuild` plugin is used to trigger a build named `welcome-php`
-* In the deploy stage the `openshiftDeploy` plugin invokes a deployment configuration `welcome-php` and then invokes `openshiftScale` plugin to scale up the same deployment configuration to 2 replicas.
+* In the build stage the `openshiftBuild` plugin is used to trigger a build named `time`
+* In the deploy stage the `openshiftDeploy` plugin invokes a deployment configuration `time`.
 
 *Step 5:* Permissions and Configuration Changes
 Projects `dev-UserName` and `qa-UserName` are create from the last lab
@@ -132,7 +132,7 @@ oc adm policy add-role-to-user admin system:serviceaccount:pipeline-UserName:jen
 
 For reference the syntax is: `system:serviceaccount:PROJECTNAME:SERVICEACCOUNT`
 
-Next, we will edit the `development-UserName` project to disable
+Next, we will edit the `dev-UserName` project to disable
 the deployment triggers.
 
 Using the left-side navigation; go to `Application` -> `Deployments`. On the overview
