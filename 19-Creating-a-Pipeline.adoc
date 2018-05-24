@@ -10,7 +10,7 @@ deployments on OpenShift.
 *Prerequisites:*
 
 * You need a github account if you want to make changes and test the pipeline kick-off.
-* You will be using the projects you created in the "Promiting Applications" lab.
+* You will be using the projects you created in the "Promoting Applications" lab.
 
 *Step 1:* Create a new project Create a new project with name
 `pipeline-UserName`. _Substitute UserName with your own user name._

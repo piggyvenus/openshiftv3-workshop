@@ -19,13 +19,14 @@ Create both new projects with your user name:name: value
 
 *Step 2:* Deploy an application
 
-- In dev-Username project
-- select PHP builder image in the catalog
-- name the application as `myapp` and git url as `https://github.com/RedHatWorkshops/time`
-- create and deploy the application
+....
+oc project dev-Username
+oc new-app https://github.com/RedHatWorkshops/time --context-dir=rhel1
+....
 
 
 *Step 3:* Deploy your CI/CD tool (Jenkins)
+- From the Web UI
 - In dev-Username project
 - Click on to `Import YAML / JSON` tab.
 
