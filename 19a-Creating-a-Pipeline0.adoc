@@ -105,7 +105,7 @@ stage 'deployInTesting'
 openshiftTag(namespace: 'dev-Uername', sourceStream: 'time',  sourceTag: 'latest', destinationStream: 'time', destinationTag: 'promoteToQA')
 sh 'oc project qa-Uername'
 sh 'oc new-app dev-Uername/time:promoteToQA --allow-missing-imagestream-tags=true'
-sh 'oc expose svc myapp'
+sh 'oc expose svc time'
 }
 
 ....
