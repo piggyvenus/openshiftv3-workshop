@@ -26,7 +26,8 @@ oc new-app https://github.com/RedHatWorkshops/time --context-dir=rhel1
 
 
 *Step 3:* Deploy your CI/CD tool (Jenkins)
-- From the Web UI
+
+- Login to the Web UI
 - In dev-Username project
 - Click on to `Import YAML / JSON` tab.
 
