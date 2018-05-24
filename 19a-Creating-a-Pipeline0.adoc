@@ -47,7 +47,7 @@ metadata:
     name: sample-pipeline
     template: application-template-sample-pipeline
   annotations:
-    pipeline.alpha.openshift.io/uses: '[{"name": "myapp", "namespace": "", "kind": "DeploymentConfig"}]'
+    pipeline.alpha.openshift.io/uses: '[{"name": "time", "namespace": "", "kind": "DeploymentConfig"}]'
 spec:
   runPolicy: Serial
   source:
@@ -126,8 +126,8 @@ full access to these projects.
 
 ....
 oc project dev-UserName
-oc adm policy add-role-to-user admin system:serviceaccount:pipeline-UserName:jenkins -n testing-UserName
-oc adm policy add-role-to-user admin system:serviceaccount:pipeline-UserName:jenkins -n development-UserName
+oc adm policy add-role-to-user admin system:serviceaccount:dev-UserName:jenkins -n qa-UserName
+oc adm policy add-role-to-user admin system:serviceaccount:dev-UserName:jenkins -n dev-UserName
 ....
 
 For reference the syntax is: `system:serviceaccount:PROJECTNAME:SERVICEACCOUNT`
@@ -170,7 +170,7 @@ application to notice that the `blue` box is displayed.
 
 Navigate back to the `configuration` tab for the pipeline as explained
 in Step 3. Copy the value for `Github webhook` url
-Since development-User uses git repo from https://github.com/RedHatWorkshops/welcome-php),
+Since development-User uses git repo from https://github.com/RedHatWorkshops/time),
 you will need to fork this repo and update the developement configure to use the forked repo.
 
 Based on what you learn in the past, go to your github repository that
