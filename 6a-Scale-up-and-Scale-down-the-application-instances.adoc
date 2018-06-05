@@ -1,0 +1,68 @@
+[[scale-up-and-scale-down-and-idle-the-application-instances]]
+Scale up and Scale down and Idle the application instances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this exercise we will learn how to scale our application. OpenShift
+has the capability to scale your application and make sure that many
+instances are always running.
+
+*Step 1: Switch to an existing project*
+
+For this exercise, we will be using an already running application. We
+will be using the `mycliproject-UserName` that you created in the
+previous labs. Make sure you are switched to that project.
+
+- login to web UI via {{CONSOLE_ADDRESS}}
+- Use the same username and password that assigned to you
+- Click anywhere onto `OPENSHIFT CONTAINER PLATFORM` on top left
+- Click onto `mycliproject-UserName`
+
+*Step 2: View the deployment config*
+
+- Click `welcome` under DEPLOYMENT CONFIG on 'Overview' page
+- Click `Configuration` tab
+
+Note that the `replicas:` is set to `1`. This tells OpenShift that when
+this application deploys, make sure that there is 1 instance.
+
+The `replicationController` mirrors this configuration initially; the
+`replicationController` (or `rc`) will ensure that there is always the
+set number of instances always running.
+
+- To view number of pod running
+- Click `Applications` --> select 'Pods'
+- This shows all the pod running in the project
+
+
+*Step 3: Scale Application*
+
+To scale your application we will edit the `deploymentConfig` to 3.
+
+Open your browser to the Overview page and note you only have one
+instance running.
+
+image::scale_updown_overview.png[image]
+
+- Click onto the arrow up.
+
+image::scale_up.jpg[image]
+
+If you look at the web console and you will see that there are 3
+instances running now
+
+image::scale_updown_overview_scaled.png[image]
+
+- Check the Pod by clicking `Applications` --> `Pods`
+
+
+*Step 7: Scaling Down*
+
+Scaling down is the same procedure as scaling up.
+- On `Overview` page
+- Click arrow down next to the blue circle
+image::scale_down.jpg[image]
+
+Congratulations!! In this exercise you have learned about scaling and
+how to scale up/down your application on OpenShift!
+
+link:0_toc.adoc[Table Of Contents]

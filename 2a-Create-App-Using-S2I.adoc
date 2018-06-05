@@ -1,6 +1,6 @@
 [[create-an-app-using-s2i]]
 Create an App using Source to Image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this exercise we will learn how to create an application on OpenShift Container Platform
 via S2I. OpenShift takes your source code as an input and generates your
@@ -16,7 +16,7 @@ IMPORTANT: Please replace *userxx* with your username
 
 image::new-project.png[image]
 
-- Enter `dockerfile-*userxx*` as project name (all lower case)
+- Enter `s2i-*userxx*` as project name (all lower case)
 
 image::new-project-details.png[image]
 
@@ -24,30 +24,12 @@ image::new-project-details.png[image]
 - Click onto the newly created project
 
 
-*Step 2: List existing image builder or image streams*
+*Step 2: Create an application*
 
-- Click `Add to Project`  --> select `Browse Catalog`
-- Click `PHP`
-- Click drop down from the version under PHP and get the list of image stream
-
-image::version.png[image]
-
-
-*Step 3: Create an application*
-
-We will be using a sample application that displays a blue or green
-rectangle. The sample app can be browsed at https://github.com/RedHatWorkshops/bluegreen
-
-We will be using an env var in order to change the color of the box; but
-in practice you would use a different branch for each version of the
-code. (E.g. v1 branch and v2 branch)
-
-- Click `Add to Project`  --> select `Browse Catalog`
-- Click `PHP`
-
-image::php-catalog.png[image]
-
-- Click `Select` in the PHP option with the default version
+- Click `Browse Catalog`
+- Enter `PHP` in the top search field
+- Select `PHP`
+- Click `Next`
 - Enter name as `blue`
 - Enter Git Repository URL as https://github.com/RedHatWorkshops/bluegreen
 
@@ -56,10 +38,8 @@ image::blue.png[image]
 - Click `advanced options` link below to expand the options area
 - Scroll down to `Deployment Configuration` session
 - Add `COLOR` as key and `blue` as value
-
-image::deploy-config.png[image]
-
-- Scroll down and click `Create`
+- Click `Create`
+- Click `Continue to the project overview`
 
 
 

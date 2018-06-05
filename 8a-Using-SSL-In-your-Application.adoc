@@ -1,0 +1,45 @@
+[[using-ssl-in-your-application]]
+Using SSL in your application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this exercise you will set up your application to encrypt traffic
+with the OpenShift Wildcard certificate.
+
+*Step 1: Switch to an existing project*
+
+For this exercise, we will be using an already running application. We
+will be using the `mycliproject-UserName` that you created in the
+previous labs. Make sure you are switched to that project.
+
+- login to web UI via {{CONSOLE_ADDRESS}}
+- Use the same username and password that assigned to you
+- Click anywhere onto `OPENSHIFT CONTAINER PLATFORM` on top left
+- Click onto `mycliproject-UserName`
+
+*Step 2: View the routing config*
+
+- Click `Applications` --> select `Routes`
+- Click `welcome`
+
+
+*Step 3: TLS Edge Termination*
+
+OpenShift has a _wildcard_ SSL certificate that it can use for any
+application. We can use this SSL certificate to serve SSL from our
+application without having to generate a cert of our own (which is
+sometimes called SSL-offloading).
+
+Edit your routing configuration:
+
+- Click `Action` (top right) --> select `Edit`
+- Checked the checkbox next to `Secure route`
+- Click `Save`
+
+*Step 4: Verify*
+
+Verify by visiting your page by using the `https://` URI
+
+Congratulations!! In this exercise you have learned about service SSL
+from your application
+
+link:0_toc.adoc[Table Of Contents]
