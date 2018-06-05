@@ -29,9 +29,9 @@ The `replicationController` mirrors this configuration initially; the
 `replicationController` (or `rc`) will ensure that there is always the
 set number of instances always running.
 
-- To view number of pod running
+To view number of pod running:
 - Click `Applications` --> select 'Pods'
-- This shows all the pod running in the project
+This shows all the pod running in the project
 
 
 *Step 3: Scale Application*
@@ -43,7 +43,7 @@ instance running.
 
 image::scale_updown_overview.png[image]
 
-- Click onto the arrow up.
+- Click onto the arrow up twice.
 
 image::scale_up.jpg[image]
 
@@ -60,7 +60,7 @@ image::scale_updown_overview_scaled.png[image]
 Scaling down is the same procedure as scaling up.
 
 - On `Overview` page
-- Click arrow down next to the blue circle
+- Click arrow down twice next to the blue circle
 
 image::scale_down.jpg[image]
 
