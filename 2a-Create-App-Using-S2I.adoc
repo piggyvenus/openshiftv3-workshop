@@ -1,6 +1,6 @@
 [[create-an-app-using-s2i]]
 Create an App using Source to Image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 In this exercise we will learn how to create an application on OpenShift Container Platform
 via S2I. OpenShift takes your source code as an input and generates your

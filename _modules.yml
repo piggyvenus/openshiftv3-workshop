@@ -26,9 +26,9 @@ modules:
     name: Create an App from a Docker image
   2a-Create-App-Using-S2I:
     name: Creating an application using S2I
-  6-Scale-up-and-Scale-down-the-application-instances:
+  6a-Scale-up-and-Scale-down-the-application-instances:
     name: Scale up and Scale down the Application
-  8-Using-SSL-In-your-Application:
+  8a-Using-SSL-In-your-Application:
     name: Secure the Ingress traffic
   19a-Creating-new-Pipeline:
     name: CICD Pipeline
