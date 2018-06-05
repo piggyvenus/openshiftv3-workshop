@@ -1,0 +1,49 @@
+##Application uses Persistent Storage
+
+```
+oc new-project my-shared-storage
+oc new-app openshift/php:7.0~https://github.com/christianh814/openshift-php-upload-demo --name=file-uploader
+oc expose svc/file-uploader
+
+#attach volume
+oc volume dc/file-uploader --add --name=my-shared-storage \
+-t pvc --claim-mode=ReadWriteMany --claim-size=1Gi \
+--claim-name=my-shared-storage --mount-path=/opt/app-root/src/uploaded
+#check PVC
+oc get pvc
+#scale it up
+oc scale --replicas=3 dc/file-uploader
+
+```
+
+##heketi-cli
+
+```
+#ssh to the node has heketi-cli
+oc project glusterfs
+#Set the admin username and password using following
+HEKETI_POD=$(oc get pods -l glusterfs=heketi-storage-pod -o jsonpath="{.items[0].metadata.name}")
+export HEKETI_CLI_SERVER=http://$(oc get route/heketi-storage -o jsonpath='{.spec.host}')
+export HEKETI_CLI_USER=admin
+export HEKETI_CLI_KEY=$(oc get pod/$HEKETI_POD -o jsonpath='{.spec.containers[0].env[?(@.name=="HEKETI_ADMIN_KEY")].value}')
+#get cluster UUID
+heketi-cli cluster list
+heketi-cli cluster info <UUID>
+heketi-cli topology info
+
+#get the pv name
+oc get pvc -n my-shared-storage
+#get volume path
+oc describe pv <PV name>
+#IPs with corresponding pod names
+oc get pods -o wide -l glusterfs=storage-pod -n glusterfs
+#per pod name - repeat the follow to find the file in the pod
+oc rsh <cns pod name> gluster volume list
+oc rsh <cns pod name> gluster volume info <vol path>
+#get the acutal path to the pod
+oc rsh <cns pod name> gluster vol info <vol path> | grep service ip
+#your updated file here
+oc rsh <cns pod name> ls -ahl <actual path in the pod>
+
+
+```
