@@ -44,6 +44,12 @@ image::image-details.png[image]
 - Scroll down and click `Create`
 - Click on the URL on the top right
 
+*Step 3: Expose the route*
+
+- Click on `Overview` on the left nav
+- Click `Create Route`
+- Click `Create Button`
+- Now, click on the link on the top right corner to access your container.
 
 Congratulations!! You now know how to create a project, an application
 using an external docker image and navigate around. Get ready for more
