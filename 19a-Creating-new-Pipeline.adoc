@@ -148,7 +148,7 @@ Untick the following boxes:
 
 Click "Save" and in the end, the config should look like this.
 
-image::images/disable-triggers1.png[image]
+image::disable-triggers1.png[image]
 
 *Step 5:* Start pipeline
 
@@ -158,7 +158,7 @@ image::images/disable-triggers1.png[image]
 
 Notice the pipeline starts and `build` and `deploy` stages are executed.
 
-image::images/pipeine3.jpeg[image]
+image::pipeine3.jpeg[image]
 
 Click on the `View log` link for the pipeline. It’ll take you to Jenkins
 and show the logs.
