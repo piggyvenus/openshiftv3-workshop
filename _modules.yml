@@ -5,10 +5,10 @@ config:
       value: openshift
     - name: CONSOLE_ADDRESS
       desc: HTTP address of the OpenShift console
-      value: https://ocpmaster.workshop.sc.osecloud.com
+      value: https://masterdnsbynb7eonxwunw.westus2.cloudapp.azure.com
     - name: APPS_ADDRESS
       desc: HTTP address suffix of apps deployed on OpenShift
-      value: apps.workshop.sc.osecloud.com
+      value: 13.66.212.226.nip.io
     - name: GET_STARTED_CLI_URL
       desc: URL to documentation to configure CLI
       value: https://docs.openshift.com/container-platform/latest/cli_reference/get_started_cli.html
