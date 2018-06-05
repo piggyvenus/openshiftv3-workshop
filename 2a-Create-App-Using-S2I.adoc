@@ -1,0 +1,106 @@
+[[create-an-app-using-s2i]]
+Create an App using Source to Image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this exercise we will learn how to create an application on OpenShift Container Platform
+via S2I. OpenShift takes your source code as an input and generates your
+application container image for you.
+
+*Step 1: Add a new project from command line*
+
+IMPORTANT: Please replace *userxx* with your username
+
+- login to web UI via {{CONSOLE_ADDRESS}}
+- Use the same username and password that assigned to you
+- Click `Create Project`
+
+image::new-project.png[image]
+
+- Enter `dockerfile-*userxx*` as project name (all lower case)
+
+image::new-project-details.png[image]
+
+- Click `Create`
+- Click onto the newly created project
+
+
+*Step 2: List existing image builder or image streams*
+
+- Click `Add to Project`  --> select `Browse Catalog`
+- Click `PHP`
+- Click drop down from the version under PHP and get the list of image stream
+
+image::version.png[image]
+
+
+*Step 3: Create an application*
+
+We will be using a sample application that displays a blue or green
+rectangle. The sample app can be browsed at https://github.com/RedHatWorkshops/bluegreen
+
+We will be using an env var in order to change the color of the box; but
+in practice you would use a different branch for each version of the
+code. (E.g. v1 branch and v2 branch)
+
+- Click `Add to Project`  --> select `Browse Catalog`
+- Click `PHP`
+
+image::php-catalog.png[image]
+
+- Click `Select` in the PHP option with the default version
+- Enter name as `blue`
+- Enter Git Repository URL as https://github.com/RedHatWorkshops/bluegreen
+
+image::blue.png[image]
+
+- Click `advanced options` link below to expand the options area
+- Scroll down to `Deployment Configuration` session
+- Add `COLOR` as key and `blue` as value
+
+image::deploy-config.png[image]
+
+- Scroll down and click `Create`
+
+
+
+*Step 4: Monitor the application build*
+
+- Click `Builds` --> `Builds`
+- Click onto `#1`
+- Click `Logs` tab
+
+
+  Once the build finishes you should see something similar to:
+
+  ...
+  Pushing image docker-registry.default.svc:5000/guide/blue:latest ...
+  Pushed 0/6 layers, 2% complete
+  Pushed 1/6 layers, 27% complete
+  Pushed 2/6 layers, 40% complete
+  Pushed 3/6 layers, 53% complete
+  Pushed 4/6 layers, 73% complete
+  Pushed 4/6 layers, 92% complete
+  Pushed 5/6 layers, 97% complete
+  Pushed 6/6 layers, 100% complete
+  Push successful
+  ...
+
+*Step 5: Check application deployment status*
+
+- Click `Applications` --> `Pods`
+- Pods `blue` shows `Running` Status
+
+Notice that the build pod has Completed and you now have a single instance
+of the application running under one single pod.
+
+This application displays a blue square.
+
+*Step 6: List the service*
+
+- Click `Applications` --> `Services` to view all services
+
+
+*Step 8: Test the application*
+
+- Click `Overview`
+- Click route link on the top right on the screen

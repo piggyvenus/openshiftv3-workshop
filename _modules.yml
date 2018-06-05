@@ -24,27 +24,11 @@ modules:
     name: Setting up client tools
   1a-Create-App-From-Docker-Image:
     name: Create an App from a Docker image
-  2-Create-App-Using-Docker-Build:
-    name: Create an App using Docker build
-  4-Creating-an-application-using-JBoss-EAP-builder-image:
-    name: Creating an application using JBoss EAP builder image
-  14-Deploy-a-Spring-Boot-Application:
-    name: Deploy a SpringBoot Application
-  15-Adding-Spring-Boot-S2I-Image-to-the-Project-Catalog:
-    name: Adding Spring Boot S2I Image to the Project Catalog
-  16-Adding-database-to-your-Spring-Boot-Application:
-    name: Adding a backend database to the SpringBoot application
-  12-Code-Promotion-Across-Environments:
-    name: Code Promotion across Environments
-  19-Creating-a-Pipeline:
-    name: Create Pipeline
-  5-Using-templates:
-    name: Using Templates
-  7-Binary-Deployment-of-a-war-file:
-    name: Binary Deployment of a war file
+  2a-Create-App-Using-S2I:
+    name: Creating an application using S2I
+  6-Scale-up-and-Scale-down-the-application-instances:
+    name: Scale up and Scale down the Application
   8-Using-SSL-In-your-Application:
-    name: Using SSL in your application
-  9-Blue-Green-Deployments:
-    name: Blue-Green Deployments
-  10-SCM-Web-Hooks:
-    name: SCM Web Hooks
+    name: Secure the Ingress traffic
+  19a-Creating-new-Pipeline:
+    name: CICD Pipeline
