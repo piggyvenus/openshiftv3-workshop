@@ -58,8 +58,10 @@ image::scale_updown_overview_scaled.png[image]
 *Step 7: Scaling Down*
 
 Scaling down is the same procedure as scaling up.
+
 - On `Overview` page
 - Click arrow down next to the blue circle
+
 image::scale_down.jpg[image]
 
 Congratulations!! In this exercise you have learned about scaling and
