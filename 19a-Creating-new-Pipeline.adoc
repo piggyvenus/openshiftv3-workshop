@@ -47,7 +47,7 @@ metadata:
     name: sample-pipeline
     template: application-template-sample-pipeline
   annotations:
-    pipeline.alpha.openshift.io/uses: '[{"name": "time", "namespace": "", "kind": "DeploymentConfig"}]'
+    pipeline.alpha.openshift.io/uses: '[{"name": "myapp", "namespace": "", "kind": "DeploymentConfig"}]'
 spec:
   runPolicy: Serial
   source:
@@ -96,16 +96,16 @@ you to the editing page. Replace the current content with the following.
 ....
 node {
 stage 'buildInDev'
-openshiftBuild(namespace: 'dev-Uername', buildConfig: 'time', showBuildLogs: 'true')
+openshiftBuild(namespace: 'dev-user##', buildConfig: 'myapp', showBuildLogs: 'true')
 stage 'deployInDev'
-openshiftDeploy(namespace: 'dev-Uername', deploymentConfig: 'time')
+openshiftDeploy(namespace: 'dev-user##', deploymentConfig: 'myapp')
 stage 'Deploy QA'
 input 'Promote the Dev image to QA?'
 stage 'deployInTesting'
-openshiftTag(namespace: 'dev-Uername', sourceStream: 'time',  sourceTag: 'latest', destinationStream: 'time', destinationTag: 'promoteToQA')
-sh 'oc project qa-Uername'
-sh 'oc new-app dev-Uername/time:promoteToQA --allow-missing-imagestream-tags=true'
-sh 'oc expose svc time'
+openshiftTag(namespace: 'dev-user##', sourceStream: 'myapp',  sourceTag: 'latest', destinationStream: 'myapp', destinationTag: 'promoteToQA')
+sh 'oc project qa-user##'
+sh 'oc new-app dev-user##/myapp:promoteToQA --allow-missing-imagestream-tags=true'
+sh 'oc expose svc myapp'
 }
 
 ....
@@ -171,7 +171,7 @@ application to notice that the `blue` box is displayed.
 
 Navigate back to the `configuration` tab for the pipeline as explained
 in Step 3. Copy the value for `Github webhook` url
-Since dev-Username uses git repo from https://github.com/RedHatWorkshops/time),
+Since dev-Username uses git repo from https://github.com/piggyvenus/simplephp),
 you will need to fork this repo and update the development configure to use the forked repo.
 
 Based on what you learn in the past, go to your github repository that
