@@ -1,4 +1,4 @@
-##Application uses Persistent Storage
+## Application uses Persistent Storage
 
 ```
 oc new-project my-shared-storage
@@ -16,7 +16,7 @@ oc scale --replicas=3 dc/file-uploader
 
 ```
 
-##heketi-cli
+## heketi-cli usage
 
 ```
 #ssh to the node has heketi-cli
