@@ -47,3 +47,18 @@ oc rsh <cns pod name> ls -ahl <actual path in the pod>
 
 
 ```
+## adding disk to the each node example
+
+```
+# heketi-cli node list
+Id:89fd4fec6c07db3f0cda5b2f7231d8ee	Cluster:90b425c426eed1a1ab9f51e1303faea7
+Id:caa683671dc4ff2e8c5ae64c38a3672a	Cluster:90b425c426eed1a1ab9f51e1303faea7
+Id:ce1973439c2dbc29bca1645803c8e6f1	Cluster:90b425c426eed1a1ab9f51e1303faea7
+
+[root@ocp-master-1 ~]# heketi-cli device add --name=/dev/sdd --node=89fd4fec6c07db3f0cda5b2f7231d8ee
+Device added successfully
+[root@ocp-master-1 ~]# heketi-cli device add --name=/dev/sdd --node=caa683671dc4ff2e8c5ae64c38a3672a
+Device added successfully
+[root@ocp-master-1 ~]# heketi-cli device add --name=/dev/sdd --node=ce1973439c2dbc29bca1645803c8e6f1
+Device added successfully
+```
