@@ -20,13 +20,11 @@ config:
       value: https://access.redhat.com/downloads/content/290
 
 modules:
-  2-create-app-using-docker-build:
+  1a-create-app-from-docker-image:
     name: Create an App using Docker build
   6-scaling-app-instances:
     name: Scale up and Scale down and Idle the application instances
-  8-using-ssl-app:
-    name: Using SSL in your application
-  14-deploy-springboot-app:
-    name: Deploy a SpringBoot Application
+  9a-bluegreen-deployments
+    name: Blue Green Deployment
   19-Creating-a-Pipeline:
     name: Create a pipeline
