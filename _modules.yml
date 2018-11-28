@@ -8,7 +8,7 @@ config:
       value: https://master.experian-fbef.openshiftworkshop.com
     - name: APPS_ADDRESS
       desc: HTTP address suffix of apps deployed on OpenShift
-      value: apps.ocpazure.cgftdev.com
+      value: apps.experian-fbef.openshiftworkshop.com/
     - name: GET_STARTED_CLI_URL
       desc: URL to documentation to configure CLI
       value: https://docs.openshift.com/container-platform/latest/cli_reference/get_started_cli.html
@@ -21,10 +21,10 @@ config:
 
 modules:
   1a-create-app-from-docker-image:
-    name: Create an App using Docker build
+    name: Create an App using Docker image
   6-scaling-app-instances:
     name: Scale up and Scale down and Idle the application instances
-  9a-bluegreen-deployments
+  9a-bluegreen-deployments:
     name: Blue Green Deployment
   19-Creating-a-Pipeline:
     name: Create a pipeline
