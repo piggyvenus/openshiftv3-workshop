@@ -66,13 +66,13 @@ image::ocp4-route-details.png[image]
 
 image::ocp4-web-terminal.png[image]
 
-- Execute the following in the terminal (optional to run it locally on your own Linux machine - see setup lab to get other client CLI):
+- Execute the following in the terminal:
 
 ```
-wget https://mirror.openshift.com/pub/openshift-v3/clients/4.1.0-201904090034.git.0.1016bda.el7/linux/oc.tar.gz
-tar zvxf oc.tar.gz
-mv oc /opt/app-root/bin/
-oc version
+$ wget https://mirror.openshift.com/pub/openshift-v3/clients/4.1.0-201904090034.git.0.1016bda.el7/linux/oc.tar.gz
+$ tar zvxf oc.tar.gz
+$ mv oc /opt/app-root/bin/
+$ oc version
 ```
 
 
