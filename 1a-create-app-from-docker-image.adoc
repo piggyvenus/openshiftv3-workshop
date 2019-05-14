@@ -9,7 +9,7 @@ how to create an application from an existing docker image using Web UI.
 
 IMPORTANT: Please replace *userxx* with your username
 
-- login to web UI via https://master.ocp.tauil.org
+- login to web UI via {{CONSOLE_ADDRESS}}
 - Use the same username and password that assigned to you
 - Click "Create Project"
 
