@@ -32,7 +32,12 @@ image::search.png[image]
 image::ocp4-deploy-image.png[image]
 
 - Click `Deploy`
-- On the left-hand side menu, select 'Workload' and then select 'Pods'
+- On the left-hand side menu, select 'Workload' and then select 'Deployments Configs'
+- Click onto the Deployment config, you will see the deployment details here
+
+image::ocp4-dc.png[image]
+
+- click the tab 'Pods' to watch the deployment to complete
 
 image::ocp4-terminal.png[image]
 
