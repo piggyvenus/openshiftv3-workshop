@@ -1,12 +1,12 @@
 [[scaling-an-openshift4-cluster]]
-Scaling an OpenShift 4 Cluster
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+= Scaling an OpenShift 4 Cluster
+
 With OpenShift 4.0+, we now have the ability to dynamically scale the cluster size through OpenShift itself.
 
 In this lab you will learn how to scale OpenShift 4 cluster both manually and automatically.
 Applying autoscaling to an OpenShift Container Platform cluster involves deploying a ClusterAutoscaler and then deploying MachineAutoscalers for each Machine type in your cluster.
 
-*Manual Cluster Scale Up/Down*
+== Manual Cluster Scale Up/Down
 
 In this exercise we're going to manually add worker nodes to our cluster:
 
@@ -63,7 +63,7 @@ ip-10-0-170-241.us-east-2.compute.internal   Ready    worker         24h     v1.
 
 You'll note that some of these systems 'age' will be much newer than some of the others, these are the ones that will have just been added in. Before continuing, scale back down by editing the count to whatever it was previously for the Machine Set, i.e. return it to '1' node.
 
-*Modifying via the CLI*
+=== Modifying via the CLI
 
 You can alter the Machine Set count in several ways in the web UI console, but you can also perform the same operation via the CLI by using the oc edit command on the machineset in the openshift-machine-api project.
 
@@ -125,7 +125,7 @@ cluster-3e5f-kqr2b-worker-us-east-2c   1         1         1       1           2
 Again, before you move forward, return this count back to how it was before, using the same method as above.
 
 
-*Automatic Cluster Scale Up*
+== Automatic Cluster Scale Up
 
 OpenShift can automatically scale the infrastructure based on workload provided there is a configuration specified to do so. Before we begin, ensure that your cluster is back to having three nodes running:
 
@@ -137,7 +137,7 @@ cluster-3e5f-kqr2b-worker-us-east-2b   1         1         1       1           2
 cluster-3e5f-kqr2b-worker-us-east-2c   1         1         1       1           25h
 ```
 
-**Define a MachineAutoScaler**
+=== Define a MachineAutoScaler
 Next, configure a MachineAutoScaler - you'll need to fetch the following YAML file:
 
 ```
@@ -278,7 +278,7 @@ Once the file has been modified appropriately, you can now create the autoscaler
 $ oc create -f machine-autoscale-example.yaml -n openshift-machine-api
 ```
 
-*Define a ClusterAutoscaler*
+=== Define a ClusterAutoscaler
 
 Next we need to define a ClusterAutoscaler, this configures some boundaries and behaviors for how the cluster will autoscale. An example definition file can be found at:
 
@@ -307,7 +307,7 @@ clusterautoscaler.autoscaling.openshift.io/default created
 NOTE: The ClusterAutoscaler is not a namespaced resource -- it exists at the cluster scope.
 
 
-*Define a Job*
+=== Define a Job
 
 The following example YAML file defines a Job:
 
@@ -325,7 +325,7 @@ Created project autoscale-example
 Now using project "autoscale-example" on server "{{API_URL}}".
 ```
 
-*Open Grafana*
+=== Open Grafana
 In the OpenShift web console, click Monitoring and then click Dashboards. This will open a new browser tab for Grafana. You will also get a certificate error similar to the first time you logged in. This is because Grafana has its own SSL certificate. You will then see a login button. Grafana is configured to use an OpenShift user and inherits permissions of that user for accessing cluster information. This happens to be the user you're already logged into the web console with.
 
 Finally, allow the permissions, and then you will see the Grafana homepage.

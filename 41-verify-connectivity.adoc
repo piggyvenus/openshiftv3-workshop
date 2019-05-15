@@ -1,6 +1,6 @@
 [[verify-connectivity]]
-Create an App from a Docker image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+= Verify Connectivity
+
 
 Next, let's login to the web-console and ensure that it's working as expected.
 
