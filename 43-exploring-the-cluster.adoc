@@ -1,12 +1,14 @@
 [[exploring-the-cluster]]
 = Exploring the Cluster
 
+== Exploring the Cluster
+
 In this lab exercise, we will review the OpenShift Web Console.
 Let's take some time to explore our  OCP4 cluster. You now have two options, you can use your local terminal on your laptop, or you can use the browser-based terminal that we provisioned in the previous section. Due to connectivity challenges, you may be forced to use the browser-based one, and for convenience our recommendation would be to use it. If you really want to configure your local client you can do so by using the following instructions to download the command line tooling. You should only do this if you don't want to use the browser-based terminal; make sure you run this on your local laptop and NOT within the web-browser.
 
 Currently using the OC client CLI from https://mirror.openshift.com/pub/openshift-v3/clients/. You can check if there is an updated one before running the download instruction. You can update the URL accordingly if you like.
 
-=== For Linux:
+==== For Linux:
 
 
 ```
@@ -22,7 +24,7 @@ kubernetes v1.11.0+8868a98a7b
 features: Basic-Auth GSSAPI Kerberos SPNEGO
 ```
 
-=== For MacOS:
+==== For MacOS:
 
 ```
 $ wget https://mirror.openshift.com/pub/openshift-v3/clients/4.1.0-201904090034.git.0.1016bda.el7/macosx/oc.tar.gz
@@ -76,7 +78,7 @@ Console.
 
 Now that your client CLI is installed, you will have access to the web console and can use the CLI. Below are some command-line exercises to explore the cluster.
 
-== Cluster Nodes
+=== Cluster Nodes
 
 The default installation behavior creates 6 nodes: 3 masters and 3 "worker" application/compute nodes. You can view them with:
 
@@ -106,7 +108,7 @@ ip-10-0-171-135.ec2.internal   Ready     worker    23h       v1.12.4+5dc94f3fda 
 
 For reference, labels are used as a mechanism to tag certain information onto a node, or a set of nodes, that can help you identify your systems, e.g. by operating system, system architecture, specification, location of the system (e.g. region), it's hostname, etc. They can also help with application scheduling, e.g. make sure that my application (or pod) resides on a specific system type. The labels shown above are utilising the default labels, but it's possible to set some custom labels in the form of a key-value pair.
 
-== The Cluster Operator
+=== The Cluster Operator
 
 The cluster version operator is the core of what defines an OpenShift deployment . The cluster version operator pod(s) contains the set of manifests which are used to deploy, updated, and/or manage the OpenShift services in the cluster. This operator ensures that the other services, also deployed as operators, are at the version which matches the release definition and takes action to remedy discrepancies when necessary.
 

@@ -1,6 +1,8 @@
 [[openshift-infrastructure-nodes]]
 = OpenShift Infrastructure Nodes
 
+== OpenShift Infrastructure Nodes
+
 In this section we're going to look at the OpenShift infrastructure nodes, and more specifically how to scale them once they've been deployed. To understand what we mean by "infrastructure node", the nodes running the following services would fall into that description, although this is not necessarily an exhaustive list:
 
 Kubernetes and OpenShift control plane services ("masters")
@@ -63,7 +65,7 @@ r-us-east-2c
 
 In both of these outputs you'll note that both of the outputs have roles listed, and these are associated to kubernetes labels for scheduling purposes; we have two types of role defined, master, and worker. With the exception of master nodes (due to specific scheduling and deployment limitations), all other node types are deployed as part of a MachineSet, and can therefore be scaled as one.
 
-== More MachineSet Details
+=== More MachineSet Details
 
 In the previous section you explored the MachineSets resource and scaled the cluster by changing its replica count, adding additional workers, we also configured an auto scaler to ensure that the cluster would have the required capacity to accommodate the workload demand. You'll note that right now we only have worker type machine sets configured:
 
@@ -120,7 +122,7 @@ spec:
 
 There are a few very important sections in the output, we'll discuss them in depth below...
 
-=== Metadata
+==== Metadata
 
 The metadata on the MachineSet itself includes information like the name of the MachineSet and various labels:
 
@@ -143,7 +145,7 @@ metadata:
 
 NOTE: You might see some annotations on your MachineSet if you use the MachineSet that you defined a MachineAutoScaler on in the previous lab section.
 
-=== Selector
+==== Selector
 
 ```
 spec:
@@ -158,7 +160,7 @@ spec:
 
 In this case, the cluster name is 3e5f-kqr2b and there is an additional label for the whole set.
 
-=== Template Metadata
+==== Template Metadata
 
 The template section is the part of the MachineSet that specifically templates out the Machine. The template itself can have metadata associated, and we need to make sure that things match here when we make changes:
 
@@ -173,7 +175,7 @@ template:
         machine.openshift.io/cluster-api-machineset: cluster-3e5f-kqr2b-worker-us-east-2a
 ```
 
-=== Template Spec
+==== Template Spec
 
 The template needs to specify how the Machine/node should be created, i.e. "use this configuration for all machines in this set"; this configuration will be used when provisioning new systems when scaling is required. You will notice that the spec and, more specifically, the providerSpec contains all of the important AWS data to help get the Machine created correctly and bootstrapped.
 
@@ -227,7 +229,7 @@ By default the MachineSets that the installer creates do not apply any additiona
 
 NOTE: As you can probably see, there's plenty of AWS-specific provider configuration here, in future versions of OpenShift, there will be similar respective parameters for other infrastructure providers that can be used.
 
-=== Defining a Custom MachineSet
+==== Defining a Custom MachineSet
 
 In this section we're going to be defining a custom MachineSet for infrastructure services. Now that you've inspected an existing MachineSet it's time to go over the rules for creating one, at least for a simple change like we're making:
 
@@ -253,7 +255,7 @@ $ vi infra-machineset.yaml
 
 Let's now take some steps to adapt this MachineSet to suit our required new infrastructure node type...
 
-=== Clean it
+==== Clean it
 
 Since we asked OpenShift to tell us about an existing MachineSet, there's a lot of extra data that we can immediately remove from the file. Remove the following:
 
@@ -268,7 +270,7 @@ Since we asked OpenShift to tell us about an existing MachineSet, there's a lot 
 
 - All instances of creationTimestamp.
 
-=== Name It
+==== Name It
 
 Go ahead and change the top-level .metadata.name to something indicative of the purpose of this set, for example:
 
@@ -279,7 +281,7 @@ name: infrastructure-ap-east-2a
 
 By looking at this MachineSet, we can tell that it houses infrastructure-focused Machines (nodes) in ap-east-2 region in the availability zone. Ultimately, you can call this anything you like, but we should change this to something that makes sense for your cluster.
 
-=== Match It
+==== Match It
 Change any instance of sigs.k8s.io/cluster-api-machineset to match your new name of infrastructure-ap-east-2a (or whatever you're using). This appears in both .spec.selector.matchLabels as well as .spec.template.metadata.labels.
 
 **Add Your Node Label**
@@ -309,7 +311,7 @@ spec:
           node-role.kubernetes.io/infra: ""
 ```
 
-=== Set the replica count
+==== Set the replica count
 
 For now, make the replica count 1, which it should be already, unless you didn't change it from a previous lab instruction:
 
@@ -324,7 +326,7 @@ If you want a different EC2 instance type, you can change that. It is one of the
 
 Save your file and exit.
 
-=== Double Check
+==== Double Check
 
 Your cluster will have a different ID and you are likely operating in a different version, however, your file should more or less look like the following:
 
@@ -400,7 +402,7 @@ spec:
         kubelet: ""
 ```
 
-== Create Your Machineset
+=== Create Your Machineset
 
 Now you can create your MachineSet from the definition that we created:
 
@@ -446,7 +448,7 @@ ip-10-0-167-6.us-east-2.compute.internal     Ready    master         32h     v1.
 ip-10-0-170-241.us-east-2.compute.internal   Ready    worker         32h     v1.13.4+c3617b99f
 ```
 
-=== Check the Labels
+==== Check the Labels
 
 In our case, the youngest node was named ip-10-0-137-106.us-east-2.compute.internal, so we can ask what its labels are:
 
@@ -461,7 +463,7 @@ beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-east-2,f
 
 It's hard to see, but our node-role.kubernetes.io/infra label is the LABELS column. You will also see infra,worker in the output of oc get node in the ROLES column. Success!
 
-=== Add More Machinesets (or scale, or both)
+==== Add More Machinesets (or scale, or both)
 
 In a realistic production deployment, you would want at least 3 MachineSets to hold infrastructure components. Both the logging aggregation solution and the service mesh will deploy ElasticSearch, and ElasticSearch really needs 3 instances spread across 3 discrete nodes. Why 3 MachineSets? Well, in theory, having a MachineSet in different AZs ensures that you don't go completely dark if AWS loses an AZ.
 For the purposes of this exercise, though, we'll just scale up our single set:
@@ -477,11 +479,11 @@ Change the .spec.replicas from 1 to 3, and then save/exit the editor.
 
 You can issue oc get machineset to see the change in the desired number of instances, and then oc get machine and oc get node as before. Just don't forget the -n openshift-machine-api or be sure to switch to that namespace with oc project openshift-machine-api.
 
-== Moving Infrastructure Components
+=== Moving Infrastructure Components
 
 Now that we have provisioned some infrastructure specific nodes, it's time to move various infrastructure components onto them, i.e. move them away from the worker nodes, and onto the fresh systems. Let's go through some of them individually to see how they can be moved, and how to monitor the progress.
 
-=== Router
+==== Router
 The OpenShift router is deployed, maintained, and scaled by an Operator called openshift-ingress-operator. Its Pod lives in the openshift-ingress-operator project:
 
 ```
@@ -602,7 +604,7 @@ ip-10-0-139-255.us-east-2.compute.internal   Ready    infra,worker   22h   v1.13
 
 Success! Our pods have been automatically redeployed onto the infrastructure nodes.
 
-=== Container Image Registry
+==== Container Image Registry
 The registry uses a similar CRD (Custom Resource Definition) mechanism to configure how the operator deploys the actual registry pods. That CRD is configs.imageregistry.operator.openshift.io. You will need to edit the cluster CR object in order to add the nodeSelector. First, take a look at it:
 
 ```
@@ -704,7 +706,7 @@ ip-10-0-139-255.us-east-2.compute.internal   Ready    infra,worker   22h   v1.13
 
 Lastly, notice that the CRD for the image registry's configuration is not namespaced -- it is cluster scoped. There is only one internal/integrated registry per OpenShift cluster that serves all projects.
 
-=== Monitoring
+==== Monitoring
 
 The Cluster Monitoring operator is responsible for deploying and managing the state of the Prometheus+Grafana+AlertManager cluster monitoring stack. It is installed by default during the initial cluster installation. Its operator uses a ConfigMap in the openshift-monitoring project to set various tunables and settings for the behavior of the monitoring stack.
 

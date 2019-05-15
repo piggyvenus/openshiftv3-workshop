@@ -1,6 +1,7 @@
 [[verify-connectivity]]
 = Verify Connectivity
 
+== Verify Connectivity
 
 Next, let's login to the web-console and ensure that it's working as expected.
 

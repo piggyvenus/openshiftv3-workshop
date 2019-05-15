@@ -1,6 +1,8 @@
 [[using-operatorhub]]
 = Extensions to OpenShift using OperatorHub
 
+== Extensions to OpenShift using OperatorHub
+
 In this lab you will learn how to use operatorhub and operators.
 
 OpenShift 4 has a slimmer base, with the ability to easily extend it with Operators for both cluster services (networking, storage, logging) and applications (databases, message queues, source control) for your developers to build applications with.
@@ -14,7 +16,7 @@ Certified Partners - partners that have certified their applications for OpenShi
 Community - a set of curated Operators built by the Kubernetes community and work well with the Operator Lifecycle Management software already installed on your cluster.
 In this example we're going to deploy Couchbase through the Operator framework in OpenShift 4; Couchbase is a powerful NoSQL database implementation.
 
-== Create a Project
+=== Create a Project
 
 Before you get started, create a project for what you're about to do with Couchbase. You can either do it from the command line:
 
@@ -68,7 +70,7 @@ openshift-operators                                     couchbase-operator-8b9c5
 
 You will likely see the Couchbase operator pod in ContainerCreating status if you look very soon after finishing the installation/subscription process.
 
-== Using Secrets
+=== Using Secrets
 
 The Couchbase operator is capable of installing and managing a Couchbase cluster for you. But, before it can do that, it has a prerequisite for a Kubernetes secret that it can use to configure the username and password for the cluster. You have a couple of ways to create this secret.
 
@@ -107,7 +109,7 @@ $ oc create -f https://raw.githubusercontent.com/openshift/training/master/asset
 ```
 Ultimately, you want a secret with the username couchbase and the password securepassword (both examples above use that).
 
-== Using an Installed Operator
+=== Using an Installed Operator
 
 Regular users will use the "Developer Catalog" menu to add shared apps, services, or source-to-image builders to projects. Let's explore that interface and deploy a Couchbase cluster from our newly created Operator:
 
@@ -158,7 +160,7 @@ spec:
 
 image::creatingCouchdb.png[image]
 
-== View the Deployed Resources
+=== View the Deployed Resources
 
 Navigate to the Couchbase Cluster that was deployed by clicking cb-example, and then click on the "Resources" tab. This collects all of the objects deployed and managed by the Operator. From here you can ultimately view Pod logs to check on the Couchbase Cluster instances.
 
@@ -237,7 +239,7 @@ $ oc edit couchbaseclusters.couchbase.com/cb-example -n mycouchbase
 
 If you watch the dashboard closely, you will see that Couchbase has automatically triggered a re-balance of the data within the cluster to reflect the new topology of the cluster. This is one of many advanced feautres embedded within applications in OperatorHub to save you time when administering your workloads.
 
-== Delete the Couchbase Instance
+=== Delete the Couchbase Instance
 
 After you are done, delete the cb-example Couchbase instance and the Opeator will clean up all of the resources that were deployed. Remember to delete the Route that we manually created as well. Remember to delete the Operator instance and not to delete the Pods or other resources directly -- the operator will immediately try to fix that thinking that there's a problem!
 
