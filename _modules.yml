@@ -11,7 +11,7 @@ config:
       value: apps.cluster-611e.sandbox205.opentlc.com/
     - name: GET_STARTED_CLI_URL
       desc: URL to documentation to configure CLI
-      value: https://mirror.openshift.com/pub/openshift-v3/clients/4.1.0-201904090034.git.0.1016bda.el7/
+      value: https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/
     - name: API_URL
       desc: URL to API server
       value: https://api.cluster-611e.sandbox205.opentlc.com:6443
@@ -20,7 +20,7 @@ config:
       value: http://nexus-workshop.apps.experian-fbef.openshiftworkshop.com/repository/maven-public/
     - name: REDHAT_DOWNLOAD_OC_PORTAL_URL
       desc: URL for Red Hat portal oc binary download
-      value: https://access.redhat.com/downloads/content/290
+      value: https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/
 
 modules:
   0a-setting-up-client-tools:
