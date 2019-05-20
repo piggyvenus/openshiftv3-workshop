@@ -320,7 +320,7 @@ spec:
   replicas: 1
 ```
 
-**Change the Instance Type**
+==== Change the Instance Type
 
 If you want a different EC2 instance type, you can change that. It is one of the few things in the providerSpec block you can realistically change. You can also change volumes if you want a different storage size or need additional volumes on your instances.
 
