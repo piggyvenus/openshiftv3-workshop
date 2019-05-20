@@ -22,27 +22,25 @@ image::new-project-details.png[image]
 
 *Step 2: Create an application from a Docker Image*
 
-- Once you created a new project, we will see this page
+- Once you created a new project, click onto the newly created project
 
 image::add-project.png[image]
 
-- Click on "Deploy Image" tab
+- Click on "Deploy Image"
 - Select "Image Name" radio button
 
 image::deploy-image.png[image]
 
 - Enter the name of the container image under Image Name as
 `redhatworkshops/welcome-php`
-- Click on search button
-
-image::search.png[image]
+- Click on search icon: image::search.png[image]
 
 - Enter a Name for the deploy
 
 image::image-details.png[image]
 
-- Click `Create`
-- Click `Continue to Oversion`
+- Click `Deploy`
+- Click `Continue to this project overview`
 - Click anywhere next to welcome
 - Click `create route`
 image::welcome.png[image]

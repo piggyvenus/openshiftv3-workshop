@@ -28,7 +28,7 @@ modules:
   41-verify-connectivity:
     name: Verify Connectivity
   42-create-app-from-docker-image:
-    name: Create an App using Docker image
+    name: Create an App using Container image
   43-exploring-the-cluster:
     name: Exploring the Cluster
   44-scaling-an-openshift4-cluster:
